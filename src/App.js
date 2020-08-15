@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import ScoreHolder from "./Components/ScoreHolder";
 
 function App() {
 	return (
 		<div className="App">
-			<h1>Hello TTer</h1>
+			<ScoreHolder />
 		</div>
 	);
 }

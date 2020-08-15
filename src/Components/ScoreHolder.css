@@ -1,0 +1,14 @@
+.holder {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(253, 253, 253);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 3px 3px rgb(197, 197, 197);
+	height: 60vh;
+	width: 70vw;
+}
