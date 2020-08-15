@@ -9,6 +9,7 @@ const Score = () => (
 				<button className="button plus">+</button>
 				<button className="button minus">-</button>
 			</div>
+			<h1 className="player">Tino</h1>
 		</div>
 	</>
 );

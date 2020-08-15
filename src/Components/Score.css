@@ -13,12 +13,6 @@
 	font-size: 4rem;
 }
 
-.buttons {
-	/* display: flex;
-	justify-content: space-around;
-	align-items: center; */
-}
-
 .button {
 	background: white;
 	border: none;
@@ -27,8 +21,15 @@
 	font-size: 2rem;
 	height: 3rem;
 	width: 3rem;
+	outline: none;
+	cursor: pointer;
 }
 
 .minus {
 	margin-left: 0.5rem;
+}
+
+.player {
+	font-size: 2rem;
+	padding-top: 1rem;
 }

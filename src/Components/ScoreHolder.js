@@ -6,6 +6,8 @@ const ScoreHolder = () => (
 	<>
 		<div className="holder">
 			<Score />
+			<h1>-</h1>
+			<Score />
 		</div>
 	</>
 );
