@@ -1,10 +1,11 @@
 import React from "react";
 import "./ScoreHolder.css";
+import Score from "./Score";
 
 const ScoreHolder = () => (
 	<>
 		<div className="holder">
-			<h1>Temp</h1>
+			<Score />
 		</div>
 	</>
 );
