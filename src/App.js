@@ -4,6 +4,7 @@ import "./App.css";
 import SplashScreen from "./components/SplashScreen";
 import ScoreHolder from "./components/ScoreHolder";
 import StartGame from "./components/StartGame";
+import History from "./components/History";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 					<Route path="/" component={SplashScreen} exact />
 					<Route path="/start" component={StartGame} />
 					<Route path="/game" component={ScoreHolder} />
+					<Route path="/history" component={History} />
 				</Switch>
 			</Router>
 		</>

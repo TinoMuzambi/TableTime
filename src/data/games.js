@@ -1,5 +1,5 @@
-const games = {
-	"0": {
+const games = [
+	{
 		bestOf: "Single Game",
 		gameType: 11,
 		player1: "Talent",
@@ -7,7 +7,7 @@ const games = {
 		player1Score: { 1: 11 },
 		player2Score: { 1: 8 },
 	},
-	"1": {
+	{
 		bestOf: "Best of 3",
 		gameType: 11,
 		player1: "Tino",
@@ -15,7 +15,7 @@ const games = {
 		player1Score: { 1: 11, 2: 8, 3: 11 },
 		player2Score: { 1: 8, 2: 11, 3: 5 },
 	},
-	"2": {
+	{
 		bestOf: "Best of 3",
 		gameType: 21,
 		player1: "Tino",
@@ -23,6 +23,6 @@ const games = {
 		player1Score: { 1: 21, 2: 8, 3: 21 },
 		player2Score: { 1: 8, 2: 21, 3: 19 },
 	},
-};
+];
 
 export default games;
