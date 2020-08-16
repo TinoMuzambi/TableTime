@@ -31,12 +31,11 @@
 
 .player {
 	font-size: 2rem;
-	padding-top: 1rem;
+	padding-top: 2.5rem;
 }
 
 .done {
 	pointer-events: none;
-	filter: blur();
 }
 
 .winner {

@@ -16,20 +16,20 @@ class Score extends Component {
 	async incScore() {
 		await this.setState({ score: this.state.score + 1 });
 		const buttons = document.querySelectorAll(".button");
-		const card = document.querySelector(".score");
 		if (this.state.score === this.props.gameType) {
 			buttons.forEach((button) => {
 				button.classList.add("done");
 			});
-			card.classList.add("winner");
 		}
 		this.props.updateScore(this.props.id, this.state.score);
 	}
 
-	decScore() {
-		this.state.score > 0
+	async decScore() {
+		(await this.state.score) > 0
 			? this.setState({ score: this.state.score - 1 })
 			: this.setState({ score: 0 });
+
+		this.props.updateScore(this.props.id, this.state.score);
 	}
 
 	render() {

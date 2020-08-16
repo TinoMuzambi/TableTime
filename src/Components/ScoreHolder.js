@@ -36,7 +36,14 @@ class ScoreHolder extends Component {
 			this.state.player1CurrScore === this.state.gameDetails.gameType ||
 			this.state.player2CurrScore === this.state.gameDetails.gameType
 		) {
-			status.innerHTML = "Game!";
+			const card = document.querySelectorAll(".score");
+			if (this.state.player1CurrScore > this.state.player2CurrScore) {
+				card[0].classList.add("winner");
+				status.innerHTML = `Game ${this.state.gameDetails.player1}!`;
+			} else {
+				card[1].classList.add("winner");
+				status.innerHTML = `Game ${this.state.gameDetails.player2}!`;
+			}
 		} else if (
 			this.state.player1CurrScore === this.state.gameDetails.gameType - 1 &&
 			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
@@ -48,7 +55,7 @@ class ScoreHolder extends Component {
 		) {
 			status.innerHTML = "Game Point!";
 		} else {
-			status.innerHTML = "";
+			status.innerHTML = "BAU";
 		}
 	}
 
@@ -64,11 +71,10 @@ class ScoreHolder extends Component {
 						id={0}
 						className="score1"
 					/>
-					<div className="middle">
-						<h2 className="status">{""}</h2>
-						<h1>-</h1>
-					</div>
 
+					<h2 className="status">BAU</h2>
+
+					<h1 className="separator">-</h1>
 					<Score
 						gameType={this.state.gameDetails.gameType}
 						player={this.state.gameDetails.player2}
