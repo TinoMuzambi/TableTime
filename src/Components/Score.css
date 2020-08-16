@@ -43,3 +43,24 @@
 	background: rgb(176, 255, 169);
 	box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
 }
+
+/*              Viewport less then or equal to 750px            */
+
+@media only screen and (max-width: 750px) {
+}
+
+/*        x      Viewport less then or equal to 750px       x     */
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px) {
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+
+/*              Viewport less then or equal to 320px            */
+
+@media only screen and (max-width: 320px) {
+}
+
+/*        x      Viewport less then or equal to 320px       x     */

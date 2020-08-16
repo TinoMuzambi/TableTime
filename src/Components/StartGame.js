@@ -45,27 +45,25 @@ class StartGame extends Component {
 	render() {
 		return (
 			<>
-				<div className="holder">
+				<div className="start-holder">
 					<h1 className="heading">Table Time</h1>
-					<div className="container">
-						<div className="player-input">
-							<input
-								id="player1"
-								onChange={(e) => this.setPlayer1(e.target.value)}
-								placeholder="Player 1"
-							></input>
-						</div>
-						<h1>vs</h1>
-						<div className="player-input">
-							<input
-								id="player2"
-								onChange={(e) => this.setPlayer2(e.target.value)}
-								placeholder="Player 2"
-							></input>
-						</div>
+					<div className="player-input player1">
+						<input
+							id="player1"
+							onChange={(e) => this.setPlayer1(e.target.value)}
+							placeholder="Player 1"
+						></input>
+					</div>
+					<h1 className="vs">vs</h1>
+					<div className="player-input player2">
+						<input
+							id="player2"
+							onChange={(e) => this.setPlayer2(e.target.value)}
+							placeholder="Player 2"
+						></input>
 					</div>
 
-					<div class="dropdown">
+					<div class="dropdown game">
 						<button class="dropbtn">
 							<h2>
 								Game {this.state.gameType} <MdKeyboardArrowDown />
@@ -77,7 +75,7 @@ class StartGame extends Component {
 						</div>
 					</div>
 
-					<div class="dropdown b">
+					<div class="dropdown rounds">
 						<button class="dropbtn">
 							<h2>
 								{this.state.bestOf} <MdKeyboardArrowDown />

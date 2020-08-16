@@ -1,24 +1,21 @@
-.holder {
+.start-holder {
 	background-color: rgb(253, 253, 253);
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	display: grid;
+	grid-template-areas:
+		"heading heading heading"
+		"player1 vs      player2"
+		"game    game    game"
+		"rounds  rounds  rounds";
+	justify-content: center;
+	grid-auto-flow: column;
 	border-radius: 50px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	height: 80vh;
-	width: 70vw;
+	height: 32rem;
+	width: 60rem;
 }
 
 .heading {
-	position: absolute;
-	top: 0;
-}
-
-.container {
-	position: absolute;
-	top: 7rem;
-	display: flex;
-	align-items: center;
+	grid-area: heading;
 }
 
 .player-input {
@@ -28,6 +25,27 @@
 	width: 12rem;
 	text-align: center;
 	margin: 3rem;
+	height: 4rem;
+}
+
+.player1 {
+	grid-area: player1;
+}
+
+.vs {
+	grid-area: vs;
+}
+
+.player2 {
+	grid-area: player2;
+}
+
+.game {
+	grid-area: game;
+}
+
+.rounds {
+	grid-area: rounds;
 }
 
 .player-input input {
@@ -91,9 +109,8 @@
 	display: block;
 }
 
-.b {
+.rounds {
 	position: absolute;
-	display: inline-block;
 	bottom: 6rem;
 }
 
@@ -113,3 +130,46 @@
 	display: flex;
 	align-items: center;
 }
+
+/*              Viewport less then or equal to 750px            */
+
+@media only screen and (max-width: 750px) {
+	.start-holder {
+		height: 40rem;
+		width: 30rem;
+	}
+
+	.heading,
+	.vs {
+		font-size: 3rem;
+	}
+
+	.player-input {
+		width: 9rem;
+		margin: 1rem;
+	}
+
+	.dropdown {
+		bottom: 18rem;
+	}
+
+	.rounds {
+		bottom: 9rem;
+	}
+}
+
+/*        x      Viewport less then or equal to 750px       x     */
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px) {
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+
+/*              Viewport less then or equal to 320px            */
+
+@media only screen and (max-width: 320px) {
+}
+
+/*        x      Viewport less then or equal to 320px       x     */

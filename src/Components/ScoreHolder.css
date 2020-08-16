@@ -25,3 +25,28 @@
 h1 {
 	font-size: 4rem;
 }
+
+/*              Viewport less then or equal to 750px            */
+
+@media only screen and (max-width: 750px) {
+	.holder {
+		height: 40rem;
+		width: 30rem;
+	}
+}
+
+/*        x      Viewport less then or equal to 750px       x     */
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px) {
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+
+/*              Viewport less then or equal to 320px            */
+
+@media only screen and (max-width: 320px) {
+}
+
+/*        x      Viewport less then or equal to 320px       x     */
