@@ -1,0 +1,82 @@
+.holder {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: rgb(253, 253, 253);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 80vh;
+	width: 70vw;
+}
+
+.heading {
+	position: absolute;
+	top: 0;
+}
+
+.player-input {
+	background: #f4f4f4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	width: 12rem;
+	text-align: center;
+}
+
+.player-input h2 {
+	outline: none;
+}
+
+/* Dropdown Button */
+.dropbtn {
+	background: #f4f4f4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	width: 12rem;
+	text-align: center;
+	border: none;
+	outline: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+	position: absolute;
+	display: inline-block;
+	bottom: 5rem;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	width: 12rem;
+	top: 2.4rem;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+	/* z-index: 1; */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	color: gray;
+	border-bottom-right-radius: 50px;
+	border-bottom-left-radius: 50px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
