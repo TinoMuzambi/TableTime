@@ -11,7 +11,7 @@ class StartGame extends Component {
 			player1: "",
 			player2: "",
 			gameType: 11,
-			bestOf: "Best of 3",
+			bestOf: "Single Game",
 		};
 
 		this.setGameType = this.setGameType.bind(this);

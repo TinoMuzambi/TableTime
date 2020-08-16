@@ -33,3 +33,8 @@
 	font-size: 2rem;
 	padding-top: 1rem;
 }
+
+.done {
+	pointer-events: none;
+	filter: blur();
+}
