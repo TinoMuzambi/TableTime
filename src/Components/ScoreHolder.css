@@ -18,6 +18,10 @@
 	top: 0;
 }
 
+.middle {
+	text-align: center;
+}
+
 h1 {
 	font-size: 4rem;
 }

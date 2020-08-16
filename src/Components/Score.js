@@ -13,14 +13,17 @@ class Score extends Component {
 		this.decScore = this.decScore.bind(this);
 	}
 
-	incScore() {
-		this.setState({ score: this.state.score + 1 });
+	async incScore() {
+		await this.setState({ score: this.state.score + 1 });
 		const buttons = document.querySelectorAll(".button");
-		if (this.state.score === this.props.gameType - 1) {
+		const card = document.querySelector(".score");
+		if (this.state.score === this.props.gameType) {
 			buttons.forEach((button) => {
 				button.classList.add("done");
 			});
+			card.classList.add("winner");
 		}
+		this.props.updateScore(this.props.id, this.state.score);
 	}
 
 	decScore() {
