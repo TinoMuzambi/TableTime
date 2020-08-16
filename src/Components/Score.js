@@ -14,7 +14,9 @@ class Score extends Component {
 	}
 
 	incScore() {
-		this.setState({ score: this.state.score + 1 });
+		this.state.score < this.props.gameType
+			? this.setState({ score: this.state.score + 1 })
+			: this.setState({ score: this.state.score });
 	}
 
 	decScore() {
@@ -36,7 +38,7 @@ class Score extends Component {
 							-
 						</button>
 					</div>
-					<h1 className="player">Tino</h1>
+					<h1 className="player">{this.props.player}</h1>
 				</div>
 			</>
 		);

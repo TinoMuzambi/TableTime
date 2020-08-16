@@ -5,9 +5,10 @@ import Score from "./Score";
 const ScoreHolder = () => (
 	<>
 		<div className="holder">
-			<Score />
+			<h1 className="game-type">Game {21}</h1>
+			<Score gameType={21} player="Tino" />
 			<h1>-</h1>
-			<Score />
+			<Score gameType={21} player="Talent" />
 		</div>
 	</>
 );
