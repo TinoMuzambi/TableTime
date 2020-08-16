@@ -140,7 +140,15 @@
 
 @media only screen and (max-width: 750px) {
 	.start-holder {
-		height: 40rem;
+		grid-template-areas:
+			"heading"
+			"player1"
+			"vs"
+			"player2"
+			"game"
+			"rounds"
+			"button";
+		height: 50rem;
 		width: 30rem;
 	}
 

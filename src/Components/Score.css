@@ -1,11 +1,11 @@
 .score {
-	display: flex;
-	flex-direction: column;
+	display: grid;
 	background: #f4f4f4;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 50px;
-	width: 12vw;
-	height: 37vh;
+	width: 10rem;
+	height: 16rem;
+	justify-items: center;
 	align-items: center;
 }
 

@@ -55,13 +55,14 @@ class ScoreHolder extends Component {
 	render() {
 		return (
 			<>
-				<div className="holder">
+				<div className="score-holder">
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
 					<Score
 						gameType={this.state.gameDetails.gameType}
 						player={this.state.gameDetails.player1}
 						updateScore={this.updateScore}
 						id={0}
+						className="score1"
 					/>
 					<div className="middle">
 						<h2 className="status">{""}</h2>
@@ -73,6 +74,7 @@ class ScoreHolder extends Component {
 						player={this.state.gameDetails.player2}
 						updateScore={this.updateScore}
 						id={1}
+						className="score2"
 					/>
 				</div>
 			</>
