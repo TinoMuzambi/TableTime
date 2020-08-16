@@ -5,17 +5,23 @@
 		"heading heading heading"
 		"player1 vs      player2"
 		"game    game    game"
-		"rounds  rounds  rounds";
-	justify-content: center;
-	grid-auto-flow: column;
+		"rounds  rounds  rounds"
+		"null    null    button";
+	justify-items: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	border-radius: 50px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	height: 32rem;
+	height: 35rem;
 	width: 60rem;
 }
 
 .heading {
 	grid-area: heading;
+	font-size: 2.5rem;
 }
 
 .player-input {
@@ -34,6 +40,7 @@
 
 .vs {
 	grid-area: vs;
+	font-size: 2.5rem;
 }
 
 .player2 {
@@ -42,10 +49,6 @@
 
 .game {
 	grid-area: game;
-}
-
-.rounds {
-	grid-area: rounds;
 }
 
 .player-input input {
@@ -66,22 +69,20 @@
 	text-align: center;
 	border: none;
 	outline: none;
+	cursor: pointer;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-	position: absolute;
 	display: inline-block;
-	bottom: 11rem;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
 	display: none;
-	position: absolute;
 	background-color: #f1f1f1;
+	position: absolute;
 	width: 12rem;
-	top: 2.4rem;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-bottom-right-radius: 40px;
 	border-bottom-left-radius: 40px;
@@ -105,13 +106,16 @@
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.show .dropdown-content {
 	display: block;
 }
 
 .rounds {
-	position: absolute;
-	bottom: 6rem;
+	grid-area: rounds;
+}
+
+.hide .dropdown-content {
+	display: none;
 }
 
 .button-start {
@@ -124,9 +128,10 @@
 	width: 3rem;
 	outline: none;
 	cursor: pointer;
-	position: absolute;
-	bottom: 2rem;
-	right: 2rem;
+	grid-area: button;
+	justify-self: end;
+	margin-right: 2rem;
+	margin-bottom: 2rem;
 	display: flex;
 	align-items: center;
 }
@@ -147,14 +152,6 @@
 	.player-input {
 		width: 9rem;
 		margin: 1rem;
-	}
-
-	.dropdown {
-		bottom: 18rem;
-	}
-
-	.rounds {
-		bottom: 9rem;
 	}
 }
 
