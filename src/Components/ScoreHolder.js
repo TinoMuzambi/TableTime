@@ -2,6 +2,33 @@ import React, { Component } from "react";
 import "./ScoreHolder.css";
 import Score from "./Score";
 
+const games = {
+	"0": {
+		bestOf: "Single Game",
+		gameType: 11,
+		player1: "Talent",
+		player2: "David",
+		player1Score: { 1: 11 },
+		player2Score: { 1: 8 },
+	},
+	"1": {
+		bestOf: "Best of 3",
+		gameType: 11,
+		player1: "Tino",
+		player2: "David",
+		player1Score: { 1: 11, 2: 8, 3: 11 },
+		player2Score: { 1: 8, 2: 11, 3: 5 },
+	},
+	"2": {
+		bestOf: "Best of 3",
+		gameType: 21,
+		player1: "Tino",
+		player2: "Bob",
+		player1Score: { 1: 21, 2: 8, 3: 21 },
+		player2Score: { 1: 8, 2: 21, 3: 19 },
+	},
+};
+
 class ScoreHolder extends Component {
 	constructor() {
 		super();
@@ -44,6 +71,16 @@ class ScoreHolder extends Component {
 				card[1].classList.add("winner");
 				status.innerHTML = `Game ${this.state.gameDetails.player2}!`;
 			}
+			const gameData = {
+				bestOf: this.state.gameDetails.bestOf,
+				gameType: this.state.gameDetails.gameType,
+				player1: this.state.gameDetails.player1,
+				player2: this.state.gameDetails.player2,
+				player1Score: { 1: this.state.player1CurrScore },
+				player2Score: { 1: this.state.player2CurrScore },
+			};
+			games["3"] = gameData;
+			console.log(games);
 		} else if (
 			this.state.player1CurrScore === this.state.gameDetails.gameType - 1 &&
 			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
