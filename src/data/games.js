@@ -1,5 +1,6 @@
 const games = [
 	{
+		date: "Monday 03 August 2020",
 		bestOf: "Single Game",
 		gameType: 11,
 		player1: "Talent",
@@ -8,6 +9,7 @@ const games = [
 		player2Score: { 1: 8 },
 	},
 	{
+		date: "Tuesday 04 August 2020",
 		bestOf: "Best of 3",
 		gameType: 11,
 		player1: "Tino",
@@ -16,6 +18,7 @@ const games = [
 		player2Score: { 1: 8, 2: 11, 3: 5 },
 	},
 	{
+		date: "Wednesday 05 August 2020",
 		bestOf: "Best of 3",
 		gameType: 21,
 		player1: "Tino",

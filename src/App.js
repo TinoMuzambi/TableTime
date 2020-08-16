@@ -5,6 +5,7 @@ import SplashScreen from "./components/SplashScreen";
 import ScoreHolder from "./components/ScoreHolder";
 import StartGame from "./components/StartGame";
 import History from "./components/History";
+import About from "./components/About";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Route path="/start" component={StartGame} />
 					<Route path="/game" component={ScoreHolder} />
 					<Route path="/history" component={History} />
+					<Route path="/about" component={About} />
 				</Switch>
 			</Router>
 		</>
