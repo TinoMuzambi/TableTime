@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import ScoreHolder from "./Components/ScoreHolder";
+import ScoreHolder from "./components/ScoreHolder";
 
 function App() {
 	return (
