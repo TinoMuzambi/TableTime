@@ -4,7 +4,7 @@ import "./StartGame.css";
 import {
 	MdKeyboardArrowDown,
 	MdArrowForward,
-} from "./node_modules/react-icons/md";
+} from ";
 
 class StartGame extends Component {
 	constructor() {
