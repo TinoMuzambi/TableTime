@@ -40,6 +40,7 @@ class ScoreHolder extends Component {
 				bestOf: "",
 				player1: "",
 				player2: "",
+				deuce: false,
 			},
 			player1CurrScore: 0,
 			player2CurrScore: 0,
@@ -90,13 +91,43 @@ class ScoreHolder extends Component {
 			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
 		) {
 			status.innerHTML = "Deuce!";
+			this.setState({
+				gameDetails: {
+					gameType: this.state.gameDetails.gameType,
+					bestOf: this.state.gameDetails.bestOf,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					deuce: true,
+				},
+			});
+			console.log(this.state.gameDetails.deuce);
 		} else if (
 			this.state.player1CurrScore === this.state.gameDetails.gameType - 1 ||
 			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
 		) {
 			status.innerHTML = "Game Point!";
+			this.setState({
+				gameDetails: {
+					gameType: this.state.gameDetails.gameType,
+					bestOf: this.state.gameDetails.bestOf,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					deuce: false,
+				},
+			});
+			console.log(this.state.gameDetails.deuce);
 		} else {
 			status.innerHTML = "BAU";
+			this.setState({
+				gameDetails: {
+					gameType: this.state.gameDetails.gameType,
+					bestOf: this.state.gameDetails.bestOf,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					deuce: false,
+				},
+			});
+			console.log(this.state.gameDetails.deuce);
 		}
 	}
 
@@ -112,6 +143,7 @@ class ScoreHolder extends Component {
 						updateScore={this.updateScore}
 						id={0}
 						className="score1"
+						deuce={this.state.gameDetails.deuce}
 					/>
 
 					<h2 className="status">BAU</h2>
@@ -123,6 +155,7 @@ class ScoreHolder extends Component {
 						updateScore={this.updateScore}
 						id={1}
 						className="score2"
+						deuce={this.state.gameDetails.deuce}
 					/>
 				</div>
 			</>
