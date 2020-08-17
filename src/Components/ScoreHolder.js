@@ -122,7 +122,15 @@ class ScoreHolder extends Component {
 				},
 			});
 		} else {
-			status.innerHTML = "BAU";
+			if (
+				this.state.player1CurrScore === this.state.deuceScore - 2 &&
+				this.state.player2CurrScore === this.state.deuceScore - 2
+			) {
+				status.innerHTML = "Deuce!";
+			} else {
+				status.innerHTML = "BAU";
+			}
+
 			this.setState({
 				gameDetails: {
 					gameType: this.state.gameDetails.gameType,
