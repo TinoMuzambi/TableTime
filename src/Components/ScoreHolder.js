@@ -50,9 +50,10 @@ class ScoreHolder extends Component {
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		const { gameDetails } = this.props.location.state;
 		this.setState({ gameDetails: gameDetails });
+		await this.setState({ deuceScore: this.state.gameDetails.gameType });
 	}
 
 	async updateScore(player, score, deuceScore) {
@@ -61,6 +62,11 @@ class ScoreHolder extends Component {
 			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
 
 		const status = document.querySelector(".status");
+
+		console.log(`Player 1 Score : ${this.state.player1CurrScore}`);
+		console.log(`Player 2 Score : ${this.state.player2CurrScore}`);
+		console.log(`Deuce Score : ${this.state.deuceScore}`);
+		console.log(`Deuce : ${this.state.gameDetails.deuce}`);
 
 		if (
 			// Update status of game
@@ -142,6 +148,7 @@ class ScoreHolder extends Component {
 						id={0}
 						className="score1"
 						deuce={this.state.gameDetails.deuce}
+						deuceScore={this.state.deuceScore}
 					/>
 
 					<h2 className="status">BAU</h2>
@@ -154,6 +161,7 @@ class ScoreHolder extends Component {
 						id={1}
 						className="score2"
 						deuce={this.state.gameDetails.deuce}
+						deuceScore={this.state.deuceScore}
 					/>
 				</div>
 			</>
