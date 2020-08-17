@@ -52,8 +52,8 @@ class ScoreHolder extends Component {
 
 	async componentDidMount() {
 		const { gameDetails } = this.props.location.state;
-		this.setState({ gameDetails: gameDetails });
-		await this.setState({ deuceScore: this.state.gameDetails.gameType });
+		await this.setState({ gameDetails: gameDetails });
+		this.setState({ deuceScore: this.state.gameDetails.gameType });
 	}
 
 	async updateScore(player, score, deuceScore) {
@@ -62,11 +62,6 @@ class ScoreHolder extends Component {
 			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
 
 		const status = document.querySelector(".status");
-
-		console.log(`Player 1 Score : ${this.state.player1CurrScore}`);
-		console.log(`Player 2 Score : ${this.state.player2CurrScore}`);
-		console.log(`Deuce Score : ${this.state.deuceScore}`);
-		console.log(`Deuce : ${this.state.gameDetails.deuce}`);
 
 		if (
 			// Update status of game
@@ -77,8 +72,10 @@ class ScoreHolder extends Component {
 			if (this.state.player1CurrScore > this.state.player2CurrScore) {
 				// Make winning score card green and update status.
 				card[0].classList.add("winner");
+				card[1].classList.add("loser");
 				status.innerHTML = `Game ${this.state.gameDetails.player1}!`;
 			} else {
+				card[0].classList.add("loser");
 				card[1].classList.add("winner");
 				status.innerHTML = `Game ${this.state.gameDetails.player2}!`;
 			}

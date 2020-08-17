@@ -13,10 +13,6 @@ class Score extends Component {
 		this.decScore = this.decScore.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	this.setState({ deuceScore: this.props.gameType });
-	// }
-
 	async incScore() {
 		let deuceScore = this.props.deuceScore;
 		await this.setState({ score: this.state.score + 1 });
