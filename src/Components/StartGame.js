@@ -18,15 +18,6 @@ class StartGame extends Component {
 		this.setBestOf = this.setBestOf.bind(this);
 		this.setPlayer1 = this.setPlayer1.bind(this);
 		this.setPlayer2 = this.setPlayer2.bind(this);
-		this.updateSettings = this.updateSettings.bind(this);
-	}
-
-	updateSettings() {
-		const gameSelect = document.getElementById("game");
-		this.setGameType(parseInt(gameSelect.value));
-
-		const roundsSelect = document.getElementById("rounds");
-		this.setBestOf(roundsSelect.value);
 	}
 
 	async setGameType(gameType) {
@@ -34,9 +25,7 @@ class StartGame extends Component {
 	}
 
 	async setBestOf(bestOf) {
-		console.log(bestOf);
 		await this.setState({ bestOf: bestOf });
-		console.log(this.state.bestOf);
 	}
 
 	setPlayer1(player1) {
@@ -69,7 +58,11 @@ class StartGame extends Component {
 					</div>
 
 					<div className="game">
-						<select name="game" id="game">
+						<select
+							name="game"
+							id="game"
+							onChange={(e) => this.setGameType(e.target.value)}
+						>
 							<option value="11">Game 11</option>
 							<option value="21">Game 21</option>
 						</select>
@@ -77,14 +70,18 @@ class StartGame extends Component {
 					</div>
 
 					<div className="rounds">
-						<select name="rounds" id="rounds">
+						<select
+							name="rounds"
+							id="rounds"
+							onChange={(e) => this.setBestOf(e.target.value)}
+						>
 							<option value="Single Game">Single Game</option>
 							<option value="Best of 3">Best of 3</option>
 							<option value="Best of 5">Best of 5</option>
 						</select>
 						<MdKeyboardArrowDown className="rounds-arrow" />
 					</div>
-					<button className="button-start" onClick={this.updateSettings}>
+					<button className="button-start">
 						<Link
 							to={{
 								pathname: "/game",
