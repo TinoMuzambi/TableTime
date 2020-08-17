@@ -18,14 +18,10 @@ class StartGame extends Component {
 		this.setBestOf = this.setBestOf.bind(this);
 		this.setPlayer1 = this.setPlayer1.bind(this);
 		this.setPlayer2 = this.setPlayer2.bind(this);
-		this.showMenu = this.showMenu.bind(this);
 	}
 
 	setGameType(gameType) {
 		this.setState({ gameType: gameType });
-
-		const menu = document.querySelector(".game");
-		menu.classList.add("hide");
 	}
 
 	setBestOf(bestOf) {
@@ -36,8 +32,6 @@ class StartGame extends Component {
 		} else {
 			this.setState({ bestOf: "Best of 5" });
 		}
-		const menu = document.querySelector(".rounds");
-		menu.classList.add("hide");
 	}
 
 	setPlayer1(player1) {
@@ -75,32 +69,21 @@ class StartGame extends Component {
 						></input>
 					</div>
 
-					<div className="dropdown game">
-						<button className="dropbtn" onClick={() => this.showMenu(".game")}>
-							<h2>
-								Game {this.state.gameType} <MdKeyboardArrowDown />
-							</h2>
-						</button>
-						<div className="dropdown-content">
-							<span onClick={() => this.setGameType(21)}>Game 21</span>
-							<span onClick={() => this.setGameType(11)}>Game 11</span>
-						</div>
+					<div className="game">
+						<select name="game" id="game">
+							<option value="single">Game 11</option>
+							<option value="best3">Game 21</option>
+						</select>
+						<MdKeyboardArrowDown className="game-arrow" />
 					</div>
 
-					<div className="dropdown rounds">
-						<button
-							className="dropbtn"
-							onClick={() => this.showMenu(".rounds")}
-						>
-							<h2>
-								{this.state.bestOf} <MdKeyboardArrowDown />
-							</h2>
-						</button>
-						<div className="dropdown-content">
-							<span onClick={() => this.setBestOf(1)}>Single Game</span>
-							<span onClick={() => this.setBestOf(3)}>Best of 3</span>
-							<span onClick={() => this.setBestOf(5)}>Best of 5</span>
-						</div>
+					<div className="rounds">
+						<select name="rounds" id="rounds">
+							<option value="single">Single Game</option>
+							<option value="best3">Best of 3</option>
+							<option value="best5">Best of 5</option>
+						</select>
+						<MdKeyboardArrowDown className="rounds-arrow" />
 					</div>
 					<button className="button-start">
 						<Link
