@@ -44,6 +44,7 @@ class ScoreHolder extends Component {
 			},
 			player1CurrScore: 0,
 			player2CurrScore: 0,
+			deuceScore: 0,
 		};
 
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
@@ -54,17 +55,17 @@ class ScoreHolder extends Component {
 		this.setState({ gameDetails: gameDetails });
 	}
 
-	updateScore(player, score) {
+	async updateScore(player, score, deuceScore) {
 		player === 0
-			? this.setState({ player1CurrScore: score })
-			: this.setState({ player2CurrScore: score });
+			? this.setState({ player1CurrScore: score, deuceScore: deuceScore })
+			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
 
 		const status = document.querySelector(".status");
 
 		if (
 			// Update status of game
-			this.state.player1CurrScore === this.state.gameDetails.gameType ||
-			this.state.player2CurrScore === this.state.gameDetails.gameType
+			this.state.player1CurrScore === this.state.deuceScore ||
+			this.state.player2CurrScore === this.state.deuceScore
 		) {
 			const card = document.querySelectorAll(".score");
 			if (this.state.player1CurrScore > this.state.player2CurrScore) {
@@ -87,11 +88,11 @@ class ScoreHolder extends Component {
 			games["3"] = gameData;
 			console.log(games);
 		} else if (
-			this.state.player1CurrScore === this.state.gameDetails.gameType - 1 &&
-			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
+			this.state.player1CurrScore === this.state.deuceScore - 1 &&
+			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
 			status.innerHTML = "Deuce!";
-			this.setState({
+			await this.setState({
 				gameDetails: {
 					gameType: this.state.gameDetails.gameType,
 					bestOf: this.state.gameDetails.bestOf,
@@ -100,10 +101,9 @@ class ScoreHolder extends Component {
 					deuce: true,
 				},
 			});
-			console.log(this.state.gameDetails.deuce);
 		} else if (
-			this.state.player1CurrScore === this.state.gameDetails.gameType - 1 ||
-			this.state.player2CurrScore === this.state.gameDetails.gameType - 1
+			this.state.player1CurrScore === this.state.deuceScore - 1 ||
+			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
 			status.innerHTML = "Game Point!";
 			this.setState({
@@ -115,7 +115,6 @@ class ScoreHolder extends Component {
 					deuce: false,
 				},
 			});
-			console.log(this.state.gameDetails.deuce);
 		} else {
 			status.innerHTML = "BAU";
 			this.setState({
@@ -127,7 +126,6 @@ class ScoreHolder extends Component {
 					deuce: false,
 				},
 			});
-			console.log(this.state.gameDetails.deuce);
 		}
 	}
 

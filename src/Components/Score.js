@@ -7,30 +7,52 @@ class Score extends Component {
 
 		this.state = {
 			score: 0,
+			deuceScore: 11,
 		};
 
 		this.incScore = this.incScore.bind(this); // Binding methods with this instance.
 		this.decScore = this.decScore.bind(this);
 	}
 
+	// componentDidMount() {
+	// 	this.setState({ deuceScore: this.props.gameType });
+	// }
+
 	async incScore() {
 		await this.setState({ score: this.state.score + 1 });
+		await this.props.updateScore(
+			this.props.id,
+			this.state.score,
+			this.state.deuceScore
+		);
 		const buttons = document.querySelectorAll(".button");
-		if (this.state.score === this.props.gameType) {
-			// Increment score but first check if game is over.
-			buttons.forEach((button) => {
-				button.classList.add("done");
-			});
+		if (this.props.deuce) {
+			await this.setState({ deuceScore: this.state.deuceScore + 1 });
+			await this.props.updateScore(
+				this.props.id,
+				this.state.score,
+				this.state.deuceScore
+			);
+			if (this.state.score === this.state.deuceScore + 1) {
+				// Increment score but first check if game is over.
+				buttons.forEach((button) => {
+					button.classList.add("done");
+				});
+			}
+		} else {
+			if (this.state.score === this.state.deuceScore) {
+				// Increment score but first check if game is over.
+				buttons.forEach((button) => {
+					button.classList.add("done");
+				});
+			}
 		}
-		this.props.updateScore(this.props.id, this.state.score);
 	}
 
 	async decScore() {
 		(await this.state.score) > 0
 			? this.setState({ score: this.state.score - 1 }) // Decrement score but first check if score is zero.
 			: this.setState({ score: 0 });
-
-		this.props.updateScore(this.props.id, this.state.score);
 	}
 
 	render() {
