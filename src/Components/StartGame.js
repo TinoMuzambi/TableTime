@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./StartGame.css";
-import {
-	MdKeyboardArrowDown,
-	MdArrowForward,
-} from ";
+import { MdKeyboardArrowDown, MdArrowForward } from "react-icons/md";
 
 class StartGame extends Component {
 	constructor() {
