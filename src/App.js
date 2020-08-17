@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import SplashScreen from "./components/SplashScreen";
-import ScoreHolder from "./components/ScoreHolder";
-import StartGame from "./components/StartGame";
-import History from "./components/History";
-import About from "./components/About";
+import SplashScreen from "./Components/SplashScreen";
+import ScoreHolder from "./Components/ScoreHolder";
+import StartGame from "./Components/StartGame";
+import History from "./Components/History";
+import About from "./Components/About";
 
 function App() {
 	return (
