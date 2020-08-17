@@ -1,7 +1,7 @@
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 import "./History.css";
 import games from "../data/games";
-import Moment from "./node_modules/react-moment";
+import Moment from "react-moment";
 
 class History extends Component {
 	render() {
