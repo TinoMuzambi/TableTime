@@ -25,6 +25,10 @@
 	cursor: pointer;
 }
 
+.button:hover {
+	color: gray;
+}
+
 .minus {
 	margin-left: 0.5rem;
 }

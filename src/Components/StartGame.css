@@ -87,6 +87,14 @@
 	cursor: pointer;
 }
 
+#rounds:hover {
+	color: gray;
+}
+
+#game:hover {
+	color: gray;
+}
+
 .game select {
 	appearance: none;
 }
@@ -122,6 +130,10 @@
 
 .button-link {
 	color: black;
+}
+
+.button-link:hover {
+	color: gray;
 }
 
 /*              Viewport less then or equal to 750px            */

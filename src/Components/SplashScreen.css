@@ -33,3 +33,7 @@
 	padding: 1rem 0;
 	text-align: center;
 }
+
+.link:hover {
+	color: rgba(0, 0, 0, 0.25);
+}
