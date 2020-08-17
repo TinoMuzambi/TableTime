@@ -3,6 +3,7 @@
 	display: grid;
 	grid-template-areas:
 		"game   game   game"
+		"best   best   best"
 		"status status status"
 		"score1 mid    score2";
 	justify-items: center;
@@ -20,6 +21,11 @@
 
 .game-type {
 	grid-area: game;
+}
+
+.best-of {
+	grid-area: best;
+	margin-top: -3.5rem;
 }
 
 .score1 {

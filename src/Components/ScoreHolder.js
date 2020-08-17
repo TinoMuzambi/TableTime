@@ -101,6 +101,7 @@ class ScoreHolder extends Component {
 			<>
 				<div className="score-holder">
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
+					<h2 className="best-of">{this.state.gameDetails.bestOf}</h2>
 					<Score
 						gameType={this.state.gameDetails.gameType}
 						player={this.state.gameDetails.player1}
