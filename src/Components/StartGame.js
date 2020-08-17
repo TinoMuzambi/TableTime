@@ -21,7 +21,7 @@ class StartGame extends Component {
 	}
 
 	async setGameType(gameType) {
-		await this.setState({ gameType: gameType });
+		await this.setState({ gameType: parseInt(gameType) });
 	}
 
 	async setBestOf(bestOf) {
