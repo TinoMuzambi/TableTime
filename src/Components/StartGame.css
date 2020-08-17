@@ -118,8 +118,10 @@
 	justify-self: end;
 	margin-right: 2rem;
 	margin-bottom: 2rem;
-	display: flex;
-	align-items: center;
+}
+
+.button-link {
+	color: black;
 }
 
 /*              Viewport less then or equal to 750px            */

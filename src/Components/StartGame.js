@@ -18,20 +18,25 @@ class StartGame extends Component {
 		this.setBestOf = this.setBestOf.bind(this);
 		this.setPlayer1 = this.setPlayer1.bind(this);
 		this.setPlayer2 = this.setPlayer2.bind(this);
+		this.updateSettings = this.updateSettings.bind(this);
 	}
 
-	setGameType(gameType) {
-		this.setState({ gameType: gameType });
+	updateSettings() {
+		const gameSelect = document.getElementById("game");
+		this.setGameType(parseInt(gameSelect.value));
+
+		const roundsSelect = document.getElementById("rounds");
+		this.setBestOf(roundsSelect.value);
 	}
 
-	setBestOf(bestOf) {
-		if (bestOf === 1) {
-			this.setState({ bestOf: "Single Game" });
-		} else if (bestOf === 3) {
-			this.setState({ bestOf: "Best of 3" });
-		} else {
-			this.setState({ bestOf: "Best of 5" });
-		}
+	async setGameType(gameType) {
+		await this.setState({ gameType: gameType });
+	}
+
+	async setBestOf(bestOf) {
+		console.log(bestOf);
+		await this.setState({ bestOf: bestOf });
+		console.log(this.state.bestOf);
 	}
 
 	setPlayer1(player1) {
@@ -40,12 +45,6 @@ class StartGame extends Component {
 
 	setPlayer2(player2) {
 		this.setState({ player2: player2 });
-	}
-
-	showMenu(name) {
-		const menu = document.querySelector(name);
-		menu.classList.remove("hide");
-		menu.classList.add("show");
 	}
 
 	render() {
@@ -71,21 +70,21 @@ class StartGame extends Component {
 
 					<div className="game">
 						<select name="game" id="game">
-							<option value="single">Game 11</option>
-							<option value="best3">Game 21</option>
+							<option value="11">Game 11</option>
+							<option value="21">Game 21</option>
 						</select>
 						<MdKeyboardArrowDown className="game-arrow" />
 					</div>
 
 					<div className="rounds">
 						<select name="rounds" id="rounds">
-							<option value="single">Single Game</option>
-							<option value="best3">Best of 3</option>
-							<option value="best5">Best of 5</option>
+							<option value="Single Game">Single Game</option>
+							<option value="Best of 3">Best of 3</option>
+							<option value="Best of 5">Best of 5</option>
 						</select>
 						<MdKeyboardArrowDown className="rounds-arrow" />
 					</div>
-					<button className="button-start">
+					<button className="button-start" onClick={this.updateSettings}>
 						<Link
 							to={{
 								pathname: "/game",
@@ -98,6 +97,7 @@ class StartGame extends Component {
 									},
 								},
 							}}
+							className="button-link"
 						>
 							<MdArrowForward />
 						</Link>
