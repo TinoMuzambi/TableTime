@@ -3,6 +3,7 @@ import "./ScoreHolder.css";
 import Score from "./Score";
 
 const games = {
+	// Temporary JSON object for game data.
 	"0": {
 		bestOf: "Single Game",
 		gameType: 11,
@@ -44,7 +45,7 @@ class ScoreHolder extends Component {
 			player2CurrScore: 0,
 		};
 
-		this.updateScore = this.updateScore.bind(this);
+		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
 	}
 
 	componentDidMount() {
@@ -60,11 +61,13 @@ class ScoreHolder extends Component {
 		const status = document.querySelector(".status");
 
 		if (
+			// Update status of game
 			this.state.player1CurrScore === this.state.gameDetails.gameType ||
 			this.state.player2CurrScore === this.state.gameDetails.gameType
 		) {
 			const card = document.querySelectorAll(".score");
 			if (this.state.player1CurrScore > this.state.player2CurrScore) {
+				// Make winning score card green and update status.
 				card[0].classList.add("winner");
 				status.innerHTML = `Game ${this.state.gameDetails.player1}!`;
 			} else {
@@ -72,6 +75,7 @@ class ScoreHolder extends Component {
 				status.innerHTML = `Game ${this.state.gameDetails.player2}!`;
 			}
 			const gameData = {
+				// Temporary appending to game data.
 				bestOf: this.state.gameDetails.bestOf,
 				gameType: this.state.gameDetails.gameType,
 				player1: this.state.gameDetails.player1,

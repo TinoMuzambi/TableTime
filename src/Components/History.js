@@ -11,13 +11,15 @@ class History extends Component {
 					<h1 className="title">History</h1>
 
 					<div className="scores-container">
+						{/* Mapping each game into div component. */}
 						{games.map((game, key) => (
 							<div className="score-list" key={key}>
 								<h2>
 									{game.player1} vs {game.player2}
 								</h2>
 								<h3>
-									<Moment format="DD MMMM YYYY">{game.date}</Moment>
+									<Moment format="DD MMMM YYYY">{game.date}</Moment>{" "}
+									{/* Moment library for formatting dates. */}
 								</h3>
 								<h3>
 									{game.player1Score[1]} - {game.player2Score[1]}

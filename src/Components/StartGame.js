@@ -14,13 +14,14 @@ class StartGame extends Component {
 			bestOf: "Single Game",
 		};
 
-		this.setGameType = this.setGameType.bind(this);
+		this.setGameType = this.setGameType.bind(this); // Binding methods with this instance.
 		this.setBestOf = this.setBestOf.bind(this);
 		this.setPlayer1 = this.setPlayer1.bind(this);
 		this.setPlayer2 = this.setPlayer2.bind(this);
 	}
 
 	async setGameType(gameType) {
+		// Update state methods.
 		await this.setState({ gameType: parseInt(gameType) });
 	}
 
