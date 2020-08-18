@@ -82,6 +82,7 @@ class ScoreHolder extends Component {
 			}
 			const gameData = {
 				// Temporary appending to game data.
+				id: "3",
 				bestOf: this.state.gameDetails.bestOf,
 				gameType: this.state.gameDetails.gameType,
 				player1: this.state.gameDetails.player1,
@@ -90,7 +91,12 @@ class ScoreHolder extends Component {
 				player2Score: { 1: this.state.player2CurrScore },
 			};
 			games[Object.keys(games).length] = gameData;
-			console.log(games);
+			console.log(gameData);
+			const result = await fetch(`api/game/insert`, {
+				method: "post",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(gameData),
+			});
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
