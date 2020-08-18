@@ -30,6 +30,7 @@
 	grid-area: next;
 	margin-top: -3.5rem;
 	padding: 1rem;
+	pointer-events: none;
 }
 
 .next-button:hover {
@@ -71,9 +72,12 @@ h1 {
 	pointer-events: none;
 }
 
+.clickable {
+	pointer-events: all;
+}
+
 .shown {
 	opacity: 1;
-	pointer-events: all;
 }
 
 /*              Viewport less then or equal to 750px            */

@@ -30,6 +30,16 @@ class ScoreHolder extends Component {
 			},
 			status: "BAU",
 			currentGame: 0,
+			gameData: {
+				id: 0,
+				date: "",
+				bestOf: "",
+				gameType: 0,
+				player1: "",
+				player2: "",
+				player1Score: [],
+				player2Score: [],
+			},
 		};
 
 		this.firstScore = React.createRef();
@@ -55,6 +65,104 @@ class ScoreHolder extends Component {
 	}
 
 	async startNextGame() {
+		await this.setState({ currentGame: this.state.currentGame + 1 });
+		let p1 = this.state.gameData.player1Score;
+		p1.push(this.state.player1CurrScore);
+		let p2 = this.state.gameData.player2Score;
+		p2.push(this.state.player2CurrScore);
+		if (this.state.gameDetails.bestOf === "Best of 3") {
+			if (this.state.currentGame === 1) {
+				const gameData = {
+					// Temporary appending to game data.
+					id: Object.keys(this.state.games).length.toString(),
+					date:
+						new Date().getFullYear() +
+						"-" +
+						(new Date().getMonth() + 1) +
+						"-" +
+						new Date().getDate() +
+						" " +
+						new Date().getHours() +
+						":" +
+						new Date().getMinutes() +
+						":" +
+						new Date().getSeconds(),
+					bestOf: this.state.gameDetails.bestOf,
+					gameType: this.state.gameDetails.gameType,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					player1Score: p1,
+					player2Score: p2,
+				};
+
+				await this.setState({ gameData: gameData });
+				console.log(this.state.gameData.player1Score);
+				console.log(this.state.player1CurrScore);
+				console.log(gameData);
+			} else if (this.state.currentGame === 2) {
+				const gameData = {
+					// Temporary appending to game data.
+					id: Object.keys(this.state.games).length.toString(),
+					date:
+						new Date().getFullYear() +
+						"-" +
+						(new Date().getMonth() + 1) +
+						"-" +
+						new Date().getDate() +
+						" " +
+						new Date().getHours() +
+						":" +
+						new Date().getMinutes() +
+						":" +
+						new Date().getSeconds(),
+					bestOf: this.state.gameDetails.bestOf,
+					gameType: this.state.gameDetails.gameType,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					player1Score: p1,
+					player2Score: p2,
+				};
+
+				console.log(gameData);
+				await this.setState({ gameData: gameData });
+			} else {
+				const gameData = {
+					// Temporary appending to game data.
+					id: Object.keys(this.state.games).length.toString(),
+					date:
+						new Date().getFullYear() +
+						"-" +
+						(new Date().getMonth() + 1) +
+						"-" +
+						new Date().getDate() +
+						" " +
+						new Date().getHours() +
+						":" +
+						new Date().getMinutes() +
+						":" +
+						new Date().getSeconds(),
+					bestOf: this.state.gameDetails.bestOf,
+					gameType: this.state.gameDetails.gameType,
+					player1: this.state.gameDetails.player1,
+					player2: this.state.gameDetails.player2,
+					player1Score: p1,
+					player2Score: p2,
+				};
+
+				console.log(gameData);
+				await this.setState({ gameData: gameData });
+
+				this.state.games[
+					Object.keys(this.state.games).length
+				] = this.state.gameData;
+				await fetch(`api/game/insert`, {
+					method: "post",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(gameData),
+				});
+			}
+		} else {
+		}
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
 		await this.setState({
@@ -96,34 +204,14 @@ class ScoreHolder extends Component {
 					status: `Game ${this.state.gameDetails.player2}!`,
 				});
 			}
-			const gameData = {
-				// Temporary appending to game data.
-				id: Object.keys(this.state.games).length.toString(),
-				date:
-					new Date().getFullYear() +
-					"-" +
-					(new Date().getMonth() + 1) +
-					"-" +
-					new Date().getDate() +
-					" " +
-					new Date().getHours() +
-					":" +
-					new Date().getMinutes() +
-					":" +
-					new Date().getSeconds(),
-				bestOf: this.state.gameDetails.bestOf,
-				gameType: this.state.gameDetails.gameType,
-				player1: this.state.gameDetails.player1,
-				player2: this.state.gameDetails.player2,
-				player1Score: [this.state.player1CurrScore],
-				player2Score: [this.state.player2CurrScore],
-			};
+
 			// this.state.games[Object.keys(this.state.games).length] = gameData;
 			// await fetch(`api/game/insert`, {
 			// 	method: "post",
 			// 	headers: { "Content-Type": "application/json" },
 			// 	body: JSON.stringify(gameData),
 			// });
+			document.querySelector(".next-button").classList.add("clickable");
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
@@ -139,6 +227,7 @@ class ScoreHolder extends Component {
 				},
 				globalDeuce: true,
 			});
+			document.querySelector(".next-button").classList.remove("clickable");
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 ||
 			this.state.player2CurrScore === this.state.deuceScore - 1
@@ -153,6 +242,7 @@ class ScoreHolder extends Component {
 					deuce: false,
 				},
 			});
+			document.querySelector(".next-button").classList.remove("clickable");
 		} else {
 			if (this.state.globalDeuce) {
 				if (
@@ -176,6 +266,7 @@ class ScoreHolder extends Component {
 					deuce: false,
 				},
 			});
+			document.querySelector(".next-button").classList.remove("clickable");
 		}
 	}
 
