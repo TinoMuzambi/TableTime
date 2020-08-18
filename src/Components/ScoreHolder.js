@@ -17,7 +17,7 @@ class ScoreHolder extends Component {
 			player1CurrScore: 0,
 			player2CurrScore: 0,
 			deuceScore: 0,
-			globalDeuce: false,
+			globalDeuce: false, // Fix bug 9 - 12.
 			games: {
 				id: 0,
 				date: "",
@@ -25,8 +25,8 @@ class ScoreHolder extends Component {
 				gameType: 0,
 				player1: "",
 				player2: "",
-				player1Score: { "1": 0 },
-				player2Score: { "1": 0 },
+				player1Score: [],
+				player2Score: [],
 			},
 		};
 
@@ -74,12 +74,24 @@ class ScoreHolder extends Component {
 			const gameData = {
 				// Temporary appending to game data.
 				id: Object.keys(this.state.games).length.toString(),
+				date:
+					new Date().getFullYear() +
+					"-" +
+					(new Date().getMonth() + 1) +
+					"-" +
+					new Date().getDate() +
+					" " +
+					new Date().getHours() +
+					":" +
+					new Date().getMinutes() +
+					":" +
+					new Date().getSeconds(),
 				bestOf: this.state.gameDetails.bestOf,
 				gameType: this.state.gameDetails.gameType,
 				player1: this.state.gameDetails.player1,
 				player2: this.state.gameDetails.player2,
-				player1Score: { 1: this.state.player1CurrScore },
-				player2Score: { 1: this.state.player2CurrScore },
+				player1Score: [this.state.player1CurrScore],
+				player2Score: [this.state.player2CurrScore],
 			};
 			this.state.games[Object.keys(this.state.games).length] = gameData;
 			await fetch(`api/game/insert`, {

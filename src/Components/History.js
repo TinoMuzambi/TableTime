@@ -14,8 +14,8 @@ class History extends Component {
 				gameType: 0,
 				player1: "",
 				player2: "",
-				player1Score: { "1": 0 },
-				player2Score: { "1": 0 },
+				player1Score: [],
+				player2Score: [],
 			},
 		};
 	}
@@ -45,12 +45,11 @@ class History extends Component {
 									{game[1]["player1"]} vs {game[1]["player2"]}
 								</h2>
 								<h3>
-									<Moment format="DD MMMM YYYY">{game["date"]}</Moment>{" "}
+									<Moment format="DD MMMM YYYY HH:mm">{game["date"]}</Moment>{" "}
 									{/* Moment library for formatting dates. */}
 								</h3>
 								<h3>
-									{JSON.stringify(game[1]["player1Score"])} -{" "}
-									{JSON.stringify(game[1]["player2Score"])}
+									{game[1]["player1Score"]} - {game[1]["player2Score"]}
 								</h3>
 							</div>
 						))}
