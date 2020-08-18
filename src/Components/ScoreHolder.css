@@ -2,7 +2,7 @@
 	position: absolute;
 	display: grid;
 	grid-template-areas:
-		"game   game   game"
+		"back   game   game"
 		"new   best   next"
 		"status status status"
 		"score1 mid    score2";
@@ -14,9 +14,34 @@
 	transform: translate(-50%, -50%);
 	border-radius: 50px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	height: 30rem;
+	height: 32rem;
 	width: 60rem;
 	padding-bottom: 5rem;
+}
+
+.back-button {
+	grid-area: back;
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+	font-size: 2rem;
+	height: 3rem;
+	width: 3rem;
+	outline: none;
+	cursor: pointer;
+	justify-self: start;
+	margin-left: 1.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.button-link {
+	color: black;
+}
+
+.button-link:hover {
+	color: gray;
 }
 
 .new-button {
@@ -56,11 +81,13 @@
 
 .game-type {
 	grid-area: game;
+	margin-left: -20rem;
 }
 
 .best-of {
 	grid-area: best;
 	margin-top: -2.5rem;
+	text-align: center;
 }
 
 .score1 {
@@ -104,7 +131,12 @@ h1 {
 @media only screen and (max-width: 750px) {
 	.score-holder {
 		height: 40rem;
-		width: 27rem;
+		width: 28rem;
+	}
+
+	.game-type {
+		grid-area: game;
+		margin-left: -12rem;
 	}
 }
 
