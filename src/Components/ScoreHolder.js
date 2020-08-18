@@ -40,6 +40,7 @@ class ScoreHolder extends Component {
 				player1Score: [],
 				player2Score: [],
 			},
+			numericalBestOf: 1,
 		};
 
 		this.firstScore = React.createRef();
@@ -52,7 +53,12 @@ class ScoreHolder extends Component {
 	async componentDidMount() {
 		const { gameDetails } = this.props.location.state;
 		await this.setState({ gameDetails: gameDetails });
-		this.setState({ deuceScore: this.state.gameDetails.gameType });
+		await this.setState({ deuceScore: this.state.gameDetails.gameType });
+		if (this.state.gameDetails.bestOf === "Best of 3") {
+			this.setState({ numericalBestOf: 3 });
+		} else if (this.state.gameDetails.bestOf === "Best of 5") {
+			this.setState({ numericalBestOf: 5 });
+		}
 	}
 
 	async UNSAFE_componentWillMount() {
@@ -96,9 +102,6 @@ class ScoreHolder extends Component {
 				};
 
 				await this.setState({ gameData: gameData });
-				console.log(this.state.gameData.player1Score);
-				console.log(this.state.player1CurrScore);
-				console.log(gameData);
 			} else if (this.state.currentGame === 2) {
 				const gameData = {
 					// Temporary appending to game data.
@@ -123,7 +126,6 @@ class ScoreHolder extends Component {
 					player2Score: p2,
 				};
 
-				console.log(gameData);
 				await this.setState({ gameData: gameData });
 			} else {
 				const gameData = {
@@ -149,7 +151,6 @@ class ScoreHolder extends Component {
 					player2Score: p2,
 				};
 
-				console.log(gameData);
 				await this.setState({ gameData: gameData });
 
 				this.state.games[
@@ -204,14 +205,13 @@ class ScoreHolder extends Component {
 					status: `Game ${this.state.gameDetails.player2}!`,
 				});
 			}
-
-			// this.state.games[Object.keys(this.state.games).length] = gameData;
-			// await fetch(`api/game/insert`, {
-			// 	method: "post",
-			// 	headers: { "Content-Type": "application/json" },
-			// 	body: JSON.stringify(gameData),
-			// });
-			document.querySelector(".next-button").classList.add("clickable");
+			console.log(this.state.numericalBestOf);
+			console.log(this.state.currentGame);
+			if (this.state.numericalBestOf - 1 === this.state.currentGame) {
+				document.querySelector(".next-button").classList.remove("clickable");
+			} else {
+				document.querySelector(".next-button").classList.add("clickable");
+			}
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
