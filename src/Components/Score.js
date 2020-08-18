@@ -16,6 +16,10 @@ class Score extends Component {
 
 	async resetScore() {
 		await this.setState({ score: 0 });
+		const buttons = document.querySelectorAll(".button");
+		buttons.forEach((button) => {
+			button.classList.remove("done");
+		});
 	}
 
 	async incScore() {

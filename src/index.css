@@ -17,3 +17,7 @@ body {
 
 	font-family: var(--Lexend);
 }
+
+* {
+	transition: all 1s ease;
+}

@@ -124,7 +124,6 @@ class ScoreHolder extends Component {
 			// 	headers: { "Content-Type": "application/json" },
 			// 	body: JSON.stringify(gameData),
 			// });
-			this.startNextGame();
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
@@ -186,6 +185,16 @@ class ScoreHolder extends Component {
 				<div className="score-holder">
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
 					<h2 className="best-of">{this.state.gameDetails.bestOf}</h2>
+					<button
+						className={`next-button ${
+							this.state.gameDetails.bestOf !== "Single Game"
+								? "shown"
+								: "hidden"
+						}`}
+						onClick={this.startNextGame}
+					>
+						Next Game
+					</button>
 					<Score
 						gameType={this.state.gameDetails.gameType}
 						player={this.state.gameDetails.player1}

@@ -3,7 +3,7 @@
 	display: grid;
 	grid-template-areas:
 		"game   game   game"
-		"best   best   best"
+		"best   best   next"
 		"status status status"
 		"score1 mid    score2";
 	justify-items: center;
@@ -19,13 +19,30 @@
 	padding-bottom: 5rem;
 }
 
+.next-button {
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	font-size: 1.5rem;
+	outline: none;
+	cursor: pointer;
+	grid-area: next;
+	margin-top: -3.5rem;
+	padding: 1rem;
+}
+
+.next-button:hover {
+	color: gray;
+}
+
 .game-type {
 	grid-area: game;
 }
 
 .best-of {
 	grid-area: best;
-	margin-top: -3.5rem;
+	margin-top: -2.5rem;
 }
 
 .score1 {
@@ -47,6 +64,16 @@
 
 h1 {
 	font-size: 4rem;
+}
+
+.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.shown {
+	opacity: 1;
+	pointer-events: all;
 }
 
 /*              Viewport less then or equal to 750px            */
