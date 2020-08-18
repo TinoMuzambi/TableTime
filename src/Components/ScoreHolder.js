@@ -89,7 +89,7 @@ class ScoreHolder extends Component {
 				player1Score: { 1: this.state.player1CurrScore },
 				player2Score: { 1: this.state.player2CurrScore },
 			};
-			games["3"] = gameData;
+			games[Object.keys(games).length] = gameData;
 			console.log(games);
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
