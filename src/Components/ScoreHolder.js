@@ -29,7 +29,7 @@ class ScoreHolder extends Component {
 				player2Score: [],
 			},
 			status: "BAU",
-			currentGame: 0,
+			currentGame: 1,
 			gameData: {
 				id: 0,
 				date: "",
@@ -71,63 +71,85 @@ class ScoreHolder extends Component {
 	}
 
 	async startNextGame() {
-		await this.setState({ currentGame: this.state.currentGame + 1 });
 		let p1 = this.state.gameData.player1Score;
 		p1.push(this.state.player1CurrScore);
 		let p2 = this.state.gameData.player2Score;
 		p2.push(this.state.player2CurrScore);
-		if (this.state.gameDetails.bestOf === "Best of 3") {
-			if (this.state.currentGame === 1) {
-				const gameData = {
-					// Temporary appending to game data.
-					id: Object.keys(this.state.games).length.toString(),
-					date:
-						new Date().getFullYear() +
-						"-" +
-						(new Date().getMonth() + 1) +
-						"-" +
-						new Date().getDate() +
-						" " +
-						new Date().getHours() +
-						":" +
-						new Date().getMinutes() +
-						":" +
-						new Date().getSeconds(),
-					bestOf: this.state.gameDetails.bestOf,
-					gameType: this.state.gameDetails.gameType,
-					player1: this.state.gameDetails.player1,
-					player2: this.state.gameDetails.player2,
-					player1Score: p1,
-					player2Score: p2,
-				};
+		const gameData = {
+			// Temporary appending to game data.
+			id: Object.keys(this.state.games).length.toString(),
+			date:
+				new Date().getFullYear() +
+				"-" +
+				(new Date().getMonth() + 1) +
+				"-" +
+				new Date().getDate() +
+				" " +
+				new Date().getHours() +
+				":" +
+				new Date().getMinutes() +
+				":" +
+				new Date().getSeconds(),
+			bestOf: this.state.gameDetails.bestOf,
+			gameType: this.state.gameDetails.gameType,
+			player1: this.state.gameDetails.player1,
+			player2: this.state.gameDetails.player2,
+			player1Score: p1,
+			player2Score: p2,
+		};
 
-				await this.setState({ gameData: gameData });
-			} else if (this.state.currentGame === 2) {
-				const gameData = {
-					// Temporary appending to game data.
-					id: Object.keys(this.state.games).length.toString(),
-					date:
-						new Date().getFullYear() +
-						"-" +
-						(new Date().getMonth() + 1) +
-						"-" +
-						new Date().getDate() +
-						" " +
-						new Date().getHours() +
-						":" +
-						new Date().getMinutes() +
-						":" +
-						new Date().getSeconds(),
-					bestOf: this.state.gameDetails.bestOf,
-					gameType: this.state.gameDetails.gameType,
-					player1: this.state.gameDetails.player1,
-					player2: this.state.gameDetails.player2,
-					player1Score: p1,
-					player2Score: p2,
-				};
+		await this.setState({ gameData: gameData });
+		this.firstScore.current.resetScore();
+		this.secondScore.current.resetScore();
+		await this.setState({
+			player1CurrScore: 0,
+			player2CurrScore: 0,
+			status: "BAU",
+			globalDeuce: false,
+			deuceScore: this.state.gameDetails.gameType,
+		});
+		const card = document.querySelectorAll(".score");
+		card[0].classList.remove("winner");
+		card[1].classList.remove("loser");
+		card[0].classList.remove("loser");
+		card[1].classList.remove("winner");
+		await this.setState({ currentGame: this.state.currentGame + 1 });
+		document.querySelector(".next-button").classList.remove("clickable");
+	}
 
-				await this.setState({ gameData: gameData });
+	async updateScore(player, score, deuceScore) {
+		player === 0
+			? this.setState({ player1CurrScore: score, deuceScore: deuceScore })
+			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
+
+		if (
+			// Update status of game
+			this.state.player1CurrScore === this.state.deuceScore ||
+			this.state.player2CurrScore === this.state.deuceScore
+		) {
+			const card = document.querySelectorAll(".score");
+			if (this.state.player1CurrScore > this.state.player2CurrScore) {
+				// Make winning score card green and update status.
+				card[0].classList.add("winner");
+				card[1].classList.add("loser");
+				await this.setState({
+					status: `Game ${this.state.gameDetails.player1}!`,
+				});
 			} else {
+				card[0].classList.add("loser");
+				card[1].classList.add("winner");
+				await this.setState({
+					status: `Game ${this.state.gameDetails.player2}!`,
+				});
+			}
+			console.log(this.state.numericalBestOf);
+			console.log(this.state.currentGame);
+			if (this.state.numericalBestOf === this.state.currentGame) {
+				let p1 = this.state.gameData.player1Score;
+				p1.push(this.state.player1CurrScore);
+				let p2 = this.state.gameData.player2Score;
+				p2.push(this.state.player2CurrScore);
+				document.querySelector(".next-button").classList.remove("clickable");
 				const gameData = {
 					// Temporary appending to game data.
 					id: Object.keys(this.state.games).length.toString(),
@@ -161,54 +183,6 @@ class ScoreHolder extends Component {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(gameData),
 				});
-			}
-		} else {
-		}
-		this.firstScore.current.resetScore();
-		this.secondScore.current.resetScore();
-		await this.setState({
-			player1CurrScore: 0,
-			player2CurrScore: 0,
-			status: "BAU",
-			globalDeuce: false,
-			deuceScore: this.state.gameDetails.gameType,
-		});
-		const card = document.querySelectorAll(".score");
-		card[0].classList.remove("winner");
-		card[1].classList.remove("loser");
-		card[0].classList.remove("loser");
-		card[1].classList.remove("winner");
-	}
-
-	async updateScore(player, score, deuceScore) {
-		player === 0
-			? this.setState({ player1CurrScore: score, deuceScore: deuceScore })
-			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
-
-		if (
-			// Update status of game
-			this.state.player1CurrScore === this.state.deuceScore ||
-			this.state.player2CurrScore === this.state.deuceScore
-		) {
-			const card = document.querySelectorAll(".score");
-			if (this.state.player1CurrScore > this.state.player2CurrScore) {
-				// Make winning score card green and update status.
-				card[0].classList.add("winner");
-				card[1].classList.add("loser");
-				await this.setState({
-					status: `Game ${this.state.gameDetails.player1}!`,
-				});
-			} else {
-				card[0].classList.add("loser");
-				card[1].classList.add("winner");
-				await this.setState({
-					status: `Game ${this.state.gameDetails.player2}!`,
-				});
-			}
-			console.log(this.state.numericalBestOf);
-			console.log(this.state.currentGame);
-			if (this.state.numericalBestOf - 1 === this.state.currentGame) {
-				document.querySelector(".next-button").classList.remove("clickable");
 			} else {
 				document.querySelector(".next-button").classList.add("clickable");
 			}
