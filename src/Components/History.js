@@ -45,7 +45,7 @@ class History extends Component {
 									{game[1]["player1"]} vs {game[1]["player2"]}
 								</h2>
 								<h3>
-									<Moment format="DD MMMM YYYY HH:mm">{game["date"]}</Moment>{" "}
+									<Moment format="DD MMMM YYYY HH:mm">{game[1]["date"]}</Moment>{" "}
 									{/* Moment library for formatting dates. */}
 								</h3>
 								<h3>

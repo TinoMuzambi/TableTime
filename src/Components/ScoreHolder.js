@@ -28,9 +28,15 @@ class ScoreHolder extends Component {
 				player1Score: [],
 				player2Score: [],
 			},
+			status: "BAU",
+			currentGame: 0,
 		};
 
+		this.firstScore = React.createRef();
+		this.secondScore = React.createRef();
+
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
+		this.startNextGame = this.startNextGame.bind(this);
 	}
 
 	async componentDidMount() {
@@ -48,12 +54,27 @@ class ScoreHolder extends Component {
 		fetchData();
 	}
 
+	async startNextGame() {
+		this.firstScore.current.resetScore();
+		this.secondScore.current.resetScore();
+		await this.setState({
+			player1CurrScore: 0,
+			player2CurrScore: 0,
+			status: "BAU",
+			globalDeuce: false,
+			deuceScore: this.state.gameDetails.gameType,
+		});
+		const card = document.querySelectorAll(".score");
+		card[0].classList.remove("winner");
+		card[1].classList.remove("loser");
+		card[0].classList.remove("loser");
+		card[1].classList.remove("winner");
+	}
+
 	async updateScore(player, score, deuceScore) {
 		player === 0
 			? this.setState({ player1CurrScore: score, deuceScore: deuceScore })
 			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
-
-		const status = document.querySelector(".status");
 
 		if (
 			// Update status of game
@@ -65,11 +86,15 @@ class ScoreHolder extends Component {
 				// Make winning score card green and update status.
 				card[0].classList.add("winner");
 				card[1].classList.add("loser");
-				status.innerHTML = `Game ${this.state.gameDetails.player1}!`;
+				await this.setState({
+					status: `Game ${this.state.gameDetails.player1}!`,
+				});
 			} else {
 				card[0].classList.add("loser");
 				card[1].classList.add("winner");
-				status.innerHTML = `Game ${this.state.gameDetails.player2}!`;
+				await this.setState({
+					status: `Game ${this.state.gameDetails.player2}!`,
+				});
 			}
 			const gameData = {
 				// Temporary appending to game data.
@@ -93,17 +118,18 @@ class ScoreHolder extends Component {
 				player1Score: [this.state.player1CurrScore],
 				player2Score: [this.state.player2CurrScore],
 			};
-			this.state.games[Object.keys(this.state.games).length] = gameData;
-			await fetch(`api/game/insert`, {
-				method: "post",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(gameData),
-			});
+			// this.state.games[Object.keys(this.state.games).length] = gameData;
+			// await fetch(`api/game/insert`, {
+			// 	method: "post",
+			// 	headers: { "Content-Type": "application/json" },
+			// 	body: JSON.stringify(gameData),
+			// });
+			this.startNextGame();
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
-			status.innerHTML = "Deuce!";
+			await this.setState({ status: "Deuce!" });
 			await this.setState({
 				gameDetails: {
 					gameType: this.state.gameDetails.gameType,
@@ -118,8 +144,8 @@ class ScoreHolder extends Component {
 			this.state.player1CurrScore === this.state.deuceScore - 1 ||
 			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
-			status.innerHTML = "Game Point!";
-			this.setState({
+			await this.setState({ status: "Game Point!" });
+			await this.setState({
 				gameDetails: {
 					gameType: this.state.gameDetails.gameType,
 					bestOf: this.state.gameDetails.bestOf,
@@ -134,15 +160,15 @@ class ScoreHolder extends Component {
 					this.state.player1CurrScore === this.state.deuceScore - 2 ||
 					this.state.player2CurrScore === this.state.deuceScore - 2
 				) {
-					status.innerHTML = "Deuce!";
+					await this.setState({ status: "Deuce!" });
 				} else {
-					status.innerHTML = "BAU";
+					await this.setState({ status: "BAU" });
 				}
 			} else {
-				status.innerHTML = "BAU";
+				await this.setState({ status: "BAU" });
 			}
 
-			this.setState({
+			await this.setState({
 				gameDetails: {
 					gameType: this.state.gameDetails.gameType,
 					bestOf: this.state.gameDetails.bestOf,
@@ -168,10 +194,10 @@ class ScoreHolder extends Component {
 						className="score1"
 						deuce={this.state.gameDetails.deuce}
 						deuceScore={this.state.deuceScore}
+						ref={this.firstScore}
 					/>
-
-					<h2 className="status">BAU</h2>
-
+					<h2 className="status">{this.state.status}</h2>{" "}
+					{/* TODO do this properly with state. */}
 					<h1 className="separator">-</h1>
 					<Score
 						gameType={this.state.gameDetails.gameType}
@@ -181,6 +207,7 @@ class ScoreHolder extends Component {
 						className="score2"
 						deuce={this.state.gameDetails.deuce}
 						deuceScore={this.state.deuceScore}
+						ref={this.secondScore}
 					/>
 				</div>
 			</>

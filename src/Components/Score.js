@@ -11,6 +11,11 @@ class Score extends Component {
 
 		this.incScore = this.incScore.bind(this); // Binding methods with this instance.
 		this.decScore = this.decScore.bind(this);
+		this.resetScore = this.resetScore.bind(this);
+	}
+
+	async resetScore() {
+		await this.setState({ score: 0 });
 	}
 
 	async incScore() {
