@@ -17,7 +17,7 @@ class ScoreHolder extends Component {
 			player1CurrScore: 0,
 			player2CurrScore: 0,
 			deuceScore: 0,
-			globalDeuce: false, // Fix bug 9 - 12.
+			globalDeuce: false,
 			games: {
 				id: 0,
 				date: "",
@@ -220,7 +220,7 @@ class ScoreHolder extends Component {
 		} else {
 			if (this.state.globalDeuce) {
 				if (
-					this.state.player1CurrScore === this.state.deuceScore - 2 ||
+					this.state.player1CurrScore === this.state.deuceScore - 2 &&
 					this.state.player2CurrScore === this.state.deuceScore - 2
 				) {
 					await this.setState({ status: "Deuce!" });
@@ -271,7 +271,6 @@ class ScoreHolder extends Component {
 						ref={this.firstScore}
 					/>
 					<h2 className="status">{this.state.status}</h2>{" "}
-					{/* TODO do this properly with state. */}
 					<h1 className="separator">-</h1>
 					<Score
 						gameType={this.state.gameDetails.gameType}
