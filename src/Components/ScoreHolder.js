@@ -2,34 +2,6 @@ import React, { Component } from "react";
 import "./ScoreHolder.css";
 import Score from "./Score";
 
-const games = {
-	// Temporary JSON object for game data.
-	"0": {
-		bestOf: "Single Game",
-		gameType: 11,
-		player1: "Talent",
-		player2: "David",
-		player1Score: { 1: 11 },
-		player2Score: { 1: 8 },
-	},
-	"1": {
-		bestOf: "Best of 3",
-		gameType: 11,
-		player1: "Tino",
-		player2: "David",
-		player1Score: { 1: 11, 2: 8, 3: 11 },
-		player2Score: { 1: 8, 2: 11, 3: 5 },
-	},
-	"2": {
-		bestOf: "Best of 3",
-		gameType: 21,
-		player1: "Tino",
-		player2: "Bob",
-		player1Score: { 1: 21, 2: 8, 3: 21 },
-		player2Score: { 1: 8, 2: 21, 3: 19 },
-	},
-};
-
 class ScoreHolder extends Component {
 	constructor() {
 		super();
@@ -46,6 +18,16 @@ class ScoreHolder extends Component {
 			player2CurrScore: 0,
 			deuceScore: 0,
 			globalDeuce: false,
+			games: {
+				id: 0,
+				date: "",
+				bestOf: "",
+				gameType: 0,
+				player1: "",
+				player2: "",
+				player1Score: { "1": 0 },
+				player2Score: { "1": 0 },
+			},
 		};
 
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
@@ -55,6 +37,15 @@ class ScoreHolder extends Component {
 		const { gameDetails } = this.props.location.state;
 		await this.setState({ gameDetails: gameDetails });
 		this.setState({ deuceScore: this.state.gameDetails.gameType });
+	}
+
+	async componentWillMount() {
+		const fetchData = async () => {
+			const result = await fetch(`/api/games`);
+			const body = await result.json();
+			await this.setState({ games: body });
+		};
+		fetchData();
 	}
 
 	async updateScore(player, score, deuceScore) {
@@ -82,7 +73,7 @@ class ScoreHolder extends Component {
 			}
 			const gameData = {
 				// Temporary appending to game data.
-				id: "3",
+				id: Object.keys(this.state.games).length.toString(),
 				bestOf: this.state.gameDetails.bestOf,
 				gameType: this.state.gameDetails.gameType,
 				player1: this.state.gameDetails.player1,
@@ -90,9 +81,8 @@ class ScoreHolder extends Component {
 				player1Score: { 1: this.state.player1CurrScore },
 				player2Score: { 1: this.state.player2CurrScore },
 			};
-			games[Object.keys(games).length] = gameData;
-			console.log(gameData);
-			const result = await fetch(`api/game/insert`, {
+			this.state.games[Object.keys(this.state.games).length] = gameData;
+			await fetch(`api/game/insert`, {
 				method: "post",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(gameData),
