@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./ScoreHolder.css";
 import Score from "./Score";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class ScoreHolder extends Component {
 	constructor() {
@@ -48,6 +50,8 @@ class ScoreHolder extends Component {
 
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
 		this.startNextGame = this.startNextGame.bind(this);
+		this.startNewGame = this.startNewGame.bind(this);
+		this.submit = this.submit.bind(this);
 	}
 
 	async componentDidMount() {
@@ -68,6 +72,41 @@ class ScoreHolder extends Component {
 			await this.setState({ games: body });
 		};
 		fetchData();
+	}
+
+	submit = () => {
+		confirmAlert({
+			title: "Start New Game",
+			message: "Are you sure you want to start a new game?",
+			buttons: [
+				{
+					label: "Yes",
+					onClick: () => this.startNewGame(),
+				},
+				{
+					label: "No",
+				},
+			],
+		});
+	};
+
+	async startNewGame() {
+		this.firstScore.current.resetScore();
+		this.secondScore.current.resetScore();
+		await this.setState({
+			player1CurrScore: 0,
+			player2CurrScore: 0,
+			status: "BAU",
+			globalDeuce: false,
+			deuceScore: this.state.gameDetails.gameType,
+			currentGame: 1,
+		});
+		const card = document.querySelectorAll(".score");
+		card[0].classList.remove("winner");
+		card[1].classList.remove("loser");
+		card[0].classList.remove("loser");
+		card[1].classList.remove("winner");
+		document.querySelector(".next-button").classList.remove("clickable");
 	}
 
 	async startNextGame() {
@@ -249,7 +288,12 @@ class ScoreHolder extends Component {
 			<>
 				<div className="score-holder">
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
-					<h2 className="best-of">{this.state.gameDetails.bestOf}</h2>
+					<button className={"new-button"} onClick={this.submit}>
+						New Game
+					</button>
+					<h2 className="best-of">
+						Game {this.state.currentGame}/{this.state.numericalBestOf}
+					</h2>
 					<button
 						className={`next-button ${
 							this.state.gameDetails.bestOf !== "Single Game"

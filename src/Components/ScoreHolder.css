@@ -3,7 +3,7 @@
 	display: grid;
 	grid-template-areas:
 		"game   game   game"
-		"best   best   next"
+		"new   best   next"
 		"status status status"
 		"score1 mid    score2";
 	justify-items: center;
@@ -17,6 +17,23 @@
 	height: 30rem;
 	width: 60rem;
 	padding-bottom: 5rem;
+}
+
+.new-button {
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	font-size: 1.5rem;
+	outline: none;
+	cursor: pointer;
+	grid-area: new;
+	margin-top: -3.5rem;
+	padding: 1rem;
+}
+
+.new-button:hover {
+	color: gray;
 }
 
 .next-button {
@@ -74,6 +91,8 @@ h1 {
 
 .clickable {
 	pointer-events: all;
+	background: rgb(176, 255, 169);
+	box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
 }
 
 .shown {
