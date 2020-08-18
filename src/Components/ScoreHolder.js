@@ -39,7 +39,7 @@ class ScoreHolder extends Component {
 		this.setState({ deuceScore: this.state.gameDetails.gameType });
 	}
 
-	async componentWillMount() {
+	async UNSAFE_componentWillMount() {
 		const fetchData = async () => {
 			const result = await fetch(`/api/games`);
 			const body = await result.json();

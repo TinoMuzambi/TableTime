@@ -20,7 +20,7 @@ class History extends Component {
 		};
 	}
 
-	async componentWillMount() {
+	async UNSAFE_componentWillMount() {
 		const fetchData = async () => {
 			const result = await fetch(`/api/games`);
 			const body = await result.json();
