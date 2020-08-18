@@ -45,6 +45,7 @@ class ScoreHolder extends Component {
 			player1CurrScore: 0,
 			player2CurrScore: 0,
 			deuceScore: 0,
+			globalDeuce: false,
 		};
 
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
@@ -103,6 +104,7 @@ class ScoreHolder extends Component {
 					player2: this.state.gameDetails.player2,
 					deuce: true,
 				},
+				globalDeuce: true,
 			});
 		} else if (
 			this.state.player1CurrScore === this.state.deuceScore - 1 ||
@@ -119,11 +121,15 @@ class ScoreHolder extends Component {
 				},
 			});
 		} else {
-			if (
-				this.state.player1CurrScore === this.state.deuceScore - 2 &&
-				this.state.player2CurrScore === this.state.deuceScore - 2
-			) {
-				status.innerHTML = "Deuce!";
+			if (this.state.globalDeuce) {
+				if (
+					this.state.player1CurrScore === this.state.deuceScore - 2 ||
+					this.state.player2CurrScore === this.state.deuceScore - 2
+				) {
+					status.innerHTML = "Deuce!";
+				} else {
+					status.innerHTML = "BAU";
+				}
 			} else {
 				status.innerHTML = "BAU";
 			}

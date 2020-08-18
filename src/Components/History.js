@@ -22,17 +22,13 @@ const History = () => {
 			setGames(body);
 		};
 		fetchData();
-		// setGames({
-		// 	id: 1,
-		// 	date: "Monday 03 August 2020",
-		// 	bestOf: "Single Game",
-		// 	gameType: 11,
-		// 	player1: "Talent",
-		// 	player2: "David",
-		// 	player1Score: { 1: 11 },
-		// 	player2Score: { 1: 8 },
-		// });
 	}, []);
+
+	const addO = async () => {
+		const result = await fetch(`api/game/2/temp`, { method: "post" });
+		const body = await result.json();
+		setGames(body);
+	};
 
 	return (
 		<>
