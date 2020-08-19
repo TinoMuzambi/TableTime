@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bafd4999.chunk.css",
+    "main.js": "/static/js/main.89500d31.chunk.js",
+    "main.js.map": "/static/js/main.89500d31.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.03508d1f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.03508d1f.js.map",
+    "static/css/2.627926fe.chunk.css": "/static/css/2.627926fe.chunk.css",
+    "static/js/2.87b4b85a.chunk.js": "/static/js/2.87b4b85a.chunk.js",
+    "static/js/2.87b4b85a.chunk.js.map": "/static/js/2.87b4b85a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a6a532ff91aa71bac6de63598ef44677.js": "/precache-manifest.a6a532ff91aa71bac6de63598ef44677.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.627926fe.chunk.css.map": "/static/css/2.627926fe.chunk.css.map",
+    "static/css/main.bafd4999.chunk.css.map": "/static/css/main.bafd4999.chunk.css.map",
+    "static/js/2.87b4b85a.chunk.js.LICENSE.txt": "/static/js/2.87b4b85a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/LexendDeca-Regular.d90b3bff.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03508d1f.js",
+    "static/css/2.627926fe.chunk.css",
+    "static/js/2.87b4b85a.chunk.js",
+    "static/css/main.bafd4999.chunk.css",
+    "static/js/main.89500d31.chunk.js"
+  ]
+}
