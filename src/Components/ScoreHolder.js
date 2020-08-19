@@ -45,6 +45,7 @@ class ScoreHolder extends Component {
 				player2Score: [],
 			},
 			numericalBestOf: 1,
+			winner: "",
 		};
 
 		this.firstScore = React.createRef();
@@ -93,6 +94,18 @@ class ScoreHolder extends Component {
 		});
 	}
 
+	handleWinner() {
+		confirmAlert({
+			title: "And the winner is...",
+			message: `...${this.state.winner}`,
+			buttons: [
+				{
+					label: "Ok",
+				},
+			],
+		});
+	}
+
 	async startNewGame() {
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
@@ -123,34 +136,6 @@ class ScoreHolder extends Component {
 	}
 
 	async startNextGame() {
-		// let p1 = this.state.gameData.player1Score;
-		// p1.push(this.state.player1CurrScore);
-		// let p2 = this.state.gameData.player2Score;
-		// p2.push(this.state.player2CurrScore);
-		// const gameData = {
-		// 	// Temporary appending to game data.
-		// 	id: Object.keys(this.state.games).length.toString(),
-		// 	date:
-		// 		new Date().getFullYear() +
-		// 		"-" +
-		// 		(new Date().getMonth() + 1) +
-		// 		"-" +
-		// 		new Date().getDate() +
-		// 		" " +
-		// 		new Date().getHours() +
-		// 		":" +
-		// 		new Date().getMinutes() +
-		// 		":" +
-		// 		new Date().getSeconds(),
-		// 	bestOf: this.state.gameDetails.bestOf,
-		// 	gameType: this.state.gameDetails.gameType,
-		// 	player1: this.state.gameDetails.player1,
-		// 	player2: this.state.gameDetails.player2,
-		// 	player1Score: p1,
-		// 	player2Score: p2,
-		// };
-
-		// await this.setState({ gameData: gameData });
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
 		await this.setState({
@@ -186,9 +171,9 @@ class ScoreHolder extends Component {
 		}
 
 		if (player1Games > player2Games) {
-			return player1Games >= bestOf - (bestOf % 2);
+			return player1Games >= Math.ceil(bestOf / 2);
 		}
-		return player2Games >= bestOf - (bestOf % 2);
+		return player2Games >= Math.ceil(bestOf / 2);
 	}
 
 	async updateScore(player, score, deuceScore) {
@@ -211,12 +196,14 @@ class ScoreHolder extends Component {
 				card[1].classList.add("loser");
 				await this.setState({
 					status: `Game ${this.state.gameDetails.player1}!`,
+					winner: this.state.gameDetails.player1,
 				});
 			} else {
 				card[0].classList.add("loser");
 				card[1].classList.add("winner");
 				await this.setState({
 					status: `Game ${this.state.gameDetails.player2}!`,
+					winner: this.state.gameDetails.player2,
 				});
 			}
 
@@ -249,8 +236,8 @@ class ScoreHolder extends Component {
 			};
 
 			await this.setState({ gameData: gameData });
-			// console.log(this.isMatchOver());
 			if (this.isMatchOver()) {
+				this.handleWinner();
 				this.state.games[
 					Object.keys(this.state.games).length
 				] = this.state.gameData;
