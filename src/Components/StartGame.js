@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./StartGame.css";
 import {
 	MdKeyboardArrowDown,
 	MdArrowForward,
 	MdArrowBack,
 } from "react-icons/md";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
 
 class StartGame extends Component {
 	constructor() {
@@ -24,21 +22,6 @@ class StartGame extends Component {
 		this.setBestOf = this.setBestOf.bind(this);
 		this.setPlayer1 = this.setPlayer1.bind(this);
 		this.setPlayer2 = this.setPlayer2.bind(this);
-		this.handleMissingData = this.handleMissingData.bind(this);
-		this.validateData = this.validateData.bind(this);
-		this.goToGame = this.goToGame.bind(this);
-	}
-
-	handleMissingData() {
-		confirmAlert({
-			title: "Missing Information",
-			message: "Please give me your players' names before we can start.",
-			buttons: [
-				{
-					label: "Ok",
-				},
-			],
-		});
 	}
 
 	async setGameType(gameType) {
@@ -56,33 +39,6 @@ class StartGame extends Component {
 
 	setPlayer2(player2) {
 		this.setState({ player2: player2 });
-	}
-
-	goToGame() {
-		return (
-			<Redirect
-				to={{
-					pathname: "/game",
-					state: {
-						gameDetails: {
-							gameType: this.state.gameType,
-							bestOf: this.state.bestOf,
-							player1: this.state.player1,
-							player2: this.state.player2,
-						},
-					},
-				}}
-			/>
-		);
-	}
-
-	validateData() {
-		if (this.state.player1 === "" || this.state.player2 === "") {
-			this.handleMissingData();
-		} else {
-			this.goToGame();
-			console.log("trying");
-		}
 	}
 
 	render() {
@@ -136,8 +92,23 @@ class StartGame extends Component {
 						</select>
 						<MdKeyboardArrowDown className="rounds-arrow" />
 					</div>
-					<button className="button-start" onClick={this.validateData}>
-						<MdArrowForward />
+					<button className="button-start">
+						<Link
+							to={{
+								pathname: "/game",
+								state: {
+									gameDetails: {
+										gameType: this.state.gameType,
+										bestOf: this.state.bestOf,
+										player1: this.state.player1,
+										player2: this.state.player2,
+									},
+								},
+							}}
+							className="button-link"
+						>
+							<MdArrowForward />
+						</Link>
 					</button>
 				</div>
 			</>
