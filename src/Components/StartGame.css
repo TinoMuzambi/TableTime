@@ -165,13 +165,13 @@
 @media only screen and (max-width: 750px) {
 	.start-holder {
 		grid-template-areas:
-			"back heading"
+			"back    heading"
 			"player1 player1"
-			"vs vs"
+			"vs      vs"
 			"player2 player2"
-			"game game"
-			"rounds button";
-		height: 50rem;
+			"game    game"
+			"rounds  button";
+		height: 45rem;
 		width: 25rem;
 	}
 
@@ -184,6 +184,10 @@
 		font-size: 3rem;
 	}
 
+	.vs {
+		margin-top: -1rem;
+	}
+
 	.player-input {
 		width: 9rem;
 		margin: 1rem;
@@ -194,11 +198,17 @@
 	}
 
 	.player2 {
-		margin-top: -1rem;
+		margin-top: -4rem;
+	}
+
+	#game {
+		margin-top: -3rem;
+		margin-left: 1rem;
 	}
 
 	#rounds {
 		margin-left: 5rem;
+		margin-top: -9rem;
 	}
 
 	.rounds-arrow {
