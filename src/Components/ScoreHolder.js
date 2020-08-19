@@ -249,8 +249,8 @@ class ScoreHolder extends Component {
 			};
 
 			await this.setState({ gameData: gameData });
-			console.log(this.isMatchOver());
-			if (this.state.numericalBestOf === this.state.currentGame) {
+			// console.log(this.isMatchOver());
+			if (this.isMatchOver()) {
 				this.state.games[
 					Object.keys(this.state.games).length
 				] = this.state.gameData;

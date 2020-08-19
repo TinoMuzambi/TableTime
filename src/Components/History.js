@@ -45,11 +45,23 @@ class History extends Component {
 									{game[1]["player1"]} vs {game[1]["player2"]}
 								</h2>
 								<h3>
+									{game[1]["player1Score"]} - {game[1]["player2Score"]}
+								</h3>
+								<h3>
 									<Moment format="DD MMMM YYYY HH:mm">{game[1]["date"]}</Moment>{" "}
 									{/* Moment library for formatting dates. */}
 								</h3>
+								{/* <div>
+									{game[1]["player1Score"].map((score, key) => (
+										<h3 key={key}>{score}</h3>
+									))}
+									<h3>-</h3>
+									{game[1]["player2Score"].map((score, key) => (
+										<h3 key={key}>{score}</h3>
+									))}
+								</div> */}
 								<h3>
-									{game[1]["player1Score"]} - {game[1]["player2Score"]}
+									{game[1]["bestOf"]} - Game {game[1]["gameType"]}
 								</h3>
 							</div>
 						))}
