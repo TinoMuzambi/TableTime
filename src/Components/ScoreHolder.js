@@ -16,7 +16,7 @@ class ScoreHolder extends Component {
 				bestOf: "", // Single Game, Best of 3 or Best of 5.
 				player1: "", // Player 1 name.
 				player2: "", // Player 2 name.
-				deuce: false, // Is game in deuce?
+				deuce: false, // Is game in deuce? TODO fix 11 - 9 bug on decScore.
 			},
 			player1CurrScore: 0, // Player 1's current game's score.
 			player2CurrScore: 0, // Player 2's current game's score.
