@@ -70,6 +70,22 @@
 	margin-bottom: 3rem;
 }
 
+.flex {
+	display: flex;
+}
+
+.separator {
+	padding: 0 0.3rem;
+}
+
+.history-winner {
+	color: rgb(176, 255, 169);
+}
+
+.history-loser {
+	color: rgb(255, 169, 169);
+}
+
 /*              Viewport less then or equal to 750px            */
 
 @media only screen and (max-width: 750px) {

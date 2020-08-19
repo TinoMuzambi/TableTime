@@ -3,6 +3,7 @@ import "./History.css";
 import Moment from "react-moment";
 import { MdArrowBack } from "react-icons/md";
 import { withRouter } from "react-router-dom";
+import _ from "lodash";
 
 class History extends Component {
 	constructor() {
@@ -49,25 +50,45 @@ class History extends Component {
 						{/* Mapping each game into div component. */}
 						{arrayGames.map((game, key) => (
 							<div className="score-list" key={key}>
-								<h2>
-									{game[1]["player1"]} vs {game[1]["player2"]}
-								</h2>
-								<h3>
-									{game[1]["player1Score"]} - {game[1]["player2Score"]}
-								</h3>
+								<div className="flex">
+									<h2
+										className={
+											game[1]["player1"] === game[1]["winner"]
+												? "history-winner"
+												: "history-loser"
+										}
+									>
+										{game[1]["player1"]}
+									</h2>
+									<h2 className="separator"> vs </h2>
+									<h2
+										className={
+											game[1]["player2"] === game[1]["winner"]
+												? "history-winner"
+												: "history-loser"
+										}
+									>
+										{game[1]["player2"]}
+									</h2>
+								</div>
+
+								<div className="game-scores">
+									{_.zip(
+										`${game[1]["player1Score"]}`.split(","),
+										`${game[1]["player2Score"]}`.split(",")
+									).map((scoresArray, key) => (
+										<h3 key={key}>
+											{`Game ${key + 1}: ${scoresArray[0]} - ${scoresArray[1]}`}
+											<br />
+										</h3>
+									))}
+								</div>
+
 								<h3>
 									<Moment format="DD MMMM YYYY HH:mm">{game[1]["date"]}</Moment>{" "}
 									{/* Moment library for formatting dates. */}
 								</h3>
-								{/* <div>
-									{game[1]["player1Score"].map((score, key) => (
-										<h3 key={key}>{score}</h3>
-									))}
-									<h3>-</h3>
-									{game[1]["player2Score"].map((score, key) => (
-										<h3 key={key}>{score}</h3>
-									))}
-								</div> */}
+
 								<h3>
 									{game[1]["bestOf"]} - Game {game[1]["gameType"]}
 								</h3>

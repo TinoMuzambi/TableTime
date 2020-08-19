@@ -125,6 +125,7 @@ class ScoreHolder extends Component {
 				player2: "",
 				player1Score: [],
 				player2Score: [],
+				winner: "",
 			},
 		});
 		const card = document.querySelectorAll(".score");
@@ -233,6 +234,7 @@ class ScoreHolder extends Component {
 				player2: this.state.gameDetails.player2,
 				player1Score: p1,
 				player2Score: p2,
+				winner: this.state.winner,
 			};
 
 			await this.setState({ gameData: gameData });
