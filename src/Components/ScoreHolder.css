@@ -19,7 +19,7 @@
 	padding-bottom: 5rem;
 }
 
-.back-button {
+.score-back-button {
 	grid-area: back;
 	background: white;
 	border: none;
@@ -41,6 +41,7 @@
 }
 
 .button-link:hover {
+	transition: 0.00001s ease;
 	color: gray;
 }
 
@@ -129,7 +130,7 @@ h1 {
 /*              Viewport less then or equal to 770px            */
 
 @media only screen and (max-width: 770px) {
-	.back-button {
+	.score-back-button {
 		margin-left: 7rem;
 	}
 
@@ -149,7 +150,7 @@ h1 {
 		width: 28rem;
 	}
 
-	.back-button {
+	.score-back-button {
 		margin-left: 1.5rem;
 	}
 

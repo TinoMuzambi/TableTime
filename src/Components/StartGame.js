@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./StartGame.css";
-import { MdKeyboardArrowDown, MdArrowForward } from "react-icons/md";
+import {
+	MdKeyboardArrowDown,
+	MdArrowForward,
+	MdArrowBack,
+} from "react-icons/md";
 
 class StartGame extends Component {
 	constructor() {
@@ -41,6 +45,12 @@ class StartGame extends Component {
 		return (
 			<>
 				<div className="start-holder">
+					<button
+						className="start-back-button"
+						onClick={this.props.history.goBack}
+					>
+						<MdArrowBack className="button-link" />
+					</button>
 					<h1 className="heading">Table Time</h1>
 					<div className="player-input player1">
 						<input
@@ -106,4 +116,4 @@ class StartGame extends Component {
 	}
 }
 
-export default StartGame;
+export default withRouter(StartGame);

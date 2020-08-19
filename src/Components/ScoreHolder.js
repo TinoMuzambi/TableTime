@@ -4,7 +4,7 @@ import Score from "./Score";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { MdArrowBack } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class ScoreHolder extends Component {
 	constructor() {
@@ -311,10 +311,11 @@ class ScoreHolder extends Component {
 		return (
 			<>
 				<div className="score-holder">
-					<button className="back-button">
-						{/* <Link to="/start" className="button-link"> */}
-						<MdArrowBack />
-						{/* </Link> */}
+					<button
+						className="score-back-button"
+						onClick={this.props.history.goBack}
+					>
+						<MdArrowBack className="button-link" />
 					</button>
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
 					<button className={"new-button"} onClick={this.handleConfirm}>
@@ -361,4 +362,4 @@ class ScoreHolder extends Component {
 	}
 }
 
-export default ScoreHolder;
+export default withRouter(ScoreHolder);

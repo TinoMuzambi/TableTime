@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./History.css";
 import Moment from "react-moment";
+import { MdArrowBack } from "react-icons/md";
+import { withRouter } from "react-router-dom";
 
 class History extends Component {
 	constructor() {
@@ -35,6 +37,12 @@ class History extends Component {
 		return (
 			<>
 				<div className="history-holder">
+					<button
+						className="hist-back-button"
+						onClick={this.props.history.goBack}
+					>
+						<MdArrowBack className="button-link" />
+					</button>
 					<h1 className="title">History</h1>
 
 					<div className="scores-container">
@@ -72,4 +80,4 @@ class History extends Component {
 	}
 }
 
-export default History;
+export default withRouter(History);

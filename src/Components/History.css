@@ -2,8 +2,8 @@
 	background-color: rgb(253, 253, 253);
 	display: grid;
 	grid-template-areas:
-		"heading"
-		"scores";
+		"back heading"
+		"scores scores";
 	justify-items: center;
 	/* align-items: center; */
 	position: absolute;
@@ -16,8 +16,36 @@
 	width: 60rem;
 }
 
+.hist-back-button {
+	grid-area: back;
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50%;
+	font-size: 2rem;
+	height: 3rem;
+	width: 3rem;
+	outline: none;
+	cursor: pointer;
+	justify-self: start;
+	margin-left: 1.5rem;
+	display: flex;
+	align-items: center;
+	margin-top: 3.5rem;
+}
+
+.button-link {
+	color: black;
+}
+
+.button-link:hover {
+	transition: 0.00001s ease;
+	color: gray;
+}
+
 .title {
 	grid-area: heading;
+	margin-left: -28rem;
 }
 
 .scores-container {
@@ -47,6 +75,10 @@
 @media only screen and (max-width: 750px) {
 	.history-holder {
 		width: 25rem;
+	}
+
+	.title {
+		margin-left: -14rem;
 	}
 }
 
