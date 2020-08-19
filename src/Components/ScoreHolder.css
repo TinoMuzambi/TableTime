@@ -126,6 +126,21 @@ h1 {
 	opacity: 1;
 }
 
+/*              Viewport less then or equal to 770px            */
+
+@media only screen and (max-width: 770px) {
+	.back-button {
+		margin-left: 7rem;
+	}
+
+	.game-type {
+		grid-area: game;
+		margin-left: -20rem;
+	}
+}
+
+/*        x      Viewport less then or equal to 770px       x     */
+
 /*              Viewport less then or equal to 750px            */
 
 @media only screen and (max-width: 750px) {
@@ -134,8 +149,11 @@ h1 {
 		width: 28rem;
 	}
 
+	.back-button {
+		margin-left: 1.5rem;
+	}
+
 	.game-type {
-		grid-area: game;
 		margin-left: -12rem;
 	}
 }

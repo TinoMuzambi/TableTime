@@ -53,7 +53,8 @@ class ScoreHolder extends Component {
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
 		this.startNextGame = this.startNextGame.bind(this);
 		this.startNewGame = this.startNewGame.bind(this);
-		this.submit = this.submit.bind(this);
+		this.handleConfirm = this.handleConfirm.bind(this);
+		this.isMatchOver = this.isMatchOver.bind(this);
 	}
 
 	async componentDidMount() {
@@ -76,7 +77,7 @@ class ScoreHolder extends Component {
 		fetchData();
 	}
 
-	submit = () => {
+	handleConfirm() {
 		confirmAlert({
 			title: "Start New Game",
 			message: "Are you sure you want to start a new game?",
@@ -90,7 +91,7 @@ class ScoreHolder extends Component {
 				},
 			],
 		});
-	};
+	}
 
 	async startNewGame() {
 		this.firstScore.current.resetScore();
@@ -102,6 +103,16 @@ class ScoreHolder extends Component {
 			globalDeuce: false,
 			deuceScore: this.state.gameDetails.gameType,
 			currentGame: 1,
+			gameData: {
+				id: 0,
+				date: "",
+				bestOf: "",
+				gameType: 0,
+				player1: "",
+				player2: "",
+				player1Score: [],
+				player2Score: [],
+			},
 		});
 		const card = document.querySelectorAll(".score");
 		card[0].classList.remove("winner");
@@ -112,34 +123,34 @@ class ScoreHolder extends Component {
 	}
 
 	async startNextGame() {
-		let p1 = this.state.gameData.player1Score;
-		p1.push(this.state.player1CurrScore);
-		let p2 = this.state.gameData.player2Score;
-		p2.push(this.state.player2CurrScore);
-		const gameData = {
-			// Temporary appending to game data.
-			id: Object.keys(this.state.games).length.toString(),
-			date:
-				new Date().getFullYear() +
-				"-" +
-				(new Date().getMonth() + 1) +
-				"-" +
-				new Date().getDate() +
-				" " +
-				new Date().getHours() +
-				":" +
-				new Date().getMinutes() +
-				":" +
-				new Date().getSeconds(),
-			bestOf: this.state.gameDetails.bestOf,
-			gameType: this.state.gameDetails.gameType,
-			player1: this.state.gameDetails.player1,
-			player2: this.state.gameDetails.player2,
-			player1Score: p1,
-			player2Score: p2,
-		};
+		// let p1 = this.state.gameData.player1Score;
+		// p1.push(this.state.player1CurrScore);
+		// let p2 = this.state.gameData.player2Score;
+		// p2.push(this.state.player2CurrScore);
+		// const gameData = {
+		// 	// Temporary appending to game data.
+		// 	id: Object.keys(this.state.games).length.toString(),
+		// 	date:
+		// 		new Date().getFullYear() +
+		// 		"-" +
+		// 		(new Date().getMonth() + 1) +
+		// 		"-" +
+		// 		new Date().getDate() +
+		// 		" " +
+		// 		new Date().getHours() +
+		// 		":" +
+		// 		new Date().getMinutes() +
+		// 		":" +
+		// 		new Date().getSeconds(),
+		// 	bestOf: this.state.gameDetails.bestOf,
+		// 	gameType: this.state.gameDetails.gameType,
+		// 	player1: this.state.gameDetails.player1,
+		// 	player2: this.state.gameDetails.player2,
+		// 	player1Score: p1,
+		// 	player2Score: p2,
+		// };
 
-		await this.setState({ gameData: gameData });
+		// await this.setState({ gameData: gameData });
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
 		await this.setState({
@@ -158,10 +169,35 @@ class ScoreHolder extends Component {
 		document.querySelector(".next-button").classList.remove("clickable");
 	}
 
+	isMatchOver() {
+		const player1Score = this.state.gameData.player1Score;
+		const player2Score = this.state.gameData.player2Score;
+		const bestOf = this.state.numericalBestOf;
+
+		let player1Games = 0;
+		let player2Games = 0;
+
+		for (let index = 0; index < player1Score.length; index++) {
+			if (player1Score[index] > player2Score[index]) {
+				player1Games++;
+			} else {
+				player2Games++;
+			}
+		}
+
+		if (player1Games > player2Games) {
+			return player1Games >= bestOf - (bestOf % 2);
+		}
+		return player2Games >= bestOf - (bestOf % 2);
+	}
+
 	async updateScore(player, score, deuceScore) {
 		player === 0
-			? this.setState({ player1CurrScore: score, deuceScore: deuceScore })
-			: this.setState({ player2CurrScore: score, deuceScore: deuceScore });
+			? await this.setState({ player1CurrScore: score, deuceScore: deuceScore })
+			: await this.setState({
+					player2CurrScore: score,
+					deuceScore: deuceScore,
+			  });
 
 		if (
 			// Update status of game
@@ -183,39 +219,38 @@ class ScoreHolder extends Component {
 					status: `Game ${this.state.gameDetails.player2}!`,
 				});
 			}
-			console.log(this.state.numericalBestOf);
-			console.log(this.state.currentGame);
+
+			let p1 = this.state.gameData.player1Score;
+			p1.push(this.state.player1CurrScore);
+			let p2 = this.state.gameData.player2Score;
+			p2.push(this.state.player2CurrScore);
+			document.querySelector(".next-button").classList.remove("clickable");
+			const gameData = {
+				// Temporary appending to game data.
+				id: Object.keys(this.state.games).length.toString(),
+				date:
+					new Date().getFullYear() +
+					"-" +
+					(new Date().getMonth() + 1) +
+					"-" +
+					new Date().getDate() +
+					" " +
+					new Date().getHours() +
+					":" +
+					new Date().getMinutes() +
+					":" +
+					new Date().getSeconds(),
+				bestOf: this.state.gameDetails.bestOf,
+				gameType: this.state.gameDetails.gameType,
+				player1: this.state.gameDetails.player1,
+				player2: this.state.gameDetails.player2,
+				player1Score: p1,
+				player2Score: p2,
+			};
+
+			await this.setState({ gameData: gameData });
+			console.log(this.isMatchOver());
 			if (this.state.numericalBestOf === this.state.currentGame) {
-				let p1 = this.state.gameData.player1Score;
-				p1.push(this.state.player1CurrScore);
-				let p2 = this.state.gameData.player2Score;
-				p2.push(this.state.player2CurrScore);
-				document.querySelector(".next-button").classList.remove("clickable");
-				const gameData = {
-					// Temporary appending to game data.
-					id: Object.keys(this.state.games).length.toString(),
-					date:
-						new Date().getFullYear() +
-						"-" +
-						(new Date().getMonth() + 1) +
-						"-" +
-						new Date().getDate() +
-						" " +
-						new Date().getHours() +
-						":" +
-						new Date().getMinutes() +
-						":" +
-						new Date().getSeconds(),
-					bestOf: this.state.gameDetails.bestOf,
-					gameType: this.state.gameDetails.gameType,
-					player1: this.state.gameDetails.player1,
-					player2: this.state.gameDetails.player2,
-					player1Score: p1,
-					player2Score: p2,
-				};
-
-				await this.setState({ gameData: gameData });
-
 				this.state.games[
 					Object.keys(this.state.games).length
 				] = this.state.gameData;
@@ -290,12 +325,12 @@ class ScoreHolder extends Component {
 			<>
 				<div className="score-holder">
 					<button className="back-button">
-						<Link to="/start" className="button-link">
-							<MdArrowBack />
-						</Link>
+						{/* <Link to="/start" className="button-link"> */}
+						<MdArrowBack />
+						{/* </Link> */}
 					</button>
 					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
-					<button className={"new-button"} onClick={this.submit}>
+					<button className={"new-button"} onClick={this.handleConfirm}>
 						New Game
 					</button>
 					<h2 className="best-of">
