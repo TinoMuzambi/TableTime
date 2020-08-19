@@ -12,10 +12,10 @@ class StartGame extends Component {
 		super();
 
 		this.state = {
-			player1: "",
-			player2: "",
-			gameType: 11,
-			bestOf: "Single Game",
+			player1: "", // Player 1 name.
+			player2: "", // Player 2 name.
+			gameType: 11, // Game 11 or game 21.
+			bestOf: "Single Game", // Single Game, Best of 3 or Best of 5.
 		};
 
 		this.setGameType = this.setGameType.bind(this); // Binding methods with this instance.
@@ -93,6 +93,7 @@ class StartGame extends Component {
 						<MdKeyboardArrowDown className="rounds-arrow" />
 					</div>
 					<button className="button-start">
+						{/* Link to state and pass game details to ScoreHolder component. */}
 						<Link
 							to={{
 								pathname: "/game",

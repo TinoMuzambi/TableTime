@@ -11,19 +11,20 @@ class History extends Component {
 
 		this.state = {
 			games: {
-				id: 0,
-				date: "",
-				bestOf: "",
-				gameType: 0,
-				player1: "",
-				player2: "",
-				player1Score: [],
-				player2Score: [],
+				id: 0, // Game ID.
+				date: "", // Date game was played.
+				bestOf: "", // Single Game, Best of 3 or Best of 5.
+				gameType: 0, // Game 11 or game 21.
+				player1: "", // Player 1 name.
+				player2: "", // Player 2 name.
+				player1Score: [], // Array of player 1's game's scores.
+				player2Score: [], // Array of player 2's game's scores.
 			},
 		};
 	}
 
 	async UNSAFE_componentWillMount() {
+		// Fetch game data from database on component load.
 		const fetchData = async () => {
 			const result = await fetch(`/api/games`);
 			const body = await result.json();
@@ -34,7 +35,7 @@ class History extends Component {
 
 	render() {
 		let arrayGames = [];
-		for (let i in this.state.games) arrayGames.push([i, this.state.games[i]]);
+		for (let i in this.state.games) arrayGames.push([i, this.state.games[i]]); // Get games from JSON to array format.
 		return (
 			<>
 				<div className="history-holder">
@@ -51,6 +52,7 @@ class History extends Component {
 						{arrayGames.map((game, key) => (
 							<div className="score-list" key={key}>
 								<div className="flex">
+									{/* If winner add winner class for styling or loser class. */}
 									<h2
 										className={
 											game[1]["player1"] === game[1]["winner"]
@@ -73,6 +75,7 @@ class History extends Component {
 								</div>
 
 								<div className="game-scores">
+									{/* Lodsh zip players scores for easy mapping. */}
 									{_.zip(
 										`${game[1]["player1Score"]}`.split(","),
 										`${game[1]["player2Score"]}`.split(",")

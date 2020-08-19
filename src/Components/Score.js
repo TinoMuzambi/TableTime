@@ -15,6 +15,7 @@ class Score extends Component {
 	}
 
 	async resetScore() {
+		// Reset score and buttons for when new/next game initiated.
 		await this.setState({ score: 0 });
 		const buttons = document.querySelectorAll(".button");
 		buttons.forEach((button) => {
@@ -23,13 +24,15 @@ class Score extends Component {
 	}
 
 	async incScore() {
+		// Increment this score.
 		let deuceScore = this.props.deuceScore;
 		await this.setState({ score: this.state.score + 1 });
-		await this.props.updateScore(this.props.id, this.state.score, deuceScore);
+		await this.props.updateScore(this.props.id, this.state.score, deuceScore); // Notify parent element of changes in score details.
 		const buttons = document.querySelectorAll(".button");
 		if (this.props.deuce) {
+			// If there's a deuce increase score needed to win.
 			deuceScore++;
-			await this.props.updateScore(this.props.id, this.state.score, deuceScore);
+			await this.props.updateScore(this.props.id, this.state.score, deuceScore); // Notify parent element of changes in score details.
 			if (this.state.score === deuceScore + 1) {
 				// Increment score but first check if game is over.
 				buttons.forEach((button) => {
@@ -38,7 +41,7 @@ class Score extends Component {
 			}
 		} else {
 			if (this.state.score === this.props.deuceScore) {
-				// Increment score but first check if game is over.
+				// Game is over.
 				buttons.forEach((button) => {
 					button.classList.add("done");
 				});
@@ -47,6 +50,7 @@ class Score extends Component {
 	}
 
 	async decScore() {
+		// Decrement this score.
 		const deuceScore = this.props.deuceScore;
 		(await this.state.score) > 0
 			? this.setState({ score: this.state.score - 1 }) // Decrement score but first check if score is zero.

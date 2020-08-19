@@ -12,44 +12,44 @@ class ScoreHolder extends Component {
 
 		this.state = {
 			gameDetails: {
-				gameType: 11,
-				bestOf: "",
-				player1: "",
-				player2: "",
-				deuce: false,
+				gameType: 11, // Game 11 or game 21.
+				bestOf: "", // Single Game, Best of 3 or Best of 5.
+				player1: "", // Player 1 name.
+				player2: "", // Player 2 name.
+				deuce: false, // Is game in deuce?
 			},
-			player1CurrScore: 0,
-			player2CurrScore: 0,
-			deuceScore: 0,
-			globalDeuce: false,
+			player1CurrScore: 0, // Player 1's current game's score.
+			player2CurrScore: 0, // Player 2's current game's score.
+			deuceScore: 0, // Deuce score represents score needed to win. Defaults to gameType.
+			globalDeuce: false, // Flag to see if game was ever in deuce.
 			games: {
-				id: 0,
-				date: "",
-				bestOf: "",
-				gameType: 0,
-				player1: "",
-				player2: "",
-				player1Score: [],
-				player2Score: [],
+				id: 0, // Game ID.
+				date: "", // Date game was played.
+				bestOf: "", // Single Game, Best of 3 or Best of 5.
+				gameType: 0, // Game 11 or game 21.
+				player1: "", // Player 1 name.
+				player2: "", // Player 2 name.
+				player1Score: [], // Array of player 1's game's scores.
+				player2Score: [], // Array of player 2's game's scores.
 			},
-			status: "BAU",
-			currentGame: 1,
+			status: "BAU", // Current game status. BAU (Business As Usual), Game Point, Deuce or Game.
+			currentGame: 1, // Current game number.
 			gameData: {
-				id: 0,
-				date: "",
-				bestOf: "",
-				gameType: 0,
-				player1: "",
-				player2: "",
-				player1Score: [],
-				player2Score: [],
+				id: 0, // Game ID.
+				date: "", // Date game was played.
+				bestOf: "", // Single Game, Best of 3 or Best of 5.
+				gameType: 0, // Game 11 or game 21.
+				player1: "", // Player 1 name.
+				player2: "", // Player 2 name.
+				player1Score: [], // Array of player 1's game's scores.
+				player2Score: [], // Array of player 2's game's scores.
 			},
-			numericalBestOf: 1,
-			winner: "",
+			numericalBestOf: 1, // Numerical version of bestOf
+			winner: "", // Winner of the match.
 		};
 
-		this.firstScore = React.createRef();
-		this.secondScore = React.createRef();
+		this.firstScore = React.createRef(); // Ref to first Score component for player 1.
+		this.secondScore = React.createRef(); // Ref to first Score component for player 2.
 
 		this.updateScore = this.updateScore.bind(this); // Binding method with this instance.
 		this.startNextGame = this.startNextGame.bind(this);
@@ -59,7 +59,7 @@ class ScoreHolder extends Component {
 	}
 
 	async componentDidMount() {
-		const { gameDetails } = this.props.location.state;
+		const { gameDetails } = this.props.location.state; // Get game details from StartGame component and set state.
 		await this.setState({ gameDetails: gameDetails });
 		await this.setState({ deuceScore: this.state.gameDetails.gameType });
 		if (this.state.gameDetails.bestOf === "Best of 3") {
@@ -70,6 +70,7 @@ class ScoreHolder extends Component {
 	}
 
 	async UNSAFE_componentWillMount() {
+		// Get data from database on component load.
 		const fetchData = async () => {
 			const result = await fetch(`/api/games`);
 			const body = await result.json();
@@ -79,6 +80,7 @@ class ScoreHolder extends Component {
 	}
 
 	handleConfirm() {
+		// Confirm alert dialog for starting a new game.
 		confirmAlert({
 			title: "Start New Game",
 			message: "Are you sure you want to start a new game?",
@@ -95,9 +97,10 @@ class ScoreHolder extends Component {
 	}
 
 	handleWinner() {
+		// Confirm alert for showing winner.
 		confirmAlert({
-			title: "And the winner is...",
-			message: `...${this.state.winner}`,
+			title: `Game, Set Match ${this.state.winner}!`,
+			message: `And the winner is ${this.state.winner}`,
 			buttons: [
 				{
 					label: "Ok",
@@ -107,6 +110,7 @@ class ScoreHolder extends Component {
 	}
 
 	async startNewGame() {
+		// Reset everything and start new game.
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
 		await this.setState({
@@ -137,6 +141,7 @@ class ScoreHolder extends Component {
 	}
 
 	async startNextGame() {
+		// Start next game for multi game matches and reset relevant items.
 		this.firstScore.current.resetScore();
 		this.secondScore.current.resetScore();
 		await this.setState({
@@ -156,6 +161,7 @@ class ScoreHolder extends Component {
 	}
 
 	isMatchOver() {
+		// Check if match is over for multi game matches.
 		const player1Score = this.state.gameData.player1Score;
 		const player2Score = this.state.gameData.player2Score;
 		const bestOf = this.state.numericalBestOf;
@@ -178,6 +184,7 @@ class ScoreHolder extends Component {
 	}
 
 	async updateScore(player, score, deuceScore) {
+		// Get updated score from child Score components.
 		player === 0
 			? await this.setState({ player1CurrScore: score, deuceScore: deuceScore })
 			: await this.setState({
@@ -192,7 +199,7 @@ class ScoreHolder extends Component {
 		) {
 			const card = document.querySelectorAll(".score");
 			if (this.state.player1CurrScore > this.state.player2CurrScore) {
-				// Make winning score card green and update status.
+				// Game over. Make winning score card green, losing card red and update status.
 				card[0].classList.add("winner");
 				card[1].classList.add("loser");
 				await this.setState({
@@ -208,13 +215,14 @@ class ScoreHolder extends Component {
 				});
 			}
 
+			// Update scores array.
 			let p1 = this.state.gameData.player1Score;
 			p1.push(this.state.player1CurrScore);
 			let p2 = this.state.gameData.player2Score;
 			p2.push(this.state.player2CurrScore);
 			document.querySelector(".next-button").classList.remove("clickable");
 			const gameData = {
-				// Temporary appending to game data.
+				// gameData object for updating state.
 				id: Object.keys(this.state.games).length.toString(),
 				date:
 					new Date().getFullYear() +
@@ -236,9 +244,10 @@ class ScoreHolder extends Component {
 				player2Score: p2,
 				winner: this.state.winner,
 			};
-
 			await this.setState({ gameData: gameData });
+
 			if (this.isMatchOver()) {
+				// If game is over, show dialog and write game to database.
 				this.handleWinner();
 				this.state.games[
 					Object.keys(this.state.games).length
@@ -255,6 +264,7 @@ class ScoreHolder extends Component {
 			this.state.player1CurrScore === this.state.deuceScore - 1 &&
 			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
+			// Game is in deuce. Update state appropriately.
 			await this.setState({ status: "Deuce!" });
 			await this.setState({
 				gameDetails: {
@@ -271,6 +281,7 @@ class ScoreHolder extends Component {
 			this.state.player1CurrScore === this.state.deuceScore - 1 ||
 			this.state.player2CurrScore === this.state.deuceScore - 1
 		) {
+			// One of the players is one point from winning. Update state appropriately.
 			await this.setState({ status: "Game Point!" });
 			await this.setState({
 				gameDetails: {
@@ -284,6 +295,7 @@ class ScoreHolder extends Component {
 			document.querySelector(".next-button").classList.remove("clickable");
 		} else {
 			if (this.state.globalDeuce) {
+				// Check if game has ever been in deuce. If so, deuce is calculated differently.
 				if (
 					this.state.player1CurrScore === this.state.deuceScore - 2 &&
 					this.state.player2CurrScore === this.state.deuceScore - 2
@@ -293,6 +305,7 @@ class ScoreHolder extends Component {
 					await this.setState({ status: "BAU" });
 				}
 			} else {
+				// Else game is in a neutral state.
 				await this.setState({ status: "BAU" });
 			}
 
