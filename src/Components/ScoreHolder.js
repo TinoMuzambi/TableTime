@@ -82,30 +82,53 @@ class ScoreHolder extends Component {
 	handleConfirm() {
 		// Confirm alert dialog for starting a new game.
 		confirmAlert({
-			title: "Start New Game",
-			message: "Are you sure you want to start a new game?",
-			buttons: [
-				{
-					label: "Yes",
-					onClick: () => this.startNewGame(),
-				},
-				{
-					label: "No",
-				},
-			],
+			customUI: ({ onClose }) => {
+				return (
+					<div className="confirm-new">
+						<h1 className="confirm-new-title">Start New Game</h1>
+						<p className="confirm-new-text">
+							Are you sure you want to start a new game?
+						</p>
+						<button
+							onClick={() => {
+								this.startNewGame();
+								onClose();
+							}}
+							className="confirm-new-yes"
+						>
+							Yes
+						</button>
+						<button onClick={onClose} className="confirm-new-no">
+							No
+						</button>
+					</div>
+				);
+			},
 		});
 	}
 
 	handleWinner() {
 		// Confirm alert for showing winner.
 		confirmAlert({
-			title: `Game, Set Match ${this.state.winner}!`,
-			message: `And the winner is ${this.state.winner}`,
-			buttons: [
-				{
-					label: "Ok",
-				},
-			],
+			customUI: ({ onClose }) => {
+				return (
+					<div className="confirm-new">
+						<h1 className="confirm-new-title">{`Game, Set Match ${this.state.winner}!`}</h1>
+						<p className="confirm-new-text">
+							{`And the winner is ${this.state.winner}`}
+						</p>
+						<button
+							onClick={() => {
+								this.startNewGame();
+								onClose();
+							}}
+							className="confirm-new-yes"
+						>
+							Ok
+						</button>
+					</div>
+				);
+			},
 		});
 	}
 
