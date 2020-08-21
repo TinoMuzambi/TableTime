@@ -160,9 +160,9 @@
 	margin-bottom: 2rem;
 }
 
-/*              Viewport less then or equal to 750px            */
+/*              Viewport less then or equal to 768px            */
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
 	.start-holder {
 		grid-template-areas:
 			"back    heading"
@@ -171,12 +171,12 @@
 			"player2 player2"
 			"game    game"
 			"rounds  button";
-		height: 45rem;
-		width: 25rem;
+		height: 33rem;
+		width: 40rem;
 	}
 
 	.heading {
-		margin-left: -13rem;
+		margin-left: -21rem;
 	}
 
 	.heading,
@@ -194,25 +194,25 @@
 	}
 
 	.player1 {
-		margin-bottom: -1rem;
+		margin-top: -1rem;
 	}
 
 	.player2 {
-		margin-top: -4rem;
+		margin-top: -1rem;
 	}
 
 	#game {
-		margin-top: -3rem;
+		/* margin-top: -3rem; */
 		margin-left: 1rem;
 	}
 
 	#rounds {
-		margin-left: 5rem;
-		margin-top: -9rem;
+		margin-left: 8.8rem;
+		/* margin-top: -9rem; */
 	}
 
 	.rounds-arrow {
-		right: -9rem;
+		right: -13.1rem;
 		bottom: 2.5rem;
 	}
 
@@ -221,11 +221,53 @@
 	}
 }
 
-/*        x      Viewport less then or equal to 750px       x     */
+/*        x      Viewport less then or equal to 768px       x     */
 
 /*              Viewport less then or equal to 520px            */
 
 @media only screen and (max-width: 520px) {
+	.start-holder {
+		width: 20rem;
+		height: 32rem;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.heading {
+		font-size: 2.3rem;
+		margin-left: -11rem;
+	}
+
+	.vs {
+		margin-top: 0rem;
+	}
+
+	.player1 {
+		margin-bottom: 0rem;
+	}
+
+	.player2 {
+		margin-top: -2rem;
+	}
+
+	#game {
+		margin-top: 0;
+	}
+
+	#rounds {
+		margin-top: -1rem;
+		margin-left: 3.5rem;
+	}
+
+	.rounds-arrow {
+		right: -8rem;
+		bottom: 2.5rem;
+	}
+
+	.button-start {
+		margin-right: 0.5rem;
+	}
 }
 
 /*        x      Viewport less then or equal to 520px       x     */
@@ -233,6 +275,61 @@
 /*              Viewport less then or equal to 320px            */
 
 @media only screen and (max-width: 320px) {
+	.start-holder {
+		width: 18rem;
+		height: 35rem;
+	}
+
+	.heading {
+		font-size: 2rem;
+		margin-left: -11rem;
+	}
+
+	.vs {
+		margin-top: 0rem;
+		font-size: 2rem;
+	}
+
+	.player1 {
+		margin-bottom: 0rem;
+		height: 3.3rem;
+	}
+
+	.player1 input {
+		font-size: 1.2rem;
+	}
+
+	.player2 input {
+		font-size: 1.2rem;
+	}
+
+	.player2 {
+		margin-top: -2rem;
+		height: 3.3rem;
+	}
+
+	#game {
+		margin-top: 0;
+		font-size: 1.2rem;
+		height: 3.5rem;
+	}
+
+	#rounds {
+		margin-top: -1rem;
+		margin-left: 3.5rem;
+		font-size: 1.2rem;
+		height: 3.5rem;
+	}
+
+	.rounds-arrow {
+		right: -6.1rem;
+		bottom: 2.2rem;
+	}
+
+	.button-start {
+		margin-right: 0.5rem;
+		margin-bottom: 1rem;
+	}
 }
 
 /*        x      Viewport less then or equal to 320px       x     */

@@ -74,6 +74,7 @@
 	margin-top: -3.5rem;
 	padding: 1rem;
 	pointer-events: none;
+	opacity: 0;
 }
 
 .next-button:hover {
@@ -121,6 +122,7 @@ h1 {
 	pointer-events: all;
 	background: rgb(176, 255, 169);
 	box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
+	opacity: 1;
 }
 
 .shown {
@@ -142,12 +144,12 @@ h1 {
 
 /*        x      Viewport less then or equal to 770px       x     */
 
-/*              Viewport less then or equal to 750px            */
+/*              Viewport less then or equal to 768px            */
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
 	.score-holder {
-		height: 37rem;
-		width: 28rem;
+		height: 30rem;
+		width: 40rem;
 	}
 
 	.score-back-button {
@@ -157,13 +159,52 @@ h1 {
 	.game-type {
 		margin-left: -12rem;
 	}
+
+	.next-button {
+		margin-top: -1rem;
+	}
+
+	.best-of {
+		margin-top: -0.8rem;
+	}
+
+	.new-button {
+		margin-top: -2rem;
+	}
 }
 
-/*        x      Viewport less then or equal to 750px       x     */
+/*        x      Viewport less then or equal to 768px       x     */
 
 /*              Viewport less then or equal to 520px            */
 
 @media only screen and (max-width: 520px) {
+	.score-holder {
+		width: 22rem;
+		height: 30rem;
+	}
+
+	.game-type {
+		font-size: 2.5rem;
+		margin-left: -8rem;
+	}
+
+	.new-button {
+		font-size: 1rem;
+		width: 5rem;
+		height: 4rem;
+		margin-top: -0.7rem;
+	}
+
+	.best-of {
+		margin-top: 0.5rem;
+	}
+
+	.next-button {
+		font-size: 1rem;
+		width: 5rem;
+		height: 4rem;
+		margin-top: -0.7rem;
+	}
 }
 
 /*        x      Viewport less then or equal to 520px       x     */
@@ -171,6 +212,33 @@ h1 {
 /*              Viewport less then or equal to 320px            */
 
 @media only screen and (max-width: 320px) {
+	.score-holder {
+		width: 18rem;
+		height: 30rem;
+	}
+
+	.game-type {
+		font-size: 2.5rem;
+		margin-left: -4rem;
+	}
+
+	.new-button {
+		font-size: 1rem;
+		width: 5rem;
+		height: 4rem;
+		margin-top: -0.7rem;
+	}
+
+	.best-of {
+		margin-top: 0.5rem;
+	}
+
+	.next-button {
+		font-size: 1rem;
+		width: 5rem;
+		height: 4rem;
+		margin-top: -0.7rem;
+	}
 }
 
 /*        x      Viewport less then or equal to 320px       x     */

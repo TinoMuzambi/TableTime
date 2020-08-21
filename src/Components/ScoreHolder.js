@@ -339,14 +339,7 @@ class ScoreHolder extends Component {
 					<h2 className="best-of">
 						Game {this.state.currentGame}/{this.state.numericalBestOf}
 					</h2>
-					<button
-						className={`next-button ${
-							this.state.gameDetails.bestOf !== "Single Game"
-								? "shown"
-								: "hidden"
-						}`}
-						onClick={this.startNextGame}
-					>
+					<button className={`next-button`} onClick={this.startNextGame}>
 						Next Game
 					</button>
 					<Score

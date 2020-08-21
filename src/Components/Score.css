@@ -53,16 +53,34 @@
 	box-shadow: 0px 4px 4px rgba(255, 169, 169, 0.25);
 }
 
-/*              Viewport less then or equal to 750px            */
+/*              Viewport less then or equal to 768px            */
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
 }
 
-/*        x      Viewport less then or equal to 750px       x     */
+/*        x      Viewport less then or equal to 768px       x     */
 
 /*              Viewport less then or equal to 520px            */
 
 @media only screen and (max-width: 520px) {
+	.score {
+		width: 7rem;
+		height: 15rem;
+	}
+
+	.plus {
+		height: 2.5rem;
+		width: 2.5rem;
+		font-size: 1.5rem;
+		margin-right: 0;
+	}
+
+	.minus {
+		height: 2.5rem;
+		width: 2.5rem;
+		font-size: 1.5rem;
+		margin-right: 0;
+	}
 }
 
 /*        x      Viewport less then or equal to 520px       x     */
@@ -70,6 +88,30 @@
 /*              Viewport less then or equal to 320px            */
 
 @media only screen and (max-width: 320px) {
+	.score {
+		width: 5rem;
+		grid-template-areas:
+			"score"
+			"plus"
+			"minus";
+	}
+
+	.curr-score {
+		grid-area: score;
+		margin-top: 0.5rem;
+		font-size: 3.5rem;
+	}
+
+	.plus {
+		grid-area: plus;
+		margin-left: 1rem;
+	}
+
+	.minus {
+		grid-area: minus;
+		margin-top: 0.5rem;
+		margin-left: 1rem;
+	}
 }
 
 /*        x      Viewport less then or equal to 320px       x     */
