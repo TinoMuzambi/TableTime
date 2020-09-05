@@ -7,6 +7,7 @@ import StartGame from "./Components/StartGame";
 import History from "./Components/History";
 import About from "./Components/About";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Helmet } from "react-helmet";
 
 function App() {
 	return (
@@ -17,7 +18,18 @@ function App() {
 						<TransitionGroup>
 							<CSSTransition key={location.key} timeout={450} classNames="fade">
 								<Switch location={location}>
-									<Route path="/" component={SplashScreen} exact />
+									<Route
+										path="/"
+										exact
+										render={() => (
+											<div>
+												<Helmet>
+													<title>Table Time</title>
+												</Helmet>
+												<SplashScreen />
+											</div>
+										)}
+									/>
 									<Route path="/start" component={StartGame} />
 									<Route path="/game" component={ScoreHolder} />
 									<Route path="/history" component={History} />

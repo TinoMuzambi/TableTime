@@ -35,6 +35,7 @@ class History extends Component {
 	}
 
 	render() {
+		document.title = "History | Table Time";
 		let arrayGames = [];
 		for (let i in this.state.games) arrayGames.push([i, this.state.games[i]]); // Get games from JSON to array format.
 		return (

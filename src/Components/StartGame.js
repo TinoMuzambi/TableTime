@@ -42,6 +42,7 @@ class StartGame extends Component {
 	}
 
 	render() {
+		document.title = "Game | Table Time";
 		return (
 			<>
 				<div className="start-holder">

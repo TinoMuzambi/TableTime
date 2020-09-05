@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 
 class About extends Component {
 	render() {
+		document.title = "About | Table Time";
 		return (
 			<>
 				<div className="about-holder">
