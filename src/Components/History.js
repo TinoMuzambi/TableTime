@@ -26,7 +26,7 @@ class History extends Component {
 	async UNSAFE_componentWillMount() {
 		// Fetch game data from database on component load.
 		const fetchData = async () => {
-			const result = await fetch(`/api/games`);
+			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
 			const body = await result.json();
 			await this.setState({ games: body });
 		};
