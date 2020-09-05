@@ -74,7 +74,9 @@ class History extends Component {
 										{game[1]["player2"]}
 									</h2>
 								</div>
-
+								<h3>
+									{game[1]["bestOf"]} - Game {game[1]["gameType"]}
+								</h3>
 								<div className="game-scores">
 									{/* Lodsh zip players scores for easy mapping. */}
 									{_.zip(
@@ -90,13 +92,9 @@ class History extends Component {
 
 								<h3>
 									<Moment format="DD MMMM YYYY HH:mm">
-										{moment.tz(game[1]["date"], "Africa/Johannesburg")}
+										{moment.tz(game[1]["date"], "Africa/Banjul")}
 									</Moment>
 									{/* Moment library for formatting dates. */}
-								</h3>
-
-								<h3>
-									{game[1]["bestOf"]} - Game {game[1]["gameType"]}
 								</h3>
 							</div>
 						))}
