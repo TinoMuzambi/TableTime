@@ -22,18 +22,66 @@ function App() {
 										path="/"
 										exact
 										render={() => (
-											<div>
+											<>
 												<Helmet>
 													<title>Table Time</title>
 												</Helmet>
 												<SplashScreen />
-											</div>
+											</>
 										)}
 									/>
-									<Route path="/start" component={StartGame} />
+									<Route
+										path="/start"
+										exact
+										render={() => (
+											<>
+												<Helmet>
+													<title>Start | Table Time</title>
+												</Helmet>
+												<StartGame />
+											</>
+										)}
+									/>
+									<Route
+										path="/game"
+										exact
+										render={() => (
+											<>
+												<Helmet>
+													<title>Game | Table Time</title>
+												</Helmet>
+												<ScoreHolder />
+											</>
+										)}
+									/>
+									<Route
+										path="/history"
+										exact
+										render={() => (
+											<>
+												<Helmet>
+													<title>History | Table Time</title>
+												</Helmet>
+												<History />
+											</>
+										)}
+									/>
+									<Route
+										path="/about"
+										exact
+										render={() => (
+											<>
+												<Helmet>
+													<title>About | Table Time</title>
+												</Helmet>
+												<About />
+											</>
+										)}
+									/>
+									{/* <Route path="/start" component={StartGame} />
 									<Route path="/game" component={ScoreHolder} />
 									<Route path="/history" component={History} />
-									<Route path="/about" component={About} />
+									<Route path="/about" component={About} /> */}
 								</Switch>
 							</CSSTransition>
 						</TransitionGroup>
