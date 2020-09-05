@@ -72,7 +72,7 @@ class ScoreHolder extends Component {
 	async UNSAFE_componentWillMount() {
 		// Get data from database on component load.
 		const fetchData = async () => {
-			const result = await fetch(`/api/games`);
+			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
 			const body = await result.json();
 			await this.setState({ games: body });
 		};
@@ -275,7 +275,7 @@ class ScoreHolder extends Component {
 				this.state.games[
 					Object.keys(this.state.games).length
 				] = this.state.gameData;
-				await fetch(`api/game/insert`, {
+				await fetch(`https://table-time.herokuapp.com/api/game/insert`, {
 					method: "post",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(gameData),
