@@ -89,12 +89,9 @@ class History extends Component {
 								</div>
 
 								<h3>
-									{moment.tz(
-										<Moment format="DD MMMM YYYY HH:mm">
-											{game[1]["date"]}
-										</Moment>,
-										"Africa/Johannesburg"
-									)}
+									<Moment format="DD MMMM YYYY HH:mm">
+										{moment.tz(game[1]["date"], "Africa/Johannesburg")}
+									</Moment>
 									{/* Moment library for formatting dates. */}
 								</h3>
 
