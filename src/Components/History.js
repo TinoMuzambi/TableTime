@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./History.css";
 import Moment from "react-moment";
+import moment from "moment-timezone";
 import { MdArrowBack } from "react-icons/md";
 import { withRouter } from "react-router-dom";
 import _ from "lodash";
@@ -88,7 +89,12 @@ class History extends Component {
 								</div>
 
 								<h3>
-									<Moment format="DD MMMM YYYY HH:mm">{game[1]["date"]}</Moment>{" "}
+									{moment.tz(
+										<Moment format="DD MMMM YYYY HH:mm">
+											{game[1]["date"]}
+										</Moment>,
+										"Africa/Johannesburg"
+									)}
 									{/* Moment library for formatting dates. */}
 								</h3>
 
