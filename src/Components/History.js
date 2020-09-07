@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./History.css";
 import Moment from "react-moment";
 import moment from "moment-timezone";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdDelete } from "react-icons/md";
 import { AiOutlineReload } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
 import _ from "lodash";
@@ -106,6 +106,9 @@ class History extends Component {
 											</Moment>
 											{/* Moment library for formatting dates. */}
 										</h3>
+										<button className="delete-button">
+											<MdDelete className="button-delete" />
+										</button>
 									</div>
 								))}
 							</div>
