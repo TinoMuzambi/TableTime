@@ -90,7 +90,7 @@
 
 @media only screen and (max-width: 520px) {
 	.about-holder {
-		width: 22rem;
+		width: 19rem;
 		height: 30rem;
 	}
 
@@ -106,7 +106,7 @@
 	.about-title {
 		font-size: 3rem;
 		margin-top: 1.5rem;
-		margin-left: -10rem;
+		margin-left: -8.8rem;
 	}
 
 	.footer {
