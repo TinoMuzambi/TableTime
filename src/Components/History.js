@@ -28,6 +28,7 @@ class History extends Component {
 		};
 
 		this.handleConfirm = this.handleConfirm.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	async UNSAFE_componentWillMount() {
@@ -42,7 +43,26 @@ class History extends Component {
 		fetchData();
 	}
 
-	handleConfirm() {
+	async handleDelete(id) {
+		// Delete game.
+		const deleteGame = async () => {
+			const match = {
+				_id: id,
+			};
+			await fetch(`https://table-time.herokuapp.com/api/game/delete`, {
+				method: "post",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(match),
+			});
+			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
+			const body = await result.json();
+			await this.setState({ games: body });
+		};
+		deleteGame();
+	}
+
+	handleConfirm(id) {
+		console.log(id);
 		// Confirm alert dialog for starting a new game.
 		confirmAlert({
 			customUI: ({ onClose }) => {
@@ -54,6 +74,7 @@ class History extends Component {
 						</p>
 						<button
 							onClick={() => {
+								this.handleDelete(id);
 								onClose();
 							}}
 							className="confirm-new-yes"
@@ -139,7 +160,7 @@ class History extends Component {
 										</h3>
 										<button
 											className="delete-button"
-											onClick={this.handleConfirm}
+											onClick={() => this.handleConfirm(game[1]["_id"])}
 										>
 											<MdDelete className="button-delete" />
 										</button>
