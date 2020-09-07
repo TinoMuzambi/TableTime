@@ -6,6 +6,8 @@ import { MdArrowBack, MdDelete } from "react-icons/md";
 import { AiOutlineReload } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
 import _ from "lodash";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class History extends Component {
 	constructor() {
@@ -24,6 +26,8 @@ class History extends Component {
 				player2Score: [], // Array of player 2's game's scores.
 			},
 		};
+
+		this.handleConfirm = this.handleConfirm.bind(this);
 	}
 
 	async UNSAFE_componentWillMount() {
@@ -36,6 +40,33 @@ class History extends Component {
 			await this.setState({ isFetching: false });
 		};
 		fetchData();
+	}
+
+	handleConfirm() {
+		// Confirm alert dialog for starting a new game.
+		confirmAlert({
+			customUI: ({ onClose }) => {
+				return (
+					<div className="confirm-new">
+						<h1 className="confirm-new-title">Delete Match</h1>
+						<p className="confirm-new-text">
+							Are you sure you want to delete this match?
+						</p>
+						<button
+							onClick={() => {
+								onClose();
+							}}
+							className="confirm-new-yes"
+						>
+							Yes
+						</button>
+						<button onClick={onClose} className="confirm-new-no">
+							Cancel
+						</button>
+					</div>
+				);
+			},
+		});
 	}
 
 	render() {
@@ -106,7 +137,10 @@ class History extends Component {
 											</Moment>
 											{/* Moment library for formatting dates. */}
 										</h3>
-										<button className="delete-button">
+										<button
+											className="delete-button"
+											onClick={this.handleConfirm}
+										>
 											<MdDelete className="button-delete" />
 										</button>
 									</div>
