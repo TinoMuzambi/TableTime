@@ -3,6 +3,7 @@ import "./History.css";
 import Moment from "react-moment";
 import moment from "moment-timezone";
 import { MdArrowBack } from "react-icons/md";
+import { AiOutlineReload } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
 import _ from "lodash";
 
@@ -11,6 +12,7 @@ class History extends Component {
 		super();
 
 		this.state = {
+			isFetching: true,
 			games: {
 				id: 0, // Game ID.
 				date: "", // Date game was played.
@@ -27,9 +29,11 @@ class History extends Component {
 	async UNSAFE_componentWillMount() {
 		// Fetch game data from database on component load.
 		const fetchData = async () => {
+			await this.setState({ isFetching: true });
 			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
 			const body = await result.json();
 			await this.setState({ games: body });
+			await this.setState({ isFetching: false });
 		};
 		fetchData();
 	}
@@ -40,65 +44,73 @@ class History extends Component {
 		return (
 			<>
 				<div className="history-holder">
-					<button
-						className="hist-back-button"
-						onClick={this.props.history.goBack}
-					>
-						<MdArrowBack className="button-link" />
-					</button>
-					<h1 className="title">History</h1>
+					{this.state.isFetching ? (
+						<AiOutlineReload className="icon" />
+					) : (
+						<>
+							<button
+								className="hist-back-button"
+								onClick={this.props.history.goBack}
+							>
+								<MdArrowBack className="button-link" />
+							</button>
+							<h1 className="title">History</h1>
 
-					<div className="scores-container">
-						{/* Mapping each game into div component. */}
-						{arrayGames.map((game, key) => (
-							<div className="score-list" key={key}>
-								<div className="flex">
-									{/* If winner add winner class for styling or loser class. */}
-									<h2
-										className={
-											game[1]["player1"] === game[1]["winner"]
-												? "history-winner"
-												: "history-loser"
-										}
-									>
-										{game[1]["player1"]}
-									</h2>
-									<h2 className="separator"> vs </h2>
-									<h2
-										className={
-											game[1]["player2"] === game[1]["winner"]
-												? "history-winner"
-												: "history-loser"
-										}
-									>
-										{game[1]["player2"]}
-									</h2>
-								</div>
-								<h3>
-									{game[1]["bestOf"]} - Game {game[1]["gameType"]}
-								</h3>
-								<div className="game-scores">
-									{/* Lodsh zip players scores for easy mapping. */}
-									{_.zip(
-										`${game[1]["player1Score"]}`.split(","),
-										`${game[1]["player2Score"]}`.split(",")
-									).map((scoresArray, key) => (
-										<h3 key={key}>
-											{`Game ${key + 1}: ${scoresArray[0]} - ${scoresArray[1]}`}
-											<br />
+							<div className="scores-container">
+								{/* Mapping each game into div component. */}
+								{arrayGames.map((game, key) => (
+									<div className="score-list" key={key}>
+										<div className="flex">
+											{/* If winner add winner class for styling or loser class. */}
+											<h2
+												className={
+													game[1]["player1"] === game[1]["winner"]
+														? "history-winner"
+														: "history-loser"
+												}
+											>
+												{game[1]["player1"]}
+											</h2>
+											<h2 className="separator"> vs </h2>
+											<h2
+												className={
+													game[1]["player2"] === game[1]["winner"]
+														? "history-winner"
+														: "history-loser"
+												}
+											>
+												{game[1]["player2"]}
+											</h2>
+										</div>
+										<h3>
+											{game[1]["bestOf"]} - Game {game[1]["gameType"]}
 										</h3>
-									))}
-								</div>
+										<div className="game-scores">
+											{/* Lodsh zip players scores for easy mapping. */}
+											{_.zip(
+												`${game[1]["player1Score"]}`.split(","),
+												`${game[1]["player2Score"]}`.split(",")
+											).map((scoresArray, key) => (
+												<h3 key={key}>
+													{`Game ${key + 1}: ${scoresArray[0]} - ${
+														scoresArray[1]
+													}`}
+													<br />
+												</h3>
+											))}
+										</div>
 
-								<h3>
-									<Moment format="DD MMMM YYYY HH:mm">
-										{moment.tz(game[1]["date"], "Africa/Banjul")}
-									</Moment>
-									{/* Moment library for formatting dates. */}
-								</h3>
+										<h3>
+											<Moment format="DD MMMM YYYY HH:mm">
+												{moment.tz(game[1]["date"], "Africa/Banjul")}
+											</Moment>
+											{/* Moment library for formatting dates. */}
+										</h3>
+									</div>
+								))}
 							</div>
-						))}
-					</div>
+						</>
+					)}
 				</div>
 			</>
 		);

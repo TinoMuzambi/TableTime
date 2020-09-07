@@ -43,6 +43,25 @@
 	color: gray;
 }
 
+.icon {
+	font-size: 5rem;
+	color: gray;
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	transform: translate(-50%, -50%);
+	animation: spinLogo 2s infinite ease-out;
+}
+
+@keyframes spinLogo {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
 .title {
 	grid-area: heading;
 	margin-left: -28rem;
