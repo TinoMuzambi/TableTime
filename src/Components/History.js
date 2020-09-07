@@ -101,7 +101,7 @@ class History extends Component {
 										</div>
 
 										<h3>
-											<Moment format="DD MMMM YYYY HH:mm">
+											<Moment format="DD MMM YYYY HH:mm">
 												{moment.tz(game[1]["date"], "Africa/Banjul")}
 											</Moment>
 											{/* Moment library for formatting dates. */}
