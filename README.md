@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Table Time
 
-This React app is a score keeping tool for Table Tennis matches. Currently still under development.
+This React Progressive Web App is a full-stack MERN score keeping tool for Table Tennis matches. Backend code is available in this [repo](https://github.com/TinoMuzambi/TableTimeFull).
