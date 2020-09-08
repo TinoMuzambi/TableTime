@@ -621,6 +621,55 @@
 
 /* x Score Holder x */
 
+/* Score  */
+
+.score {
+	display: grid;
+	background: #f4f4f4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	width: 10rem;
+	height: 16rem;
+	justify-items: center;
+	align-items: center;
+	margin: 0 1rem;
+
+	.curr-score {
+		font-size: 4rem;
+	}
+
+	.button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+
+		&:hover {
+			color: gray;
+		}
+
+		.done {
+			pointer-events: none;
+		}
+	}
+
+	.minus {
+		margin-left: 0.5rem;
+	}
+
+	.player {
+		font-size: 2rem;
+		padding-top: 2.5rem;
+	}
+}
+
+/* x Score x */
+
 /*              Viewport less then or equal to 768px            */
 
 @media only screen and (max-width: 768px) {
@@ -860,6 +909,25 @@
 			margin-top: -0.7rem;
 		}
 	}
+
+	.score {
+		width: 6.5rem;
+		height: 15rem;
+
+		.plus {
+			height: 2.5rem;
+			width: 2.5rem;
+			font-size: 1.5rem;
+			margin-right: 0;
+		}
+
+		.minus {
+			height: 2.5rem;
+			width: 2.5rem;
+			font-size: 1.5rem;
+			margin-right: 0;
+		}
+	}
 }
 
 /*        x      Viewport less then or equal to 520px       x     */
@@ -1009,6 +1077,31 @@
 			width: 5rem;
 			height: 4rem;
 			margin-top: -0.7rem;
+		}
+	}
+
+	.score {
+		width: 5rem;
+		grid-template-areas:
+			"score"
+			"plus"
+			"minus";
+
+		.curr-score {
+			grid-area: score;
+			margin-top: 0.5rem;
+			font-size: 3.5rem;
+		}
+
+		.plus {
+			grid-area: plus;
+			margin-left: 1rem;
+		}
+
+		.minus {
+			grid-area: minus;
+			margin-top: 0.5rem;
+			margin-left: 1rem;
 		}
 	}
 }
