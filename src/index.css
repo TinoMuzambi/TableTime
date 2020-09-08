@@ -8,6 +8,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+	/* background: rgb(41, 41, 41); */
 	overflow: auto;
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
