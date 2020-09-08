@@ -1,0 +1,250 @@
+/* simple - enter transition 300ms, exit 150ms */
+.fade-appear,
+.fade-enter {
+	opacity: 0;
+	z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: opacity 400ms linear 150ms;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+	opacity: 0;
+	transition: opacity 150ms linear;
+}
+
+/* Splash Screen */
+
+.splash-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"logo"
+		"links";
+	justify-items: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 31rem;
+	width: 50rem;
+
+	.logo {
+		height: 18rem;
+		margin-top: 1rem;
+		border-radius: 50px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+
+	.links {
+		list-style-type: none;
+
+		.link {
+			font-size: 1.5rem;
+			text-decoration: none;
+			color: black;
+			padding: 1rem 0;
+			text-align: center;
+			margin-top: -0.5rem;
+
+			&:hover {
+				color: rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+}
+
+/* x Splash Screen x */
+
+/* About  */
+
+.about-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"back   title"
+		"photo  photo"
+		"footer footer";
+	justify-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 35rem;
+	width: 60rem;
+
+	.about-back-button {
+		grid-area: back;
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		justify-self: start;
+		margin-left: 1.5rem;
+		margin-top: 3.5rem;
+		display: flex;
+		align-items: center;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+
+	.about-title {
+		grid-area: title;
+		margin-left: -25rem;
+	}
+
+	.about-logo {
+		height: 20rem;
+		border-radius: 50px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		grid-area: photo;
+		margin-top: -2rem;
+	}
+
+	.footer {
+		grid-area: footer;
+		margin-bottom: -1rem;
+
+		.link-link {
+			text-decoration: none;
+			text-align: center;
+			color: gray;
+		}
+
+		.version {
+			text-align: center;
+			margin-top: 0;
+		}
+	}
+}
+
+/* x About x */
+
+/*              Viewport less then or equal to 768px            */
+
+@media only screen and (max-width: 768px) {
+	.splash-holder {
+		width: 40rem;
+	}
+
+	.about-holder {
+		width: 40rem;
+
+		.about-title {
+			margin-left: -14rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 768px       x     */
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px) {
+	.splash-holder {
+		width: 21rem;
+		height: 30rem;
+
+		.logo {
+			height: 16rem;
+			margin-top: 1rem;
+		}
+
+		.links {
+			margin-left: -2rem;
+		}
+	}
+
+	.about-holder {
+		width: 19rem;
+		height: 30rem;
+
+		.about-back-button {
+			margin-top: 1.5rem;
+		}
+
+		.about-logo {
+			height: 15rem;
+			margin-top: -2rem;
+		}
+
+		.about-title {
+			font-size: 3rem;
+			margin-top: 1.5rem;
+			margin-left: -8.8rem;
+		}
+
+		.footer {
+			margin-bottom: -2rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+
+/*              Viewport less then or equal to 320px            */
+
+@media only screen and (max-width: 320px) {
+	.splash-holder {
+		width: 18rem;
+		height: 29rem;
+
+		.logo {
+			height: 15rem;
+			margin-top: 1rem;
+		}
+
+		.links {
+			margin-left: -2rem;
+		}
+	}
+
+	.about-holder {
+		width: 18rem;
+		height: 30rem;
+
+		.about-back-button {
+			margin-top: 1.5rem;
+		}
+
+		.about-logo {
+			height: 15rem;
+			margin-top: -2rem;
+		}
+
+		.about-title {
+			font-size: 2.5rem;
+			margin-top: 1.5rem;
+			margin-left: -7rem;
+		}
+
+		.footer {
+			margin-bottom: -3rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 320px       x     */

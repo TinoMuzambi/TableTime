@@ -1,6 +1,5 @@
 .splash-holder {
 	background-color: rgb(253, 253, 253);
-	/* background: rgb(78, 78, 78); */
 	display: grid;
 	grid-template-areas:
 		"logo"
