@@ -53,7 +53,7 @@ class History extends Component {
 			await this.setState({ isFetching: false });
 		};
 
-		const pusher = new Pusher("e541d4f20f806b61b5d7", {
+		const pusher = new Pusher(process.env.pusher_key, {
 			cluster: "ap2",
 		});
 
