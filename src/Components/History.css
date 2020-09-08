@@ -110,7 +110,7 @@
 	height: max-content;
 	background-color: #f4f4f4;
 	margin-bottom: 3rem;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .flex {
