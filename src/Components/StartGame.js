@@ -101,8 +101,14 @@ class StartGame extends Component {
 									gameDetails: {
 										gameType: this.state.gameType,
 										bestOf: this.state.bestOf,
-										player1: this.state.player1,
-										player2: this.state.player2,
+										player1:
+											this.state.player1 === ""
+												? "Player1"
+												: this.state.player1,
+										player2:
+											this.state.player2 === ""
+												? "Player2"
+												: this.state.player2,
 									},
 								},
 							}}
