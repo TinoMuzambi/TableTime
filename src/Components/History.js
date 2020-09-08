@@ -17,7 +17,6 @@ class History extends Component {
 		this.state = {
 			isFetching: true,
 			games: {
-				id: 0, // Game ID.
 				date: "", // Date game was played.
 				bestOf: "", // Single Game, Best of 3 or Best of 5.
 				gameType: 0, // Game 11 or game 21.

@@ -23,7 +23,6 @@ class ScoreHolder extends Component {
 			deuceScore: 0, // Deuce score represents score needed to win. Defaults to gameType.
 			globalDeuce: false, // Flag to see if game was ever in deuce.
 			games: {
-				id: 0, // Game ID.
 				date: "", // Date game was played.
 				bestOf: "", // Single Game, Best of 3 or Best of 5.
 				gameType: 0, // Game 11 or game 21.
@@ -35,7 +34,6 @@ class ScoreHolder extends Component {
 			status: "BAU", // Current game status. BAU (Business As Usual), Game Point, Deuce or Game.
 			currentGame: 1, // Current game number.
 			gameData: {
-				id: 0, // Game ID.
 				date: "", // Date game was played.
 				bestOf: "", // Single Game, Best of 3 or Best of 5.
 				gameType: 0, // Game 11 or game 21.
@@ -144,7 +142,6 @@ class ScoreHolder extends Component {
 			deuceScore: this.state.gameDetails.gameType,
 			currentGame: 1,
 			gameData: {
-				id: 0,
 				date: "",
 				bestOf: "",
 				gameType: 0,
@@ -246,7 +243,6 @@ class ScoreHolder extends Component {
 			document.querySelector(".next-button").classList.remove("clickable");
 			const gameData = {
 				// gameData object for updating state.
-				id: Object.keys(this.state.games).length.toString(),
 				date:
 					new Date().getFullYear() +
 					"-" +
