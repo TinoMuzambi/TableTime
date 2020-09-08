@@ -10,6 +10,7 @@
 		"moment": "^2.27.0",
 		"moment-timezone": "^0.5.31",
 		"path-to-regexp": "^6.1.0",
+		"pusher-js": "^7.0.0",
 		"react": "^16.13.1",
 		"react-confirm-alert": "^2.6.1",
 		"react-dom": "^16.13.1",

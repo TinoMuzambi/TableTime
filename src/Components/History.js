@@ -8,10 +8,11 @@ import { withRouter } from "react-router-dom";
 import _ from "lodash";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import Pusher from "pusher-js";
 
 class History extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			isFetching: true,
@@ -43,6 +44,27 @@ class History extends Component {
 		fetchData();
 	}
 
+	componentDidMount() {
+		const pusher = new Pusher("e541d4f20f806b61b5d7", {
+			cluster: "ap2",
+		});
+
+		const channel = pusher.subscribe("matches");
+		channel.bind("deleted", (data) => {
+			// alert(JSON.stringify(data));
+			const fetchData = async () => {
+				await this.setState({ isFetching: true });
+				const result = await fetch(
+					`https://table-time.herokuapp.com/api/games`
+				);
+				const body = await result.json();
+				await this.setState({ games: body });
+				await this.setState({ isFetching: false });
+			};
+			fetchData();
+		});
+	}
+
 	async handleDelete(id) {
 		// Delete game.
 		const deleteGame = async () => {
@@ -62,7 +84,6 @@ class History extends Component {
 	}
 
 	handleConfirm(id) {
-		console.log(id);
 		// Confirm alert dialog for starting a new game.
 		confirmAlert({
 			customUI: ({ onClose }) => {
