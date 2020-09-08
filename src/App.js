@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import SplashScreen from "./Components/SplashScreen";
@@ -10,22 +10,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Helmet } from "react-helmet";
 
 function App() {
-	// useEffect(() => {
-	// 	const pusher = new Pusher("e541d4f20f806b61b5d7", {
-	// 		cluster: "ap2",
-	// 	});
-
-	// 	const channel = pusher.subscribe("matches");
-	// 	channel.bind("deleted", (data) => {
-	// 		// alert(JSON.stringify(data));
-	// 	});
-
-	// 	return () => {
-	// 		channel.unbind_all();
-	// 		channel.unsubscribe();
-	// 	};
-	// }, []);
-
 	return (
 		<>
 			<Router>

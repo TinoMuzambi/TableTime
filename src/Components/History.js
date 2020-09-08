@@ -45,22 +45,23 @@ class History extends Component {
 	}
 
 	componentDidMount() {
+		const fetchData = async () => {
+			await this.setState({ isFetching: true });
+			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
+			const body = await result.json();
+			await this.setState({ games: body });
+			await this.setState({ isFetching: false });
+		};
+
 		const pusher = new Pusher("e541d4f20f806b61b5d7", {
 			cluster: "ap2",
 		});
 
 		const channel = pusher.subscribe("matches");
 		channel.bind("deleted", (data) => {
-			// alert(JSON.stringify(data));
-			const fetchData = async () => {
-				await this.setState({ isFetching: true });
-				const result = await fetch(
-					`https://table-time.herokuapp.com/api/games`
-				);
-				const body = await result.json();
-				await this.setState({ games: body });
-				await this.setState({ isFetching: false });
-			};
+			fetchData();
+		});
+		channel.bind("inserted", (data) => {
 			fetchData();
 		});
 	}
