@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./History.css";
 import Moment from "react-moment";
 import moment from "moment-timezone";
 import { MdArrowBack, MdDelete } from "react-icons/md";

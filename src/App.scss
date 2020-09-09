@@ -1,0 +1,1137 @@
+/* simple - enter transition 300ms, exit 150ms */
+.fade-appear,
+.fade-enter {
+	opacity: 0;
+	z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: opacity 400ms linear 150ms;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+	opacity: 0;
+	transition: opacity 150ms linear;
+}
+
+.confirm-new {
+	background-color: rgb(253, 253, 253);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.confirm-new-title {
+	font-size: 3rem;
+	padding-left: 2rem;
+	padding-top: 2rem;
+	padding-right: 2rem;
+}
+
+.confirm-new-text {
+	padding: 0 2rem;
+}
+
+.confirm-new-yes {
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	font-size: 1rem;
+	outline: none;
+	cursor: pointer;
+	margin-left: 2rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.confirm-new-no {
+	background: white;
+	border: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	font-size: 1rem;
+	outline: none;
+	cursor: pointer;
+	margin-left: 0.5rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+}
+
+/* Splash Screen */
+
+.splash-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"logo"
+		"links";
+	justify-items: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 31rem;
+	width: 50rem;
+
+	.logo {
+		height: 18rem;
+		margin-top: 1rem;
+		border-radius: 50px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+
+	.links {
+		list-style-type: none;
+
+		.link {
+			font-size: 1.5rem;
+			text-decoration: none;
+			color: black;
+			padding: 1rem 0;
+			text-align: center;
+			margin-top: -0.5rem;
+
+			&:hover {
+				color: rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+}
+
+/* x Splash Screen x */
+
+/* About  */
+
+.about-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"back   title"
+		"photo  photo"
+		"footer footer";
+	justify-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 35rem;
+	width: 60rem;
+
+	.about-back-button {
+		grid-area: back;
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		justify-self: start;
+		margin-left: 1.5rem;
+		margin-top: 3.5rem;
+		display: flex;
+		align-items: center;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+
+	.about-title {
+		grid-area: title;
+		margin-left: -25rem;
+	}
+
+	.about-logo {
+		height: 20rem;
+		border-radius: 50px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		grid-area: photo;
+		margin-top: -2rem;
+	}
+
+	.footer {
+		grid-area: footer;
+		margin-bottom: -1rem;
+
+		.link-link {
+			text-decoration: none;
+			text-align: center;
+			color: gray;
+		}
+
+		.version {
+			text-align: center;
+			margin-top: 0;
+		}
+	}
+}
+
+/* x About x */
+
+/* History */
+
+.history-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"back heading"
+		"scores scores";
+	justify-items: center;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 35rem;
+	width: 60rem;
+
+	.icon {
+		font-size: 5rem;
+		color: gray;
+		position: absolute;
+		top: 50%;
+		left: 45%;
+		transform: translate(-50%, -50%);
+		animation: spinLogo 2s infinite ease-out;
+	}
+
+	@keyframes spinLogo {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(359deg);
+		}
+	}
+
+	.hist-back-button {
+		grid-area: back;
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		justify-self: start;
+		margin-left: 1.5rem;
+		display: flex;
+		align-items: center;
+		margin-top: 3.5rem;
+		margin-bottom: 1rem;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+
+	.title {
+		grid-area: heading;
+		margin-left: -28rem;
+	}
+
+	.scores-container {
+		grid-area: scores;
+		background-color: rgb(253, 253, 253);
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		width: 100%;
+		overflow-y: scroll;
+		position: relative;
+
+		.score-list {
+			display: grid;
+			justify-items: center;
+			align-items: center;
+			border-radius: 50px;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			width: 80%;
+			height: max-content;
+			background-color: #f4f4f4;
+			margin-bottom: 3rem;
+			overflow-x: auto;
+
+			.flex {
+				display: flex;
+
+				.history-winner {
+					color: rgb(176, 255, 169);
+				}
+
+				.separator {
+					padding: 0 0.3rem;
+				}
+
+				.history-loser {
+					color: rgb(255, 169, 169);
+				}
+			}
+
+			.delete-button {
+				background: white;
+				border: none;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 50%;
+				font-size: 2rem;
+				height: 3rem;
+				width: 3rem;
+				outline: none;
+				cursor: pointer;
+				position: relative;
+				justify-self: end;
+				right: 1rem;
+				bottom: 1rem;
+				display: flex;
+				align-items: center;
+
+				.button-delete {
+					color: grey;
+
+					&:hover {
+						transition: 0.00001s ease;
+						color: gray;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* x History x */
+
+/* Start */
+
+.start-holder {
+	background-color: rgb(253, 253, 253);
+	display: grid;
+	grid-template-areas:
+		"back heading heading"
+		"player1 vs      player2"
+		"game    game    game"
+		"rounds  rounds  button";
+	justify-items: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 35rem;
+	width: 60rem;
+
+	.start-back-button {
+		grid-area: back;
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		justify-self: start;
+		margin-left: 1.5rem;
+		display: flex;
+		align-items: center;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+
+	.heading {
+		grid-area: heading;
+		font-size: 2.5rem;
+		margin-left: -27rem;
+	}
+
+	.player-input {
+		background: #f4f4f4;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50px;
+		width: 12rem;
+		text-align: center;
+		margin: 3rem;
+		height: 4rem;
+
+		input {
+			outline: none;
+			border: none;
+			font-family: var(--Lexend);
+			background: transparent;
+			font-size: 1.5rem;
+			padding: 1rem;
+		}
+	}
+
+	.player1 {
+		grid-area: player1;
+	}
+
+	.player2 {
+		grid-area: player2;
+	}
+
+	.vs {
+		grid-area: vs;
+		font-size: 2.5rem;
+	}
+
+	.game {
+		grid-area: game;
+		width: 12rem;
+		text-align: center;
+		height: 4rem;
+
+		#game {
+			background: #f4f4f4;
+			border: none;
+			outline: none;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			border-radius: 50px;
+			padding: 1.2rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+
+			&:hover {
+				color: gray;
+				transition: 0.00001s ease;
+			}
+		}
+
+		.game-arrow {
+			position: relative;
+			right: 1.4rem;
+			bottom: 0rem;
+			font-size: 1rem;
+		}
+
+		select {
+			appearance: none;
+		}
+	}
+
+	.rounds {
+		grid-area: rounds;
+		width: 12rem;
+		text-align: center;
+		height: 4rem;
+
+		#rounds {
+			background: #f4f4f4;
+			border: none;
+			outline: none;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			border-radius: 50px;
+			padding: 1.2rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+			margin-left: 12.5rem;
+
+			&:hover {
+				color: gray;
+				transition: 0.00001s ease;
+			}
+		}
+
+		.rounds-arrow {
+			position: relative;
+			right: -16.8rem;
+			bottom: 2.4rem;
+			font-size: 1rem;
+		}
+
+		select {
+			appearance: none;
+		}
+	}
+
+	.button-start {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		grid-area: button;
+		justify-self: end;
+		margin-right: 2rem;
+		margin-bottom: 2rem;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+}
+
+/* x Start x */
+
+/* Score Holder */
+
+.score-holder {
+	position: absolute;
+	display: grid;
+	grid-template-areas:
+		"back   game   game"
+		"new   best   next"
+		"status status status"
+		"score1 mid    score2";
+	justify-items: center;
+	align-items: center;
+	background-color: rgb(253, 253, 253);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	height: 32rem;
+	width: 60rem;
+	padding-bottom: 5rem;
+	overflow: hidden;
+
+	.winner {
+		background: rgb(176, 255, 169);
+		box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
+	}
+
+	.loser {
+		background: rgb(255, 169, 169);
+		box-shadow: 0px 4px 4px rgba(255, 169, 169, 0.25);
+	}
+
+	.clickable {
+		pointer-events: all !important;
+		background: rgb(176, 255, 169) !important;
+		box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25) !important;
+		opacity: 1 !important;
+	}
+
+	.score-back-button {
+		grid-area: back;
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+		justify-self: start;
+		margin-left: 1.5rem;
+		display: flex;
+		align-items: center;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
+	}
+
+	.game-type {
+		grid-area: game;
+		margin-left: -20rem;
+	}
+
+	.new-button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50px;
+		font-size: 1.5rem;
+		outline: none;
+		cursor: pointer;
+		grid-area: new;
+		margin-top: -3.5rem;
+		padding: 1rem;
+
+		&:hover {
+			color: gray;
+		}
+	}
+
+	.best-of {
+		grid-area: best;
+		margin-top: -2.5rem;
+		text-align: center;
+	}
+
+	.next-button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50px;
+		font-size: 1.5rem;
+		outline: none;
+		cursor: pointer;
+		grid-area: next;
+		margin-top: -3.5rem;
+		padding: 1rem;
+		pointer-events: none;
+		opacity: 0;
+
+		&:hover {
+			color: gray;
+		}
+	}
+
+	.score1 {
+		grid-area: score1;
+	}
+
+	.status {
+		grid-area: status;
+	}
+
+	.separator {
+		text-align: center;
+		grid-area: mid;
+	}
+
+	.score2 {
+		grid-area: score2;
+	}
+
+	h1 {
+		font-size: 4rem;
+	}
+}
+
+/* x Score Holder x */
+
+/* Score  */
+
+.score {
+	display: grid;
+	background: #f4f4f4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
+	width: 10rem;
+	height: 16rem;
+	justify-items: center;
+	align-items: center;
+	margin: 0 1rem;
+
+	.done {
+		pointer-events: none;
+	}
+
+	.curr-score {
+		font-size: 4rem;
+	}
+
+	.button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		font-size: 2rem;
+		height: 3rem;
+		width: 3rem;
+		outline: none;
+		cursor: pointer;
+
+		&:hover {
+			color: gray;
+		}
+	}
+
+	.minus {
+		margin-left: 0.5rem;
+	}
+
+	.player {
+		font-size: 2rem;
+		padding-top: 2.5rem;
+	}
+}
+
+/* x Score x */
+
+/*              Viewport less then or equal to 768px            */
+
+@media only screen and (max-width: 768px) {
+	.splash-holder {
+		width: 40rem;
+	}
+
+	.about-holder {
+		width: 40rem;
+
+		.about-title {
+			margin-left: -14rem;
+		}
+	}
+
+	.history-holder {
+		width: 39rem;
+		height: 30rem;
+
+		.title {
+			margin-left: -18rem;
+		}
+	}
+
+	.start-holder {
+		grid-template-areas:
+			"back    heading"
+			"player1 player1"
+			"vs      vs"
+			"player2 player2"
+			"game    game"
+			"rounds  button";
+		height: 33rem;
+		width: 40rem;
+
+		.heading {
+			margin-left: -21rem;
+			font-size: 3rem;
+		}
+
+		.vs {
+			margin-top: -1rem;
+			font-size: 3rem;
+		}
+
+		.player-input {
+			width: 9rem;
+			margin: 1rem;
+		}
+
+		.player1 {
+			margin-top: -1rem;
+		}
+
+		.player2 {
+			margin-top: -1rem;
+		}
+
+		#game {
+			margin-left: 1rem;
+		}
+
+		#rounds {
+			margin-left: 8.8rem;
+		}
+
+		.rounds-arrow {
+			right: -13.1rem;
+			bottom: 2.5rem;
+		}
+
+		.button-start {
+			margin-top: 2rem;
+		}
+	}
+
+	.score-holder {
+		height: 30rem;
+		width: 40rem;
+
+		.score-back-button {
+			margin-left: 1.5rem;
+		}
+
+		.game-type {
+			margin-left: -12rem;
+		}
+
+		.next-button {
+			margin-top: -1rem;
+		}
+
+		.best-of {
+			margin-top: -0.8rem;
+		}
+
+		.new-button {
+			margin-top: -2rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 768px       x     */
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px) {
+	.splash-holder {
+		width: 21rem;
+		height: 30rem;
+
+		.logo {
+			height: 16rem;
+			margin-top: 1rem;
+		}
+
+		.links {
+			margin-left: -2rem;
+		}
+	}
+
+	.about-holder {
+		width: 19rem;
+		height: 30rem;
+
+		.about-back-button {
+			margin-top: 1.5rem;
+		}
+
+		.about-logo {
+			height: 15rem;
+			margin-top: -2rem;
+		}
+
+		.about-title {
+			font-size: 3rem;
+			margin-top: 1.5rem;
+			margin-left: -8.8rem;
+		}
+
+		.footer {
+			margin-bottom: -2rem;
+		}
+	}
+
+	.history-holder {
+		width: 20rem;
+		height: 30rem;
+
+		.title {
+			font-size: 2rem;
+			margin-left: -7.2rem;
+			margin-top: 2rem;
+		}
+
+		.hist-back-button {
+			margin-top: 1.8rem;
+		}
+	}
+
+	.start-holder {
+		width: 20rem;
+		height: 32rem;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		.heading {
+			font-size: 2.3rem;
+			margin-left: -11rem;
+		}
+
+		.vs {
+			margin-top: 0rem;
+		}
+
+		.player1 {
+			margin-bottom: 0rem;
+		}
+
+		.player2 {
+			margin-top: -2rem;
+		}
+
+		#game {
+			margin-top: 0;
+		}
+
+		#rounds {
+			margin-top: -1rem;
+			margin-left: 3.5rem !important;
+		}
+
+		.rounds-arrow {
+			right: -8rem !important;
+			bottom: 2.5rem;
+		}
+
+		.button-start {
+			margin-right: 0.5rem;
+		}
+	}
+
+	.confirm-new {
+		width: 20rem;
+	}
+
+	.confirm-new-title {
+		font-size: 2rem;
+	}
+
+	.score-holder {
+		width: 21rem;
+		height: 31rem;
+
+		.game-type {
+			font-size: 2.5rem;
+			margin-left: -8rem;
+		}
+
+		.new-button {
+			font-size: 1rem;
+			width: 5rem;
+			height: 4rem;
+			margin-top: -0.7rem;
+		}
+
+		.best-of {
+			margin-top: 0.5rem;
+		}
+
+		.next-button {
+			font-size: 1rem;
+			width: 5rem;
+			height: 4rem;
+			margin-top: -0.7rem;
+		}
+	}
+
+	.score {
+		width: 6.5rem;
+		height: 15rem;
+
+		.plus {
+			height: 2.5rem;
+			width: 2.5rem;
+			font-size: 1.5rem;
+			margin-right: 0;
+		}
+
+		.minus {
+			height: 2.5rem;
+			width: 2.5rem;
+			font-size: 1.5rem;
+			margin-right: 0;
+		}
+
+		.player {
+			font-size: 1.2rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+
+/*              Viewport less then or equal to 320px            */
+
+@media only screen and (max-width: 320px) {
+	.splash-holder {
+		width: 18rem;
+		height: 29rem;
+
+		.logo {
+			height: 15rem;
+			margin-top: 1rem;
+		}
+
+		.links {
+			margin-left: -2rem;
+		}
+	}
+
+	.about-holder {
+		width: 18rem;
+		height: 30rem;
+
+		.about-back-button {
+			margin-top: 1.5rem;
+		}
+
+		.about-logo {
+			height: 15rem;
+			margin-top: -2rem;
+		}
+
+		.about-title {
+			font-size: 2.5rem;
+			margin-top: 1.5rem;
+			margin-left: -7rem;
+		}
+
+		.footer {
+			margin-bottom: -3rem;
+		}
+	}
+
+	.history-holder {
+		width: 18rem;
+		height: 32rem;
+
+		.title {
+			font-size: 2rem;
+			margin-left: -7.2rem;
+			margin-top: 2rem;
+		}
+
+		.hist-back-button {
+			margin-top: 1.8rem;
+		}
+	}
+
+	.start-holder {
+		width: 18rem;
+		height: 35rem;
+
+		.heading {
+			font-size: 2rem;
+			margin-left: -11rem;
+		}
+
+		.vs {
+			margin-top: 0rem;
+			font-size: 2rem;
+		}
+
+		.player1 {
+			margin-bottom: 0rem;
+			height: 3.3rem;
+
+			input {
+				font-size: 1.2rem;
+			}
+		}
+
+		.player2 {
+			margin-top: -2rem;
+			height: 3.3rem;
+
+			input {
+				font-size: 1.2rem;
+			}
+		}
+
+		#game {
+			margin-top: 0;
+			font-size: 1.2rem !important;
+			height: 3.5rem;
+		}
+
+		#rounds {
+			margin-top: -1rem;
+			margin-left: 3.5rem;
+			font-size: 1.2rem !important;
+			height: 3.5rem;
+		}
+
+		.rounds-arrow {
+			right: -6.1rem !important;
+			bottom: 2.2rem !important;
+		}
+
+		.button-start {
+			margin-right: 0.5rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.confirm-new {
+		width: 15rem;
+	}
+
+	.confirm-new-title {
+		font-size: 2rem;
+	}
+
+	.score-holder {
+		width: 18rem;
+		height: 30rem;
+
+		.game-type {
+			font-size: 2.5rem;
+			margin-left: -4rem;
+		}
+
+		.new-button {
+			font-size: 1rem;
+			width: 5rem;
+			height: 4rem;
+			margin-top: -0.7rem;
+		}
+
+		.best-of {
+			margin-top: 0.5rem;
+		}
+
+		.next-button {
+			font-size: 1rem;
+			width: 5rem;
+			height: 4rem;
+			margin-top: -0.7rem;
+		}
+	}
+
+	.score {
+		width: 5rem;
+		grid-template-areas:
+			"score"
+			"plus"
+			"minus";
+
+		.curr-score {
+			grid-area: score;
+			margin-top: 0.5rem;
+			font-size: 3.5rem;
+		}
+
+		.plus {
+			grid-area: plus;
+			margin-left: 1rem;
+		}
+
+		.minus {
+			grid-area: minus;
+			margin-top: 0.5rem;
+			margin-left: 1rem;
+		}
+	}
+}
+
+/*        x      Viewport less then or equal to 320px       x     */
