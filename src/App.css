@@ -626,15 +626,6 @@
   padding-bottom: 5rem;
 }
 
-.score-holder .hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.score-holder .shown {
-  opacity: 1;
-}
-
 .score-holder .winner {
   background: #b0ffa9;
   -webkit-box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
