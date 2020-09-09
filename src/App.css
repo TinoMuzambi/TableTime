@@ -22,14 +22,6 @@
   transition: opacity 150ms linear;
 }
 
-.clickable {
-  pointer-events: all;
-  background: #b0ffa9;
-  -webkit-box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
-          box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
-  opacity: 1;
-}
-
 .confirm-new {
   background-color: #fdfdfd;
   border-radius: 50px;
@@ -294,6 +286,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-top: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .history-holder .hist-back-button .button-link {
@@ -306,7 +299,7 @@
   color: gray;
 }
 
-.history-holder .hist-back-button .title {
+.history-holder .title {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -314,7 +307,7 @@
   margin-left: -28rem;
 }
 
-.history-holder .hist-back-button .scores-container {
+.history-holder .scores-container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -331,7 +324,7 @@
   position: relative;
 }
 
-.history-holder .hist-back-button .scores-container .score-list {
+.history-holder .scores-container .score-list {
   display: -ms-grid;
   display: grid;
   justify-items: center;
@@ -350,21 +343,25 @@
   overflow-x: auto;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .flex {
+.history-holder .scores-container .score-list .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .flex .history-winner {
+.history-holder .scores-container .score-list .flex .history-winner {
   color: #b0ffa9;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .flex .history-loser {
+.history-holder .scores-container .score-list .flex .separator {
+  padding: 0 0.3rem;
+}
+
+.history-holder .scores-container .score-list .flex .history-loser {
   color: #ffa9a9;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .delete-button {
+.history-holder .scores-container .score-list .delete-button {
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -387,11 +384,11 @@
           align-items: center;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .delete-button .button-delete {
+.history-holder .scores-container .score-list .delete-button .button-delete {
   color: grey;
 }
 
-.history-holder .hist-back-button .scores-container .score-list .delete-button .button-delete:hover {
+.history-holder .scores-container .score-list .delete-button .button-delete:hover {
   -webkit-transition: 0.00001s ease;
   transition: 0.00001s ease;
   color: gray;
@@ -629,6 +626,35 @@
   padding-bottom: 5rem;
 }
 
+.score-holder .hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.score-holder .shown {
+  opacity: 1;
+}
+
+.score-holder .winner {
+  background: #b0ffa9;
+  -webkit-box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
+          box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
+}
+
+.score-holder .loser {
+  background: #ffa9a9;
+  -webkit-box-shadow: 0px 4px 4px rgba(255, 169, 169, 0.25);
+          box-shadow: 0px 4px 4px rgba(255, 169, 169, 0.25);
+}
+
+.score-holder .clickable {
+  pointer-events: all !important;
+  background: #b0ffa9 !important;
+  -webkit-box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25) !important;
+          box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25) !important;
+  opacity: 1 !important;
+}
+
 .score-holder .score-back-button {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -663,7 +689,7 @@
   color: gray;
 }
 
-.score-holder .score-back-button .game-type {
+.score-holder .game-type {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -671,7 +697,7 @@
   margin-left: -20rem;
 }
 
-.score-holder .score-back-button .new-button {
+.score-holder .new-button {
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -687,11 +713,11 @@
   padding: 1rem;
 }
 
-.score-holder .score-back-button .new-button:hover {
+.score-holder .new-button:hover {
   color: gray;
 }
 
-.score-holder .score-back-button .best-of {
+.score-holder .best-of {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: best;
@@ -699,7 +725,7 @@
   text-align: center;
 }
 
-.score-holder .score-back-button .next-button {
+.score-holder .next-button {
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -717,37 +743,37 @@
   opacity: 0;
 }
 
-.score-holder .score-back-button .next-button:hover {
+.score-holder .next-button:hover {
   color: gray;
 }
 
-.score-holder .score-back-button .score1 {
+.score-holder .score1 {
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: score1;
 }
 
-.score-holder .score-back-button .status {
+.score-holder .status {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: status;
 }
 
-.score-holder .score-back-button .separator {
+.score-holder .separator {
   text-align: center;
   -ms-grid-row: 4;
   -ms-grid-column: 2;
   grid-area: mid;
 }
 
-.score-holder .score-back-button .score2 {
+.score-holder .score2 {
   -ms-grid-row: 4;
   -ms-grid-column: 3;
   grid-area: score2;
 }
 
-.score-holder .score-back-button h1 {
+.score-holder h1 {
   font-size: 4rem;
 }
 
@@ -769,6 +795,10 @@
   margin: 0 1rem;
 }
 
+.score .done {
+  pointer-events: none;
+}
+
 .score .curr-score {
   font-size: 4rem;
 }
@@ -788,10 +818,6 @@
 
 .score .button:hover {
   color: gray;
-}
-
-.score .button .done {
-  pointer-events: none;
 }
 
 .score .minus {

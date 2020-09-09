@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./About.css";
 import { MdArrowBack } from "react-icons/md";
 import { withRouter } from "react-router-dom";
 

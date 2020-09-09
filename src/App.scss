@@ -19,13 +19,6 @@
 	transition: opacity 150ms linear;
 }
 
-.clickable {
-	pointer-events: all;
-	background: rgb(176, 255, 169);
-	box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
-	opacity: 1;
-}
-
 .confirm-new {
 	background-color: rgb(253, 253, 253);
 	border-radius: 50px;
@@ -247,6 +240,7 @@
 		display: flex;
 		align-items: center;
 		margin-top: 3.5rem;
+		margin-bottom: 1rem;
 
 		.button-link {
 			color: black;
@@ -256,70 +250,74 @@
 				color: gray;
 			}
 		}
+	}
 
-		.title {
-			grid-area: heading;
-			margin-left: -28rem;
-		}
+	.title {
+		grid-area: heading;
+		margin-left: -28rem;
+	}
 
-		.scores-container {
-			grid-area: scores;
-			background-color: rgb(253, 253, 253);
+	.scores-container {
+		grid-area: scores;
+		background-color: rgb(253, 253, 253);
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		width: 100%;
+		overflow-y: scroll;
+		position: relative;
+
+		.score-list {
 			display: grid;
 			justify-items: center;
 			align-items: center;
-			width: 100%;
-			overflow-y: scroll;
-			position: relative;
+			border-radius: 50px;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			width: 80%;
+			height: max-content;
+			background-color: #f4f4f4;
+			margin-bottom: 3rem;
+			overflow-x: auto;
 
-			.score-list {
-				display: grid;
-				justify-items: center;
-				align-items: center;
-				border-radius: 50px;
-				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-				width: 80%;
-				height: max-content;
-				background-color: #f4f4f4;
-				margin-bottom: 3rem;
-				overflow-x: auto;
+			.flex {
+				display: flex;
 
-				.flex {
-					display: flex;
-
-					.history-winner {
-						color: rgb(176, 255, 169);
-					}
-
-					.history-loser {
-						color: rgb(255, 169, 169);
-					}
+				.history-winner {
+					color: rgb(176, 255, 169);
 				}
 
-				.delete-button {
-					background: white;
-					border: none;
-					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-					border-radius: 50%;
-					font-size: 2rem;
-					height: 3rem;
-					width: 3rem;
-					outline: none;
-					cursor: pointer;
-					position: relative;
-					justify-self: end;
-					right: 1rem;
-					bottom: 1rem;
-					display: flex;
-					align-items: center;
+				.separator {
+					padding: 0 0.3rem;
+				}
 
-					.button-delete {
-						color: grey;
+				.history-loser {
+					color: rgb(255, 169, 169);
+				}
+			}
 
-						&:hover {
-							transition: 0.00001s ease;
-							color: gray;
-						}
+			.delete-button {
+				background: white;
+				border: none;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 50%;
+				font-size: 2rem;
+				height: 3rem;
+				width: 3rem;
+				outline: none;
+				cursor: pointer;
+				position: relative;
+				justify-self: end;
+				right: 1rem;
+				bottom: 1rem;
+				display: flex;
+				align-items: center;
+
+				.button-delete {
+					color: grey;
+
+					&:hover {
+						transition: 0.00001s ease;
+						color: gray;
 					}
 				}
 			}
@@ -524,6 +522,32 @@
 	width: 60rem;
 	padding-bottom: 5rem;
 
+	.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.shown {
+		opacity: 1;
+	}
+
+	.winner {
+		background: rgb(176, 255, 169);
+		box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25);
+	}
+
+	.loser {
+		background: rgb(255, 169, 169);
+		box-shadow: 0px 4px 4px rgba(255, 169, 169, 0.25);
+	}
+
+	.clickable {
+		pointer-events: all !important;
+		background: rgb(176, 255, 169) !important;
+		box-shadow: 0px 4px 4px rgba(176, 255, 169, 0.25) !important;
+		opacity: 1 !important;
+	}
+
 	.score-back-button {
 		grid-area: back;
 		background: white;
@@ -548,74 +572,74 @@
 				color: gray;
 			}
 		}
+	}
 
-		.game-type {
-			grid-area: game;
-			margin-left: -20rem;
+	.game-type {
+		grid-area: game;
+		margin-left: -20rem;
+	}
+
+	.new-button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50px;
+		font-size: 1.5rem;
+		outline: none;
+		cursor: pointer;
+		grid-area: new;
+		margin-top: -3.5rem;
+		padding: 1rem;
+
+		&:hover {
+			color: gray;
 		}
+	}
 
-		.new-button {
-			background: white;
-			border: none;
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-			border-radius: 50px;
-			font-size: 1.5rem;
-			outline: none;
-			cursor: pointer;
-			grid-area: new;
-			margin-top: -3.5rem;
-			padding: 1rem;
+	.best-of {
+		grid-area: best;
+		margin-top: -2.5rem;
+		text-align: center;
+	}
 
-			&:hover {
-				color: gray;
-			}
+	.next-button {
+		background: white;
+		border: none;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 50px;
+		font-size: 1.5rem;
+		outline: none;
+		cursor: pointer;
+		grid-area: next;
+		margin-top: -3.5rem;
+		padding: 1rem;
+		pointer-events: none;
+		opacity: 0;
+
+		&:hover {
+			color: gray;
 		}
+	}
 
-		.best-of {
-			grid-area: best;
-			margin-top: -2.5rem;
-			text-align: center;
-		}
+	.score1 {
+		grid-area: score1;
+	}
 
-		.next-button {
-			background: white;
-			border: none;
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-			border-radius: 50px;
-			font-size: 1.5rem;
-			outline: none;
-			cursor: pointer;
-			grid-area: next;
-			margin-top: -3.5rem;
-			padding: 1rem;
-			pointer-events: none;
-			opacity: 0;
+	.status {
+		grid-area: status;
+	}
 
-			&:hover {
-				color: gray;
-			}
-		}
+	.separator {
+		text-align: center;
+		grid-area: mid;
+	}
 
-		.score1 {
-			grid-area: score1;
-		}
+	.score2 {
+		grid-area: score2;
+	}
 
-		.status {
-			grid-area: status;
-		}
-
-		.separator {
-			text-align: center;
-			grid-area: mid;
-		}
-
-		.score2 {
-			grid-area: score2;
-		}
-
-		h1 {
-			font-size: 4rem;
-		}
+	h1 {
+		font-size: 4rem;
 	}
 }
 
@@ -634,6 +658,10 @@
 	align-items: center;
 	margin: 0 1rem;
 
+	.done {
+		pointer-events: none;
+	}
+
 	.curr-score {
 		font-size: 4rem;
 	}
@@ -651,10 +679,6 @@
 
 		&:hover {
 			color: gray;
-		}
-
-		.done {
-			pointer-events: none;
 		}
 	}
 
