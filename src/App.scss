@@ -389,14 +389,6 @@
 		margin: 3rem;
 		height: 4rem;
 
-		.player1 {
-			grid-area: player1;
-		}
-
-		.player2 {
-			grid-area: player2;
-		}
-
 		input {
 			outline: none;
 			border: none;
@@ -405,6 +397,14 @@
 			font-size: 1.5rem;
 			padding: 1rem;
 		}
+	}
+
+	.player1 {
+		grid-area: player1;
+	}
+
+	.player2 {
+		grid-area: player2;
 	}
 
 	.vs {
@@ -495,6 +495,15 @@
 		justify-self: end;
 		margin-right: 2rem;
 		margin-bottom: 2rem;
+
+		.button-link {
+			color: black;
+
+			&:hover {
+				transition: 0.00001s ease;
+				color: gray;
+			}
+		}
 	}
 }
 
@@ -521,6 +530,7 @@
 	height: 32rem;
 	width: 60rem;
 	padding-bottom: 5rem;
+	overflow: hidden;
 
 	.winner {
 		background: rgb(176, 255, 169);
@@ -727,21 +737,20 @@
 
 		.vs {
 			margin-top: -1rem;
-
 			font-size: 3rem;
 		}
 
 		.player-input {
 			width: 9rem;
 			margin: 1rem;
+		}
 
-			.player1 {
-				margin-top: -1rem;
-			}
+		.player1 {
+			margin-top: -1rem;
+		}
 
-			.player2 {
-				margin-top: -1rem;
-			}
+		.player2 {
+			margin-top: -1rem;
 		}
 
 		#game {
@@ -876,11 +885,11 @@
 
 		#rounds {
 			margin-top: -1rem;
-			margin-left: 3.5rem;
+			margin-left: 3.5rem !important;
 		}
 
 		.rounds-arrow {
-			right: -8rem;
+			right: -8rem !important;
 			bottom: 2.5rem;
 		}
 
@@ -941,6 +950,10 @@
 			width: 2.5rem;
 			font-size: 1.5rem;
 			margin-right: 0;
+		}
+
+		.player {
+			font-size: 1.2rem;
 		}
 	}
 }
@@ -1037,20 +1050,20 @@
 
 		#game {
 			margin-top: 0;
-			font-size: 1.2rem;
+			font-size: 1.2rem !important;
 			height: 3.5rem;
 		}
 
 		#rounds {
 			margin-top: -1rem;
 			margin-left: 3.5rem;
-			font-size: 1.2rem;
+			font-size: 1.2rem !important;
 			height: 3.5rem;
 		}
 
 		.rounds-arrow {
-			right: -6.1rem;
-			bottom: 2.2rem;
+			right: -6.1rem !important;
+			bottom: 2.2rem !important;
 		}
 
 		.button-start {

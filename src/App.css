@@ -471,18 +471,6 @@
   height: 4rem;
 }
 
-.start-holder .player-input .player1 {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: player1;
-}
-
-.start-holder .player-input .player2 {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  grid-area: player2;
-}
-
 .start-holder .player-input input {
   outline: none;
   border: none;
@@ -490,6 +478,18 @@
   background: transparent;
   font-size: 1.5rem;
   padding: 1rem;
+}
+
+.start-holder .player1 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: player1;
+}
+
+.start-holder .player2 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: player2;
 }
 
 .start-holder .vs {
@@ -602,6 +602,16 @@
   margin-bottom: 2rem;
 }
 
+.start-holder .button-start .button-link {
+  color: black;
+}
+
+.start-holder .button-start .button-link:hover {
+  -webkit-transition: 0.00001s ease;
+  transition: 0.00001s ease;
+  color: gray;
+}
+
 /* x Start x */
 /* Score Holder */
 .score-holder {
@@ -624,6 +634,7 @@
   height: 32rem;
   width: 60rem;
   padding-bottom: 5rem;
+  overflow: hidden;
 }
 
 .score-holder .winner {
@@ -856,10 +867,10 @@
     width: 9rem;
     margin: 1rem;
   }
-  .start-holder .player-input .player1 {
+  .start-holder .player1 {
     margin-top: -1rem;
   }
-  .start-holder .player-input .player2 {
+  .start-holder .player2 {
     margin-top: -1rem;
   }
   .start-holder #game {
@@ -967,10 +978,10 @@
   }
   .start-holder #rounds {
     margin-top: -1rem;
-    margin-left: 3.5rem;
+    margin-left: 3.5rem !important;
   }
   .start-holder .rounds-arrow {
-    right: -8rem;
+    right: -8rem !important;
     bottom: 2.5rem;
   }
   .start-holder .button-start {
@@ -1020,6 +1031,9 @@
     width: 2.5rem;
     font-size: 1.5rem;
     margin-right: 0;
+  }
+  .score .player {
+    font-size: 1.2rem;
   }
 }
 
@@ -1096,18 +1110,18 @@
   }
   .start-holder #game {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
     height: 3.5rem;
   }
   .start-holder #rounds {
     margin-top: -1rem;
     margin-left: 3.5rem;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
     height: 3.5rem;
   }
   .start-holder .rounds-arrow {
-    right: -6.1rem;
-    bottom: 2.2rem;
+    right: -6.1rem !important;
+    bottom: 2.2rem !important;
   }
   .start-holder .button-start {
     margin-right: 0.5rem;
