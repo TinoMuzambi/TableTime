@@ -8,8 +8,6 @@
 .fade-appear-active,
 .fade-enter.fade-enter-active {
   opacity: 1;
-  -webkit-transition: opacity 400ms linear 150ms;
-  transition: opacity 400ms linear 150ms;
 }
 
 .fade-exit {
@@ -25,11 +23,19 @@
 .dark-mode {
   -webkit-filter: invert(0.85) hue-rotate(160deg);
           filter: invert(0.85) hue-rotate(160deg);
+  -webkit-transition: all 3s ease-in forwards;
+  transition: all 3s ease-in forwards;
 }
 
-.invert {
-  -webkit-filter: invert(1) hue-rotate(180deg);
-          filter: invert(1) hue-rotate(180deg);
+.toggle {
+  position: absolute;
+  background: transparent;
+  border: solid 2px black;
+  margin: 1rem;
+  border-radius: 50px;
+  padding: 0.5rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .confirm-new {
