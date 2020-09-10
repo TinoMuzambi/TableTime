@@ -27,7 +27,7 @@ class About extends Component {
 									Tino Muzambi
 								</a>
 								<br />
-								<p className="version">Table Time © v 1.0</p>
+								<p className="version">Table Time © v 1.1</p>
 							</>
 						}
 					</p>

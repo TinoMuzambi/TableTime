@@ -46,7 +46,9 @@ function App() {
 							<CSSTransition key={location.key} timeout={450} classNames="fade">
 								<Switch location={location}>
 									<>
-										<button onClick={toggleDark} className="toggle"></button>
+										<button onClick={toggleDark} className="toggle">
+											Dark
+										</button>
 										<Route
 											path="/"
 											exact
