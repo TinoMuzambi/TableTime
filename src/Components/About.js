@@ -16,7 +16,7 @@ class About extends Component {
 					<h1 className="about-title">About</h1>
 					<img src="/logo512.png" alt="logo" className="about-logo inverted" />
 					<p className="footer">
-						Developed by{" "}
+						Developed by
 						{
 							<>
 								<a

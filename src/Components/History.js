@@ -130,7 +130,7 @@ class History extends Component {
 
 							<div className="scores-container">
 								{/* Mapping each game into div component. */}
-								{arrayGames.map((game, key) => (
+								{arrayGames.reverse().map((game, key) => (
 									<div className="score-list" key={key}>
 										<div className="flex">
 											{/* If winner add winner class for styling or loser class. */}
