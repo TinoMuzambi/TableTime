@@ -20,11 +20,11 @@ function App() {
 		} else if (lastDark === "true") {
 			setDark(true);
 			document.documentElement.classList.add("dark-mode");
-			btn.innerHTML = "Light Mode";
+			btn.innerHTML = "Light";
 		} else {
 			setDark(false);
 			document.documentElement.classList.remove("dark-mode");
-			btn.innerHTML = "Dark Mode";
+			btn.innerHTML = "Dark";
 		}
 	}, [dark]);
 
@@ -34,7 +34,7 @@ function App() {
 		document.documentElement.classList.toggle("dark-mode");
 		setDark(!dark);
 		localStorage.setItem("dark", `${lastDark === "false" ? "true" : "false"}`);
-		btn.innerHTML = lastDark === "false" ? "Dark Mode" : "Light Mode";
+		btn.innerHTML = lastDark === "false" ? "Dark" : "Light";
 	};
 
 	return (
@@ -46,9 +46,7 @@ function App() {
 							<CSSTransition key={location.key} timeout={450} classNames="fade">
 								<Switch location={location}>
 									<>
-										<button onClick={toggleDark} className="toggle">
-											Dark Mode
-										</button>
+										<button onClick={toggleDark} className="toggle"></button>
 										<Route
 											path="/"
 											exact

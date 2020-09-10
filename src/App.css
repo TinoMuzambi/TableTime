@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.toggle:hover {
+  border: solid 2px black;
+}
+
 .confirm-new {
   background-color: #fdfdfd;
   border-radius: 50px;
