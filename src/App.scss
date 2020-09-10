@@ -7,7 +7,6 @@
 .fade-appear-active,
 .fade-enter.fade-enter-active {
 	opacity: 1;
-	transition: opacity 400ms linear 150ms;
 }
 
 .fade-exit {
@@ -17,6 +16,26 @@
 .fade-exit.fade-exit-active {
 	opacity: 0;
 	transition: opacity 150ms linear;
+}
+
+.dark-mode {
+	filter: invert(0.85) hue-rotate(160deg);
+	transition: all 3s ease-in forwards;
+}
+
+.toggle {
+	position: absolute;
+	background: transparent;
+	border: solid 2px black;
+	margin: 1rem;
+	border-radius: 50px;
+	padding: 0.5rem;
+	outline: none;
+	cursor: pointer;
+
+	&:hover {
+		border: solid 1px black;
+	}
 }
 
 .confirm-new {
