@@ -6,7 +6,7 @@ class SplashScreen extends Component {
 		return (
 			<>
 				<div className="splash-holder">
-					<img src="/logo512.png" alt="logo" className="logo" />
+					<img src="/logo512.png" alt="logo" className="logo inverted" />
 					<ul className="links">
 						<li className="link">
 							<Link to="/start" className="link">

@@ -22,6 +22,16 @@
   transition: opacity 150ms linear;
 }
 
+.dark-mode {
+  -webkit-filter: invert(0.85) hue-rotate(160deg);
+          filter: invert(0.85) hue-rotate(160deg);
+}
+
+.invert {
+  -webkit-filter: invert(1) hue-rotate(180deg);
+          filter: invert(1) hue-rotate(180deg);
+}
+
 .confirm-new {
   background-color: #fdfdfd;
   border-radius: 50px;

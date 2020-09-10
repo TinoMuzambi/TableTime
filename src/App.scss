@@ -19,6 +19,14 @@
 	transition: opacity 150ms linear;
 }
 
+.dark-mode {
+	filter: invert(0.85) hue-rotate(160deg);
+}
+
+.invert {
+	filter: invert(1) hue-rotate(180deg);
+}
+
 .confirm-new {
 	background-color: rgb(253, 253, 253);
 	border-radius: 50px;

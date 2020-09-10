@@ -14,7 +14,7 @@ class About extends Component {
 						<MdArrowBack className="button-link" />
 					</button>
 					<h1 className="about-title">About</h1>
-					<img src="/logo512.png" alt="logo" className="about-logo" />
+					<img src="/logo512.png" alt="logo" className="about-logo inverted" />
 					<p className="footer">
 						Developed by{" "}
 						{
