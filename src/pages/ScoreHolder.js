@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Score from "./Score";
+import Score from "../components/Score";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { MdArrowBack } from "react-icons/md";

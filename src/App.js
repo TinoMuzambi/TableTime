@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import SplashScreen from "./Components/SplashScreen";
-import ScoreHolder from "./Components/ScoreHolder";
-import StartGame from "./Components/StartGame";
-import History from "./Components/History";
-import About from "./Components/About";
+import SplashScreen from "./pages/SplashScreen";
+import ScoreHolder from "./pages/ScoreHolder";
+import StartGame from "./pages/StartGame";
+import History from "./pages/History";
+import About from "./pages/About";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Helmet } from "react-helmet";
 
