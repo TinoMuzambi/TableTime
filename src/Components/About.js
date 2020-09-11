@@ -24,7 +24,7 @@ class About extends Component {
 									target="__blank"
 									className="link-link"
 								>
-									Tino Muzambi
+									{` Tino Muzambi`}
 								</a>
 								<br />
 								<p className="version">Table Time © v 1.1</p>
