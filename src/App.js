@@ -6,6 +6,7 @@ import ScoreHolder from "./pages/ScoreHolder";
 import StartGame from "./pages/StartGame";
 import History from "./pages/History";
 import About from "./pages/About";
+import Auth from "./pages/Auth";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Helmet } from "react-helmet";
 
@@ -106,6 +107,18 @@ function App() {
 														<title>About | Table Time</title>
 													</Helmet>
 													<About />
+												</>
+											)}
+										/>
+										<Route
+											path="/auth"
+											exact
+											render={() => (
+												<>
+													<Helmet>
+														<title>Authorise | Table Time</title>
+													</Helmet>
+													<Auth />
 												</>
 											)}
 										/>
