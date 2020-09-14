@@ -5,6 +5,9 @@ class SplashScreen extends Component {
 	render() {
 		return (
 			<>
+				<Link to="/auth">
+					<button className="auth-link">Login</button>
+				</Link>
 				<div className="splash-holder">
 					<img src="/logo512.png" alt="logo" className="logo inverted" />
 					<ul className="links">
