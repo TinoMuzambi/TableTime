@@ -3,6 +3,11 @@ import { MdArrowBack } from "react-icons/md";
 import { withRouter } from "react-router-dom";
 
 class Auth extends Component {
+	constructor() {
+		super();
+
+		this.state = { loggedIn: false };
+	}
 	render() {
 		return (
 			<div className="auth-holder">
@@ -12,7 +17,8 @@ class Auth extends Component {
 				>
 					<MdArrowBack className="button-link" />
 				</button>
-				<h1 className="title">Register</h1>
+				<h1 className="title">Login</h1>
+				<button className="toggler">Register</button>
 				<form>
 					<input type="text" placeholder="username" className="input user" />
 					<br />
@@ -22,7 +28,7 @@ class Auth extends Component {
 						className="input password"
 					/>
 					<br />
-					<input type="submit" value="Register" className="submit" />
+					<input type="submit" value="Login" className="submit" />
 				</form>
 			</div>
 		);
