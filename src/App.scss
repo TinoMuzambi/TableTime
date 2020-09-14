@@ -106,7 +106,8 @@
 		"back title toggler"
 		"username username username"
 		"password password password"
-		"submit submit submit";
+		"submit submit submit"
+		"status status status";
 	justify-items: center;
 	align-items: center;
 	position: absolute;
@@ -146,7 +147,7 @@
 
 	.title {
 		grid-area: title;
-		margin-left: -23rem;
+		margin-left: -37rem;
 	}
 
 	.toggler {
@@ -157,6 +158,7 @@
 		border-radius: 50px;
 		outline: none;
 		padding: 1rem;
+		margin-right: 1rem;
 		cursor: pointer;
 
 		.button-link {
@@ -203,6 +205,35 @@
 			background: rgb(228, 228, 228);
 		}
 	}
+
+	.status-block-success {
+		grid-area: status;
+
+		border-radius: 10px;
+		padding: 0 0.2rem;
+		width: 10rem;
+		text-align: center;
+		opacity: 0;
+		border: solid 2px rgb(0, 255, 0);
+		background: rgb(163, 255, 163);
+		color: rgb(71, 255, 71);
+	}
+
+	.status-block-failure {
+		grid-area: status;
+		border-radius: 10px;
+		padding: 0 0.2rem;
+		width: 10rem;
+		text-align: center;
+		opacity: 0;
+		border: solid 2px rgb(255, 0, 0);
+		background: rgb(255, 163, 163);
+		color: rgb(255, 71, 71);
+	}
+}
+
+.shown {
+	opacity: 1 !important;
 }
 
 /* x Auth Screen x */

@@ -6,8 +6,42 @@ class Auth extends Component {
 	constructor() {
 		super();
 
-		this.state = { loggedIn: false };
+		this.state = { curr: "Login", username: "", password: "" };
+
+		this.login = this.login.bind(this);
 	}
+
+	async login(e) {
+		e.preventDefault();
+		// console.log(this.state.username, this.state.password);
+		const deets = {
+			username: this.state.username,
+			password: this.state.password,
+		};
+		await fetch(`https://table-time.herokuapp.com/api/user/login`, {
+			method: "post",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(deets),
+		}).then((response) => {
+			const success = document.querySelector(".status-block-success");
+			const failure = document.querySelector(".status-block-failure");
+			response.text().then((res) => {
+				failure.firstChild.innerText = res;
+			});
+			response.status === 200
+				? success.classList.add("shown")
+				: failure.classList.add("shown");
+			setTimeout(() => {
+				success.classList.remove("shown");
+			}, 5000);
+			setTimeout(() => {
+				failure.classList.remove("shown");
+			}, 5000);
+		});
+		this.setState({ username: "" });
+		this.setState({ password: "" });
+	}
+
 	render() {
 		return (
 			<div className="auth-holder">
@@ -17,19 +51,40 @@ class Auth extends Component {
 				>
 					<MdArrowBack className="button-link" />
 				</button>
-				<h1 className="title">Login</h1>
-				<button className="toggler">Register</button>
-				<form>
-					<input type="text" placeholder="username" className="input user" />
-					<br />
+				<h1 className="title">{this.state.curr}</h1>
+				<button
+					className="toggler"
+					onClick={() => {
+						this.setState({
+							curr: this.state.curr === "Login" ? "Register" : "Login",
+						});
+					}}
+				>
+					Register
+				</button>
+				<form onSubmit={this.login} className="form">
 					<input
 						type="text"
+						placeholder="username"
+						className="input user"
+						value={this.state.username}
+						onChange={(e) => this.setState({ username: e.target.value })}
+					/>
+					<input
+						type="password"
 						placeholder="password"
 						className="input password"
+						value={this.state.password}
+						onChange={(e) => this.setState({ password: e.target.value })}
 					/>
-					<br />
-					<input type="submit" value="Login" className="submit" />
+					<input type="submit" value={this.state.curr} className="submit" />
 				</form>
+				<div className="status-block-success">
+					<p className="text">Logged In</p>
+				</div>
+				<div className="status-block-failure">
+					<p className="text">Logged In</p>
+				</div>
 			</div>
 		);
 	}

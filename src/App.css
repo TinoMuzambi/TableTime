@@ -109,7 +109,7 @@
   background-color: #fdfdfd;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "back title toggler" "username username username" "password password password" "submit submit submit";
+      grid-template-areas: "back title toggler" "username username username" "password password password" "submit submit submit" "status status status";
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -164,7 +164,7 @@
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: title;
-  margin-left: -23rem;
+  margin-left: -37rem;
 }
 
 .auth-holder .toggler {
@@ -178,6 +178,7 @@
   border-radius: 50px;
   outline: none;
   padding: 1rem;
+  margin-right: 1rem;
   cursor: pointer;
 }
 
@@ -234,6 +235,40 @@
 
 .auth-holder .submit:hover {
   background: #e4e4e4;
+}
+
+.auth-holder .status-block-success {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: status;
+  border-radius: 10px;
+  padding: 0 0.2rem;
+  width: 10rem;
+  text-align: center;
+  opacity: 0;
+  border: solid 2px lime;
+  background: #a3ffa3;
+  color: #47ff47;
+}
+
+.auth-holder .status-block-failure {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: status;
+  border-radius: 10px;
+  padding: 0 0.2rem;
+  width: 10rem;
+  text-align: center;
+  opacity: 0;
+  border: solid 2px red;
+  background: #ffa3a3;
+  color: #ff4747;
+}
+
+.shown {
+  opacity: 1 !important;
 }
 
 /* x Auth Screen x */
