@@ -70,6 +70,7 @@ class ScoreHolder extends Component {
 
 	async UNSAFE_componentWillMount() {
 		// Get data from database on component load.
+
 		const fetchData = async () => {
 			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
 			const body = await result.json();
