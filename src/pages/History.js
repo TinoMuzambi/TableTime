@@ -34,7 +34,9 @@ class History extends Component {
 		// Fetch game data from database on component load.
 		const fetchData = async () => {
 			await this.setState({ isFetching: true });
-			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
+			const result = await fetch(
+				`https://table-time.herokuapp.com/api/matches`
+			);
 			const body = await result.json();
 			await this.setState({ games: body });
 			await this.setState({ isFetching: false });
@@ -45,7 +47,9 @@ class History extends Component {
 	componentDidMount() {
 		const fetchData = async () => {
 			await this.setState({ isFetching: true });
-			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
+			const result = await fetch(
+				`https://table-time.herokuapp.com/api/matches`
+			);
 			const body = await result.json();
 			await this.setState({ games: body });
 			await this.setState({ isFetching: false });
@@ -70,12 +74,14 @@ class History extends Component {
 			const match = {
 				_id: id,
 			};
-			await fetch(`https://table-time.herokuapp.com/api/game/delete`, {
+			await fetch(`https://table-time.herokuapp.com/api/match/delete`, {
 				method: "post",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(match),
 			});
-			const result = await fetch(`https://table-time.herokuapp.com/api/games`);
+			const result = await fetch(
+				`https://table-time.herokuapp.com/api/matches`
+			);
 			const body = await result.json();
 			await this.setState({ games: body });
 		};
