@@ -8,27 +8,30 @@ class Auth extends Component {
 
 		this.state = { curr: "Login", username: "", password: "" };
 
-		this.login = this.login.bind(this);
+		this.auth = this.auth.bind(this);
 	}
 
-	async login(e) {
+	async auth(e) {
 		e.preventDefault();
-		// console.log(this.state.username, this.state.password);
-		const deets = {
+		const userDetails = {
 			username: this.state.username,
 			password: this.state.password,
 		};
-		await fetch(`https://table-time.herokuapp.com/api/user/login`, {
+		const url =
+			this.state.curr === "Login"
+				? `https://table-time.herokuapp.com/api/user/login`
+				: `https://table-time.herokuapp.com/api/user/register`;
+		await fetch(url, {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(deets),
+			body: JSON.stringify(userDetails),
 		}).then((response) => {
 			const success = document.querySelector(".status-block-success");
 			const failure = document.querySelector(".status-block-failure");
 			response.text().then((res) => {
 				failure.firstChild.innerText = res;
 			});
-			response.status === 200
+			response.status === 200 || response.status === 201
 				? success.classList.add("shown")
 				: failure.classList.add("shown");
 			setTimeout(() => {
@@ -62,7 +65,7 @@ class Auth extends Component {
 				>
 					Register
 				</button>
-				<form onSubmit={this.login} className="form">
+				<form onSubmit={this.auth} className="form">
 					<input
 						type="text"
 						placeholder="username"
@@ -80,7 +83,7 @@ class Auth extends Component {
 					<input type="submit" value={this.state.curr} className="submit" />
 				</form>
 				<div className="status-block-success">
-					<p className="text">Logged In</p>
+					<p className="text">Success</p>
 				</div>
 				<div className="status-block-failure">
 					<p className="text">Logged In</p>
