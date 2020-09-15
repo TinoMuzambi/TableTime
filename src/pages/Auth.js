@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MdArrowBack } from "react-icons/md";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { AiOutlineReload } from "react-icons/ai";
 
 class Auth extends Component {
@@ -12,7 +12,6 @@ class Auth extends Component {
 			username: "",
 			password: "",
 			loggedIn: false,
-			redirect: false,
 			isFetching: false,
 		};
 
@@ -21,8 +20,7 @@ class Auth extends Component {
 
 	async auth(e) {
 		e.preventDefault();
-		await this.setState({ isFetching: true });
-		console.log(this.state.isFetching);
+		await this.setState({ isFetching: true }); // Set isFetching true to display loading icon.
 		const userDetails = {
 			username: this.state.username,
 			password: this.state.password,
@@ -32,31 +30,31 @@ class Auth extends Component {
 				? `https://table-time.herokuapp.com/api/user/login`
 				: `https://table-time.herokuapp.com/api/user/register`;
 		await fetch(url, {
+			// Make call to backend to process request.
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(userDetails),
 		}).then(async (response) => {
-			const success = document.querySelector(".status-block-success");
+			const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 			const failure = document.querySelector(".status-block-failure");
 			const notice = document.querySelector(".notice");
-			await this.setState({ isFetching: false });
-			console.log(this.state.isFetching);
+			await this.setState({ isFetching: false }); // Set isFetching false to hide loading icon once done fetching from DB.
 			notice.classList.add("shown");
 			response.text().then((res) => {
-				failure.firstChild.innerText = res;
+				failure.firstChild.innerText = res; // Set failure message.
 			});
 			if (response.status === 200) {
-				success.classList.add("shown");
-				this.setState({ redirect: true, loggedIn: true });
-				if (this.state.redirect) {
-					return <Redirect to="/" />;
-				}
+				success.classList.add("shown"); // If succesfully logged in go back to home.
+				this.props.history.goBack();
 			} else if (response.status === 201) {
+				// If succesfully registered allow login.
 				success.classList.add("shown");
+				this.setState({ curr: "Login" });
 			} else {
+				// Else display error to user.
 				failure.classList.add("shown");
 			}
-			response.status === 200 || response.status === 201
+			response.status === 200 || response.status === 201 // Remove dialogs after three seconds.
 				? setTimeout(() => {
 						notice.classList.remove("shown");
 						success.classList.remove("shown");
