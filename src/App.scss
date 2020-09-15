@@ -192,13 +192,26 @@
 		padding: 1rem;
 		cursor: pointer;
 		outline: none;
+		margin-bottom: 2rem;
 
 		&:hover {
 			background: rgb(228, 228, 228);
 		}
 	}
+}
+.notice {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	background: rgba(255, 255, 255, 0.9);
+	position: relative;
+	opacity: 0;
 
 	.status-block-success {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		border-radius: 10px;
 		padding: 0 0.2rem;
 		width: 10rem;
@@ -210,6 +223,10 @@
 	}
 
 	.status-block-failure {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		border-radius: 10px;
 		padding: 0 0.2rem;
 		width: 10rem;
@@ -223,6 +240,7 @@
 
 .shown {
 	opacity: 1 !important;
+	z-index: 3;
 }
 
 /* x Auth Screen x */

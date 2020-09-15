@@ -224,13 +224,29 @@
   padding: 1rem;
   cursor: pointer;
   outline: none;
+  margin-bottom: 2rem;
 }
 
 .auth-holder .submit:hover {
   background: #e4e4e4;
 }
 
-.auth-holder .status-block-success {
+.notice {
+  width: 100vw;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  opacity: 0;
+}
+
+.notice .status-block-success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 0 0.2rem;
   width: 10rem;
@@ -241,7 +257,12 @@
   color: #47ff47;
 }
 
-.auth-holder .status-block-failure {
+.notice .status-block-failure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 0 0.2rem;
   width: 10rem;
@@ -254,6 +275,7 @@
 
 .shown {
   opacity: 1 !important;
+  z-index: 3;
 }
 
 /* x Auth Screen x */
