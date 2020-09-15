@@ -126,13 +126,15 @@ class History extends Component {
 						<AiOutlineReload className="icon" />
 					) : (
 						<>
-							<button
-								className="hist-back-button"
-								onClick={this.props.history.goBack}
-							>
-								<MdArrowBack className="button-link" />
-							</button>
-							<h1 className="title">History</h1>
+							<div className="flex">
+								<button
+									className="hist-back-button"
+									onClick={this.props.history.goBack}
+								>
+									<MdArrowBack className="button-link" />
+								</button>
+								<h1 className="title">History</h1>
+							</div>
 
 							<div className="scores-container">
 								{/* Mapping each game into div component. */}
