@@ -8,11 +8,33 @@ class SplashScreen extends Component {
 	render() {
 		return (
 			<>
-				<Link to="/auth">
-					<button className="auth-link">
-						{this.props.loggedIn ? "Log Out" : "Log In"}
+				<div className="notice">
+					<div className="status-block-success">
+						<p className="text">Logged Out</p>
+					</div>
+				</div>
+				{this.props.loggedIn ? (
+					<button
+						className="auth-link"
+						onClick={() => {
+							this.props.setLoggedIn(false);
+							const success = document.querySelector(".status-block-success"); // Get elements to interact with.
+							const notice = document.querySelector(".notice");
+							notice.classList.add("shown");
+							success.classList.add("shown");
+							setTimeout(() => {
+								notice.classList.remove("shown");
+								success.classList.remove("shown");
+							}, 3000);
+						}}
+					>
+						Log Out
 					</button>
-				</Link>
+				) : (
+					<Link to="/auth">
+						<button className="auth-link">Log In</button>
+					</Link>
+				)}
 				<div className="splash-holder">
 					<img src="/logo512.png" alt="logo" className="logo inverted" />
 					<ul className="links">

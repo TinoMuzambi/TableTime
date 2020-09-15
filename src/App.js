@@ -60,7 +60,10 @@ function App() {
 													<Helmet>
 														<title>Table Time</title>
 													</Helmet>
-													<SplashScreen loggedIn={loggedIn} />
+													<SplashScreen
+														loggedIn={loggedIn}
+														setLoggedIn={setLoggedIn}
+													/>
 												</>
 											)}
 										/>

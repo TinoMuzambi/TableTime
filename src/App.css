@@ -242,7 +242,7 @@
   display: -ms-grid;
   display: grid;
   background: rgba(255, 255, 255, 0.9);
-  position: relative;
+  position: absolute;
   opacity: 0;
 }
 
@@ -285,7 +285,7 @@
   display: grid;
   background: rgba(255, 255, 255, 0.9);
   position: relative;
-  z-index: 10;
+  z-index: 5;
 }
 
 .notice2 .icon {
