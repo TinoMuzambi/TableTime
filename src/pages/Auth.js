@@ -40,11 +40,15 @@ class Auth extends Component {
 			const notice = document.querySelector(".notice");
 			await this.setState({ isFetching: false }); // Set isFetching false to hide loading icon once done fetching from DB.
 			notice.classList.add("shown");
-			response.text().then((res) => {
-				failure.firstChild.innerText = res; // Set failure message.
+			let text = "";
+			response.text().then(async (res) => {
+				text = await res;
+				if (response.status === 200) localStorage.setItem("table-user", text);
+				else failure.firstChild.innerText = text; // Set failure message.
 			});
 			if (response.status === 200) {
 				success.classList.add("shown"); // If succesfully logged in go back to home.
+
 				this.props.setLoggedIn(true);
 				this.props.history.goBack();
 			} else if (response.status === 201) {

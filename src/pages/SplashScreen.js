@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SplashScreen extends Component {
-	constructor(props) {
-		super(props);
+	componentDidMount() {
+		if (localStorage.getItem("table-user") !== null) {
+			this.props.setLoggedIn(true);
+		}
 	}
+
 	render() {
 		return (
 			<>
@@ -18,6 +21,7 @@ class SplashScreen extends Component {
 						className="auth-link"
 						onClick={() => {
 							this.props.setLoggedIn(false);
+							localStorage.removeItem("table-user");
 							const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 							const notice = document.querySelector(".notice");
 							notice.classList.add("shown");
