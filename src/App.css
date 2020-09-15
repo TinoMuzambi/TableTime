@@ -569,13 +569,13 @@
 /* Start */
 .start-holder {
   background-color: #fdfdfd;
-  display: -ms-grid;
-  display: grid;
-      grid-template-areas: "back heading heading" "player1 vs      player2" "game    game    game" "rounds  rounds  button";
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -584,14 +584,19 @@
   border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 35rem;
-  width: 60rem;
+  width: 70%;
+}
+
+.start-holder .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .start-holder .start-back-button {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: back;
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -600,10 +605,10 @@
   font-size: 2rem;
   height: 3rem;
   width: 3rem;
+  margin: 0 -1rem 0 1rem;
   outline: none;
   cursor: pointer;
   justify-self: start;
-  margin-left: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -623,12 +628,17 @@
 }
 
 .start-holder .heading {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: heading;
   font-size: 2.5rem;
-  margin-left: -27rem;
+  margin: 0 auto;
+}
+
+.start-holder .flex2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .start-holder .player-input {
@@ -638,7 +648,6 @@
   border-radius: 50px;
   width: 12rem;
   text-align: center;
-  margin: 3rem;
   height: 4rem;
 }
 
@@ -651,33 +660,27 @@
   padding: 1rem;
 }
 
-.start-holder .player1 {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: player1;
-}
-
-.start-holder .player2 {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  grid-area: player2;
-}
-
 .start-holder .vs {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: vs;
   font-size: 2.5rem;
+  margin: 0;
+}
+
+.start-holder .flex3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
 }
 
 .start-holder .game {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: game;
   width: 12rem;
   text-align: center;
   height: 4rem;
+  margin: 2rem 0;
 }
 
 .start-holder .game #game {
@@ -712,10 +715,6 @@
 }
 
 .start-holder .rounds {
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: rounds;
   width: 12rem;
   text-align: center;
   height: 4rem;
@@ -731,7 +730,6 @@
   padding: 1.2rem;
   font-size: 1.5rem;
   cursor: pointer;
-  margin-left: 12.5rem;
 }
 
 .start-holder .rounds #rounds:hover {
@@ -763,14 +761,13 @@
   height: 3rem;
   width: 3rem;
   outline: none;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 2rem;
   cursor: pointer;
-  -ms-grid-row: 4;
-  -ms-grid-column: 3;
   grid-area: button;
   -ms-grid-column-align: end;
       justify-self: end;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
 }
 
 .start-holder .button-start .button-link {
