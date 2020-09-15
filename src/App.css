@@ -109,11 +109,6 @@
   background-color: #fdfdfd;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "back title toggler" "username username username" "password password password" "submit submit submit" "status status status";
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -122,14 +117,19 @@
   border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 31rem;
-  width: 50rem;
+  width: 70%;
+}
+
+.auth-holder .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .auth-holder .auth-back-button {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: back;
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -141,13 +141,13 @@
   outline: none;
   cursor: pointer;
   justify-self: start;
-  margin-left: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 1rem;
 }
 
 .auth-holder .auth-back-button .button-link {
@@ -160,17 +160,7 @@
   color: gray;
 }
 
-.auth-holder .title {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: title;
-  margin-left: -37rem;
-}
-
 .auth-holder .toggler {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: toggler;
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -178,7 +168,10 @@
   border-radius: 50px;
   outline: none;
   padding: 1rem;
-  margin-right: 1rem;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin-top: 1rem;
   cursor: pointer;
 }
 
@@ -192,35 +185,36 @@
   color: gray;
 }
 
+.auth-holder .col {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.auth-holder .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .auth-holder .input {
   font-family: inherit;
   text-align: center;
-  margin: 1rem 0 1rem 15rem;
   padding: 1rem;
   border-radius: 50px;
+  margin: 1rem 0;
   border: solid 2px black;
   outline: none;
 }
 
-.auth-holder .user {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: username;
-}
-
-.auth-holder .password {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: password;
-}
-
 .auth-holder .submit {
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: submit;
   font-family: inherit;
   background: white;
   border: none;
@@ -230,7 +224,6 @@
   padding: 1rem;
   cursor: pointer;
   outline: none;
-  margin: 1rem 0 0 18rem;
 }
 
 .auth-holder .submit:hover {
@@ -238,10 +231,6 @@
 }
 
 .auth-holder .status-block-success {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: status;
   border-radius: 10px;
   padding: 0 0.2rem;
   width: 10rem;
@@ -253,10 +242,6 @@
 }
 
 .auth-holder .status-block-failure {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: status;
   border-radius: 10px;
   padding: 0 0.2rem;
   width: 10rem;

@@ -34,59 +34,65 @@ class Auth extends Component {
 			response.status === 200 || response.status === 201
 				? success.classList.add("shown")
 				: failure.classList.add("shown");
-			setTimeout(() => {
-				success.classList.remove("shown");
-			}, 5000);
-			setTimeout(() => {
-				failure.classList.remove("shown");
-			}, 5000);
+			response.status === 200 || response.status === 201
+				? setTimeout(() => {
+						success.classList.remove("shown");
+						this.setState({ username: "" });
+						this.setState({ password: "" });
+				  }, 5000)
+				: setTimeout(() => {
+						failure.classList.remove("shown");
+				  }, 5000);
 		});
-		this.setState({ username: "" });
-		this.setState({ password: "" });
 	}
 
 	render() {
 		return (
 			<div className="auth-holder">
-				<button
-					className="auth-back-button"
-					onClick={this.props.history.goBack}
-				>
-					<MdArrowBack className="button-link" />
-				</button>
-				<h1 className="title">{this.state.curr}</h1>
-				<button
-					className="toggler"
-					onClick={() => {
-						this.setState({
-							curr: this.state.curr === "Login" ? "Register" : "Login",
-						});
-					}}
-				>
-					Register
-				</button>
-				<form onSubmit={this.auth} className="form">
-					<input
-						type="text"
-						placeholder="username"
-						className="input user"
-						value={this.state.username}
-						onChange={(e) => this.setState({ username: e.target.value })}
-					/>
-					<input
-						type="password"
-						placeholder="password"
-						className="input password"
-						value={this.state.password}
-						onChange={(e) => this.setState({ password: e.target.value })}
-					/>
-					<input type="submit" value={this.state.curr} className="submit" />
-				</form>
-				<div className="status-block-success">
-					<p className="text">Success</p>
+				<div className="flex">
+					<button
+						className="auth-back-button"
+						onClick={this.props.history.goBack}
+					>
+						<MdArrowBack className="button-link" />
+					</button>
+					<h1 className="title">{this.state.curr}</h1>
+					<button
+						className="toggler"
+						onClick={() => {
+							this.setState({
+								curr: this.state.curr === "Login" ? "Register" : "Login",
+							});
+						}}
+					>
+						Register
+					</button>
 				</div>
-				<div className="status-block-failure">
-					<p className="text">Logged In</p>
+
+				<div className="col">
+					<form onSubmit={this.auth} className="form">
+						<input
+							type="text"
+							placeholder="username"
+							className="input user"
+							value={this.state.username}
+							onChange={(e) => this.setState({ username: e.target.value })}
+						/>
+						<input
+							type="password"
+							placeholder="password"
+							className="input password"
+							value={this.state.password}
+							onChange={(e) => this.setState({ password: e.target.value })}
+						/>
+						<input type="submit" value={this.state.curr} className="submit" />
+					</form>
+					<div className="status-block-success">
+						<p className="text">Success</p>
+					</div>
+					<div className="status-block-failure">
+						<p className="text">Logged In</p>
+					</div>
 				</div>
 			</div>
 		);

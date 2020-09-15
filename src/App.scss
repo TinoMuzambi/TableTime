@@ -102,25 +102,22 @@
 .auth-holder {
 	background-color: rgb(253, 253, 253);
 	display: grid;
-	grid-template-areas:
-		"back title toggler"
-		"username username username"
-		"password password password"
-		"submit submit submit"
-		"status status status";
-	justify-items: center;
-	align-items: center;
+
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 50px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	height: 31rem;
-	width: 50rem;
+	width: 70%;
+
+	.flex {
+		display: flex;
+		padding-top: 2rem;
+		justify-content: space-around;
+	}
 
 	.auth-back-button {
-		grid-area: back;
 		background: white;
 		border: none;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -131,9 +128,9 @@
 		outline: none;
 		cursor: pointer;
 		justify-self: start;
-		margin-left: 1.5rem;
 		display: flex;
 		align-items: center;
+		margin-top: 1rem;
 
 		.button-link {
 			color: black;
@@ -145,20 +142,15 @@
 		}
 	}
 
-	.title {
-		grid-area: title;
-		margin-left: -37rem;
-	}
-
 	.toggler {
-		grid-area: toggler;
 		background: white;
 		border: none;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 		border-radius: 50px;
 		outline: none;
 		padding: 1rem;
-		margin-right: 1rem;
+		height: min-content;
+		margin-top: 1rem;
 		cursor: pointer;
 
 		.button-link {
@@ -169,28 +161,30 @@
 				color: gray;
 			}
 		}
+	}
+
+	.col {
+		display: grid;
+		place-items: center;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.input {
 		font-family: inherit;
 		text-align: center;
-		margin: 1rem 0 1rem 15rem;
 		padding: 1rem;
 		border-radius: 50px;
+		margin: 1rem 0;
 		border: solid 2px black;
 		outline: none;
 	}
 
-	.user {
-		grid-area: username;
-	}
-
-	.password {
-		grid-area: password;
-	}
-
 	.submit {
-		grid-area: submit;
 		font-family: inherit;
 		background: white;
 		border: none;
@@ -199,7 +193,6 @@
 		padding: 1rem;
 		cursor: pointer;
 		outline: none;
-		margin: 1rem 0 0 18rem;
 
 		&:hover {
 			background: rgb(228, 228, 228);
@@ -207,8 +200,6 @@
 	}
 
 	.status-block-success {
-		grid-area: status;
-
 		border-radius: 10px;
 		padding: 0 0.2rem;
 		width: 10rem;
@@ -220,7 +211,6 @@
 	}
 
 	.status-block-failure {
-		grid-area: status;
 		border-radius: 10px;
 		padding: 0 0.2rem;
 		width: 10rem;
