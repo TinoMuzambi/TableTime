@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { withRouter, Redirect } from "react-router-dom";
+import { AiOutlineReload } from "react-icons/ai";
 
 class Auth extends Component {
 	constructor() {
@@ -12,6 +13,7 @@ class Auth extends Component {
 			password: "",
 			loggedIn: false,
 			redirect: false,
+			isFetching: false,
 		};
 
 		this.auth = this.auth.bind(this);
@@ -57,11 +59,11 @@ class Auth extends Component {
 						notice.classList.remove("shown");
 						this.setState({ username: "" });
 						this.setState({ password: "" });
-				  }, 5000)
+				  }, 3000)
 				: setTimeout(() => {
 						failure.classList.remove("shown");
 						notice.classList.remove("shown");
-				  }, 5000);
+				  }, 3000);
 		});
 	}
 
