@@ -762,13 +762,20 @@
   height: 3rem;
   width: 3rem;
   outline: none;
+  justify-self: end;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 2rem;
   cursor: pointer;
-  grid-area: button;
-  -ms-grid-column-align: end;
-      justify-self: end;
 }
 
 .start-holder .button-start .button-link {
@@ -993,4 +1000,208 @@
 }
 
 /* x Score x */
+/*              Viewport less then or equal to 768px            */
+@media only screen and (max-width: 768px) {
+  .start-holder .heading {
+    font-size: 3rem;
+  }
+  .start-holder .vs {
+    font-size: 3rem;
+  }
+  .start-holder .player-input {
+    width: 9rem;
+    margin: 1rem;
+  }
+  .start-holder .rounds-arrow {
+    right: -13.1rem;
+    bottom: 2.5rem;
+  }
+  .start-holder .button-start {
+    margin-top: 2rem;
+  }
+}
+
+/*        x      Viewport less then or equal to 768px       x     */
+/*              Viewport less then or equal to 520px            */
+@media only screen and (max-width: 520px) {
+  .about-holder .about-logo {
+    height: 15rem;
+    margin: 2rem 0;
+  }
+  .start-holder .heading {
+    font-size: 2.3rem;
+  }
+  .start-holder .flex2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .start-holder .vs {
+    margin: 1rem 0;
+  }
+  .start-holder .rounds-arrow {
+    right: 1.2rem !important;
+    bottom: 0rem !important;
+  }
+  .start-holder .button-start {
+    margin-right: 0.5rem;
+  }
+  .confirm-new {
+    width: 20rem;
+  }
+  .confirm-new-title {
+    font-size: 2rem;
+  }
+  .score-holder .game-type {
+    font-size: 2.5rem;
+  }
+  .score-holder .new-button {
+    font-size: 1rem;
+    width: 5rem;
+    height: 4rem;
+  }
+  .score-holder .next-button {
+    font-size: 1rem;
+    width: 5rem;
+    height: 4rem;
+  }
+  .score {
+    width: 6.5rem;
+    height: 15rem;
+  }
+  .score .plus {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+    margin-right: 0;
+  }
+  .score .minus {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+    margin-right: 0;
+  }
+  .score .player {
+    font-size: 1.2rem;
+  }
+}
+
+/*        x      Viewport less then or equal to 520px       x     */
+/*              Viewport less then or equal to 320px            */
+@media only screen and (max-width: 320px) {
+  .splash-holder .logo {
+    height: 12rem;
+  }
+  .splash-holder .links {
+    margin-left: -2rem;
+  }
+  .about-holder .about-logo {
+    height: 12rem;
+  }
+  .about-holder .about-title {
+    font-size: 2.5rem;
+  }
+  .history-holder .title {
+    font-size: 2rem;
+  }
+  .start-holder .heading {
+    font-size: 1.5rem;
+  }
+  .start-holder .vs {
+    font-size: 2rem;
+    margin: 0.2rem 0;
+  }
+  .start-holder .player1 {
+    height: 3.3rem;
+    margin-top: -1rem;
+  }
+  .start-holder .player1 input {
+    font-size: 1.2rem;
+  }
+  .start-holder .player2 {
+    height: 3.3rem;
+  }
+  .start-holder .player2 input {
+    font-size: 1.2rem;
+  }
+  .start-holder #game {
+    font-size: 1.2rem !important;
+    height: 3.5rem;
+    margin-top: -1.5rem;
+  }
+  .start-holder #rounds {
+    font-size: 1.2rem !important;
+    height: 3.5rem;
+    margin-top: -1.5rem;
+  }
+  .start-holder .rounds-arrow {
+    right: -6.1rem !important;
+    bottom: 2.2rem !important;
+  }
+  .start-holder .button-start {
+    margin-right: 1rem;
+    margin-top: -1rem;
+  }
+  .confirm-new {
+    width: 15rem;
+  }
+  .confirm-new-title {
+    font-size: 2rem;
+  }
+  .game-type {
+    font-size: 2.5rem;
+  }
+  .new-button {
+    font-size: 1rem;
+    width: 5rem;
+    height: 4rem;
+  }
+  .next-button {
+    font-size: 1rem;
+    width: 5rem;
+    height: 4rem;
+  }
+  .score-holder {
+    width: 85%;
+  }
+  .score-holder .game-type {
+    font-size: 1.5rem;
+  }
+  .score-holder .best-of {
+    font-size: 1.2rem;
+  }
+  .score-holder .status {
+    font-size: 1.2rem;
+  }
+  .score {
+    width: 5rem;
+        grid-template-areas: "score" "plus" "minus";
+  }
+  .score .curr-score {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: score;
+    margin-top: 0.5rem;
+    font-size: 3.5rem;
+  }
+  .score .plus {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: plus;
+    margin-left: 1rem;
+  }
+  .score .minus {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: minus;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+  }
+}
+
+/*        x      Viewport less then or equal to 320px       x     */
 /*# sourceMappingURL=App.css.map */
