@@ -120,15 +120,6 @@
   width: 70%;
 }
 
-.auth-holder .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 2rem;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
 .auth-holder .auth-back-button {
   background: white;
   border: none;
@@ -158,6 +149,15 @@
   -webkit-transition: 0.00001s ease;
   transition: 0.00001s ease;
   color: gray;
+}
+
+.auth-holder .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .auth-holder .toggler {
@@ -310,8 +310,6 @@
   background-color: #fdfdfd;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "back   title" "photo  photo" "footer footer";
-  justify-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -320,14 +318,19 @@
   border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 35rem;
-  width: 60rem;
+  width: 70%;
+}
+
+.about-holder .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .about-holder .about-back-button {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: back;
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -336,11 +339,9 @@
   font-size: 2rem;
   height: 3rem;
   width: 3rem;
+  margin: 0 -1rem 0 1rem;
   outline: none;
   cursor: pointer;
-  justify-self: start;
-  margin-left: 1.5rem;
-  margin-top: 3.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,10 +361,7 @@
 }
 
 .about-holder .about-title {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: title;
-  margin-left: -25rem;
+  margin: 0 auto;
 }
 
 .about-holder .about-logo {
@@ -371,19 +369,11 @@
   border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: photo;
-  margin-top: -2rem;
+  place-self: center;
 }
 
 .about-holder .footer {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: footer;
-  margin-bottom: -1rem;
+  place-self: center;
 }
 
 .about-holder .footer .link-link {
@@ -394,7 +384,6 @@
 
 .about-holder .footer .version {
   text-align: center;
-  margin-top: 0;
 }
 
 /* x About x */
@@ -1021,355 +1010,4 @@
 }
 
 /* x Score x */
-/*              Viewport less then or equal to 768px            */
-@media only screen and (max-width: 768px) {
-  .splash-holder {
-    width: 40rem;
-  }
-  .about-holder {
-    width: 40rem;
-  }
-  .about-holder .about-title {
-    margin-left: -14rem;
-  }
-  .history-holder {
-    width: 39rem;
-    height: 30rem;
-  }
-  .history-holder .title {
-    margin-left: -18rem;
-  }
-  .start-holder {
-        grid-template-areas: "back    heading" "player1 player1" "vs      vs" "player2 player2" "game    game" "rounds  button";
-    height: 33rem;
-    width: 40rem;
-  }
-  .start-holder .heading {
-    margin-left: -21rem;
-    font-size: 3rem;
-  }
-  .start-holder .vs {
-    margin-top: -1rem;
-    font-size: 3rem;
-  }
-  .start-holder .player-input {
-    width: 9rem;
-    margin: 1rem;
-  }
-  .start-holder .player1 {
-    margin-top: -1rem;
-  }
-  .start-holder .player2 {
-    margin-top: -1rem;
-  }
-  .start-holder #game {
-    margin-left: 1rem;
-  }
-  .start-holder #rounds {
-    margin-left: 8.8rem;
-  }
-  .start-holder .rounds-arrow {
-    right: -13.1rem;
-    bottom: 2.5rem;
-  }
-  .start-holder .button-start {
-    margin-top: 2rem;
-  }
-  .score-holder {
-    height: 30rem;
-    width: 40rem;
-  }
-  .score-holder .score-back-button {
-    margin-left: 1.5rem;
-  }
-  .score-holder .game-type {
-    margin-left: -12rem;
-  }
-  .score-holder .next-button {
-    margin-top: -1rem;
-  }
-  .score-holder .best-of {
-    margin-top: -0.8rem;
-  }
-  .score-holder .new-button {
-    margin-top: -2rem;
-  }
-}
-
-/*        x      Viewport less then or equal to 768px       x     */
-/*              Viewport less then or equal to 520px            */
-@media only screen and (max-width: 520px) {
-  .splash-holder {
-    width: 21rem;
-    height: 30rem;
-  }
-  .splash-holder .logo {
-    height: 16rem;
-    margin-top: 1rem;
-  }
-  .splash-holder .links {
-    margin-left: -2rem;
-  }
-  .about-holder {
-    width: 19rem;
-    height: 30rem;
-  }
-  .about-holder .about-back-button {
-    margin-top: 1.5rem;
-  }
-  .about-holder .about-logo {
-    height: 15rem;
-    margin-top: -2rem;
-  }
-  .about-holder .about-title {
-    font-size: 3rem;
-    margin-top: 1.5rem;
-    margin-left: -8.8rem;
-  }
-  .about-holder .footer {
-    margin-bottom: -2rem;
-  }
-  .history-holder {
-    width: 20rem;
-    height: 30rem;
-  }
-  .history-holder .title {
-    font-size: 2rem;
-    margin-left: -7.2rem;
-    margin-top: 2rem;
-  }
-  .history-holder .hist-back-button {
-    margin-top: 1.8rem;
-  }
-  .start-holder {
-    width: 20rem;
-    height: 32rem;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .start-holder .heading {
-    font-size: 2.3rem;
-    margin-left: -11rem;
-  }
-  .start-holder .vs {
-    margin-top: 0rem;
-  }
-  .start-holder .player1 {
-    margin-bottom: 0rem;
-  }
-  .start-holder .player2 {
-    margin-top: -2rem;
-  }
-  .start-holder #game {
-    margin-top: 0;
-  }
-  .start-holder #rounds {
-    margin-top: -1rem;
-    margin-left: 3.5rem !important;
-  }
-  .start-holder .rounds-arrow {
-    right: -8rem !important;
-    bottom: 2.5rem;
-  }
-  .start-holder .button-start {
-    margin-right: 0.5rem;
-  }
-  .confirm-new {
-    width: 20rem;
-  }
-  .confirm-new-title {
-    font-size: 2rem;
-  }
-  .score-holder {
-    width: 21rem;
-    height: 31rem;
-  }
-  .score-holder .game-type {
-    font-size: 2.5rem;
-    margin-left: -8rem;
-  }
-  .score-holder .new-button {
-    font-size: 1rem;
-    width: 5rem;
-    height: 4rem;
-    margin-top: -0.7rem;
-  }
-  .score-holder .best-of {
-    margin-top: 0.5rem;
-  }
-  .score-holder .next-button {
-    font-size: 1rem;
-    width: 5rem;
-    height: 4rem;
-    margin-top: -0.7rem;
-  }
-  .score {
-    width: 6.5rem;
-    height: 15rem;
-  }
-  .score .plus {
-    height: 2.5rem;
-    width: 2.5rem;
-    font-size: 1.5rem;
-    margin-right: 0;
-  }
-  .score .minus {
-    height: 2.5rem;
-    width: 2.5rem;
-    font-size: 1.5rem;
-    margin-right: 0;
-  }
-  .score .player {
-    font-size: 1.2rem;
-  }
-}
-
-/*        x      Viewport less then or equal to 520px       x     */
-/*              Viewport less then or equal to 320px            */
-@media only screen and (max-width: 320px) {
-  .splash-holder {
-    width: 18rem;
-    height: 29rem;
-  }
-  .splash-holder .logo {
-    height: 15rem;
-    margin-top: 1rem;
-  }
-  .splash-holder .links {
-    margin-left: -2rem;
-  }
-  .about-holder {
-    width: 18rem;
-    height: 30rem;
-  }
-  .about-holder .about-back-button {
-    margin-top: 1.5rem;
-  }
-  .about-holder .about-logo {
-    height: 15rem;
-    margin-top: -2rem;
-  }
-  .about-holder .about-title {
-    font-size: 2.5rem;
-    margin-top: 1.5rem;
-    margin-left: -7rem;
-  }
-  .about-holder .footer {
-    margin-bottom: -3rem;
-  }
-  .history-holder {
-    width: 18rem;
-    height: 32rem;
-  }
-  .history-holder .title {
-    font-size: 2rem;
-    margin-left: -7.2rem;
-    margin-top: 2rem;
-  }
-  .history-holder .hist-back-button {
-    margin-top: 1.8rem;
-  }
-  .start-holder {
-    width: 18rem;
-    height: 35rem;
-  }
-  .start-holder .heading {
-    font-size: 2rem;
-    margin-left: -11rem;
-  }
-  .start-holder .vs {
-    margin-top: 0rem;
-    font-size: 2rem;
-  }
-  .start-holder .player1 {
-    margin-bottom: 0rem;
-    height: 3.3rem;
-  }
-  .start-holder .player1 input {
-    font-size: 1.2rem;
-  }
-  .start-holder .player2 {
-    margin-top: -2rem;
-    height: 3.3rem;
-  }
-  .start-holder .player2 input {
-    font-size: 1.2rem;
-  }
-  .start-holder #game {
-    margin-top: 0;
-    font-size: 1.2rem !important;
-    height: 3.5rem;
-  }
-  .start-holder #rounds {
-    margin-top: -1rem;
-    margin-left: 3.5rem;
-    font-size: 1.2rem !important;
-    height: 3.5rem;
-  }
-  .start-holder .rounds-arrow {
-    right: -6.1rem !important;
-    bottom: 2.2rem !important;
-  }
-  .start-holder .button-start {
-    margin-right: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  .confirm-new {
-    width: 15rem;
-  }
-  .confirm-new-title {
-    font-size: 2rem;
-  }
-  .score-holder {
-    width: 18rem;
-    height: 30rem;
-  }
-  .score-holder .game-type {
-    font-size: 2.5rem;
-    margin-left: -4rem;
-  }
-  .score-holder .new-button {
-    font-size: 1rem;
-    width: 5rem;
-    height: 4rem;
-    margin-top: -0.7rem;
-  }
-  .score-holder .best-of {
-    margin-top: 0.5rem;
-  }
-  .score-holder .next-button {
-    font-size: 1rem;
-    width: 5rem;
-    height: 4rem;
-    margin-top: -0.7rem;
-  }
-  .score {
-    width: 5rem;
-        grid-template-areas: "score" "plus" "minus";
-  }
-  .score .curr-score {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    grid-area: score;
-    margin-top: 0.5rem;
-    font-size: 3.5rem;
-  }
-  .score .plus {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    grid-area: plus;
-    margin-left: 1rem;
-  }
-  .score .minus {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
-    grid-area: minus;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-  }
-}
-
-/*        x      Viewport less then or equal to 320px       x     */
 /*# sourceMappingURL=App.css.map */

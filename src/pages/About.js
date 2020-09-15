@@ -7,13 +7,16 @@ class About extends Component {
 		return (
 			<>
 				<div className="about-holder">
-					<button
-						className="about-back-button"
-						onClick={this.props.history.goBack}
-					>
-						<MdArrowBack className="button-link" />
-					</button>
-					<h1 className="about-title">About</h1>
+					<div className="flex">
+						<button
+							className="about-back-button"
+							onClick={this.props.history.goBack}
+						>
+							<MdArrowBack className="button-link" />
+						</button>
+						<h1 className="about-title">About</h1>
+					</div>
+
 					<img src="/logo512.png" alt="logo" className="about-logo inverted" />
 					<p className="footer">
 						Developed by

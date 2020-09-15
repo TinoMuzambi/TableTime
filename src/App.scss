@@ -111,12 +111,6 @@
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	width: 70%;
 
-	.flex {
-		display: flex;
-		padding-top: 2rem;
-		justify-content: space-around;
-	}
-
 	.auth-back-button {
 		background: white;
 		border: none;
@@ -140,6 +134,12 @@
 				color: gray;
 			}
 		}
+	}
+
+	.flex {
+		display: flex;
+		padding-top: 2rem;
+		justify-content: space-around;
 	}
 
 	.toggler {
@@ -279,22 +279,21 @@
 .about-holder {
 	background-color: rgb(253, 253, 253);
 	display: grid;
-	grid-template-areas:
-		"back   title"
-		"photo  photo"
-		"footer footer";
-	justify-items: center;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 50px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	height: 35rem;
-	width: 60rem;
+	width: 70%;
+
+	.flex {
+		display: flex;
+		padding-top: 2rem;
+		justify-content: space-around;
+	}
 
 	.about-back-button {
-		grid-area: back;
 		background: white;
 		border: none;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -302,11 +301,9 @@
 		font-size: 2rem;
 		height: 3rem;
 		width: 3rem;
+		margin: 0 -1rem 0 1rem;
 		outline: none;
 		cursor: pointer;
-		justify-self: start;
-		margin-left: 1.5rem;
-		margin-top: 3.5rem;
 		display: flex;
 		align-items: center;
 
@@ -321,22 +318,18 @@
 	}
 
 	.about-title {
-		grid-area: title;
-		margin-left: -25rem;
+		margin: 0 auto;
 	}
 
 	.about-logo {
 		height: 20rem;
 		border-radius: 50px;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-		grid-area: photo;
-		margin-top: -2rem;
+		place-self: center;
 	}
 
 	.footer {
-		grid-area: footer;
-		margin-bottom: -1rem;
-
+		place-self: center;
 		.link-link {
 			text-decoration: none;
 			text-align: center;
@@ -345,7 +338,6 @@
 
 		.version {
 			text-align: center;
-			margin-top: 0;
 		}
 	}
 }
@@ -860,444 +852,3 @@
 }
 
 /* x Score x */
-
-/*              Viewport less then or equal to 768px            */
-
-@media only screen and (max-width: 768px) {
-	.splash-holder {
-		width: 40rem;
-	}
-
-	.about-holder {
-		width: 40rem;
-
-		.about-title {
-			margin-left: -14rem;
-		}
-	}
-
-	.history-holder {
-		width: 39rem;
-		height: 30rem;
-
-		.title {
-			margin-left: -18rem;
-		}
-	}
-
-	.start-holder {
-		grid-template-areas:
-			"back    heading"
-			"player1 player1"
-			"vs      vs"
-			"player2 player2"
-			"game    game"
-			"rounds  button";
-		height: 33rem;
-		width: 40rem;
-
-		.heading {
-			margin-left: -21rem;
-			font-size: 3rem;
-		}
-
-		.vs {
-			margin-top: -1rem;
-			font-size: 3rem;
-		}
-
-		.player-input {
-			width: 9rem;
-			margin: 1rem;
-		}
-
-		.player1 {
-			margin-top: -1rem;
-		}
-
-		.player2 {
-			margin-top: -1rem;
-		}
-
-		#game {
-			margin-left: 1rem;
-		}
-
-		#rounds {
-			margin-left: 8.8rem;
-		}
-
-		.rounds-arrow {
-			right: -13.1rem;
-			bottom: 2.5rem;
-		}
-
-		.button-start {
-			margin-top: 2rem;
-		}
-	}
-
-	.score-holder {
-		height: 30rem;
-		width: 40rem;
-
-		.score-back-button {
-			margin-left: 1.5rem;
-		}
-
-		.game-type {
-			margin-left: -12rem;
-		}
-
-		.next-button {
-			margin-top: -1rem;
-		}
-
-		.best-of {
-			margin-top: -0.8rem;
-		}
-
-		.new-button {
-			margin-top: -2rem;
-		}
-	}
-}
-
-/*        x      Viewport less then or equal to 768px       x     */
-
-/*              Viewport less then or equal to 520px            */
-
-@media only screen and (max-width: 520px) {
-	.splash-holder {
-		width: 21rem;
-		height: 30rem;
-
-		.logo {
-			height: 16rem;
-			margin-top: 1rem;
-		}
-
-		.links {
-			margin-left: -2rem;
-		}
-	}
-
-	.about-holder {
-		width: 19rem;
-		height: 30rem;
-
-		.about-back-button {
-			margin-top: 1.5rem;
-		}
-
-		.about-logo {
-			height: 15rem;
-			margin-top: -2rem;
-		}
-
-		.about-title {
-			font-size: 3rem;
-			margin-top: 1.5rem;
-			margin-left: -8.8rem;
-		}
-
-		.footer {
-			margin-bottom: -2rem;
-		}
-	}
-
-	.history-holder {
-		width: 20rem;
-		height: 30rem;
-
-		.title {
-			font-size: 2rem;
-			margin-left: -7.2rem;
-			margin-top: 2rem;
-		}
-
-		.hist-back-button {
-			margin-top: 1.8rem;
-		}
-	}
-
-	.start-holder {
-		width: 20rem;
-		height: 32rem;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-
-		.heading {
-			font-size: 2.3rem;
-			margin-left: -11rem;
-		}
-
-		.vs {
-			margin-top: 0rem;
-		}
-
-		.player1 {
-			margin-bottom: 0rem;
-		}
-
-		.player2 {
-			margin-top: -2rem;
-		}
-
-		#game {
-			margin-top: 0;
-		}
-
-		#rounds {
-			margin-top: -1rem;
-			margin-left: 3.5rem !important;
-		}
-
-		.rounds-arrow {
-			right: -8rem !important;
-			bottom: 2.5rem;
-		}
-
-		.button-start {
-			margin-right: 0.5rem;
-		}
-	}
-
-	.confirm-new {
-		width: 20rem;
-	}
-
-	.confirm-new-title {
-		font-size: 2rem;
-	}
-
-	.score-holder {
-		width: 21rem;
-		height: 31rem;
-
-		.game-type {
-			font-size: 2.5rem;
-			margin-left: -8rem;
-		}
-
-		.new-button {
-			font-size: 1rem;
-			width: 5rem;
-			height: 4rem;
-			margin-top: -0.7rem;
-		}
-
-		.best-of {
-			margin-top: 0.5rem;
-		}
-
-		.next-button {
-			font-size: 1rem;
-			width: 5rem;
-			height: 4rem;
-			margin-top: -0.7rem;
-		}
-	}
-
-	.score {
-		width: 6.5rem;
-		height: 15rem;
-
-		.plus {
-			height: 2.5rem;
-			width: 2.5rem;
-			font-size: 1.5rem;
-			margin-right: 0;
-		}
-
-		.minus {
-			height: 2.5rem;
-			width: 2.5rem;
-			font-size: 1.5rem;
-			margin-right: 0;
-		}
-
-		.player {
-			font-size: 1.2rem;
-		}
-	}
-}
-
-/*        x      Viewport less then or equal to 520px       x     */
-
-/*              Viewport less then or equal to 320px            */
-
-@media only screen and (max-width: 320px) {
-	.splash-holder {
-		width: 18rem;
-		height: 29rem;
-
-		.logo {
-			height: 15rem;
-			margin-top: 1rem;
-		}
-
-		.links {
-			margin-left: -2rem;
-		}
-	}
-
-	.about-holder {
-		width: 18rem;
-		height: 30rem;
-
-		.about-back-button {
-			margin-top: 1.5rem;
-		}
-
-		.about-logo {
-			height: 15rem;
-			margin-top: -2rem;
-		}
-
-		.about-title {
-			font-size: 2.5rem;
-			margin-top: 1.5rem;
-			margin-left: -7rem;
-		}
-
-		.footer {
-			margin-bottom: -3rem;
-		}
-	}
-
-	.history-holder {
-		width: 18rem;
-		height: 32rem;
-
-		.title {
-			font-size: 2rem;
-			margin-left: -7.2rem;
-			margin-top: 2rem;
-		}
-
-		.hist-back-button {
-			margin-top: 1.8rem;
-		}
-	}
-
-	.start-holder {
-		width: 18rem;
-		height: 35rem;
-
-		.heading {
-			font-size: 2rem;
-			margin-left: -11rem;
-		}
-
-		.vs {
-			margin-top: 0rem;
-			font-size: 2rem;
-		}
-
-		.player1 {
-			margin-bottom: 0rem;
-			height: 3.3rem;
-
-			input {
-				font-size: 1.2rem;
-			}
-		}
-
-		.player2 {
-			margin-top: -2rem;
-			height: 3.3rem;
-
-			input {
-				font-size: 1.2rem;
-			}
-		}
-
-		#game {
-			margin-top: 0;
-			font-size: 1.2rem !important;
-			height: 3.5rem;
-		}
-
-		#rounds {
-			margin-top: -1rem;
-			margin-left: 3.5rem;
-			font-size: 1.2rem !important;
-			height: 3.5rem;
-		}
-
-		.rounds-arrow {
-			right: -6.1rem !important;
-			bottom: 2.2rem !important;
-		}
-
-		.button-start {
-			margin-right: 0.5rem;
-			margin-bottom: 1rem;
-		}
-	}
-
-	.confirm-new {
-		width: 15rem;
-	}
-
-	.confirm-new-title {
-		font-size: 2rem;
-	}
-
-	.score-holder {
-		width: 18rem;
-		height: 30rem;
-
-		.game-type {
-			font-size: 2.5rem;
-			margin-left: -4rem;
-		}
-
-		.new-button {
-			font-size: 1rem;
-			width: 5rem;
-			height: 4rem;
-			margin-top: -0.7rem;
-		}
-
-		.best-of {
-			margin-top: 0.5rem;
-		}
-
-		.next-button {
-			font-size: 1rem;
-			width: 5rem;
-			height: 4rem;
-			margin-top: -0.7rem;
-		}
-	}
-
-	.score {
-		width: 5rem;
-		grid-template-areas:
-			"score"
-			"plus"
-			"minus";
-
-		.curr-score {
-			grid-area: score;
-			margin-top: 0.5rem;
-			font-size: 3.5rem;
-		}
-
-		.plus {
-			grid-area: plus;
-			margin-left: 1rem;
-		}
-
-		.minus {
-			grid-area: minus;
-			margin-top: 0.5rem;
-			margin-left: 1rem;
-		}
-	}
-}
-
-/*        x      Viewport less then or equal to 320px       x     */
