@@ -351,44 +351,56 @@ class ScoreHolder extends Component {
 		return (
 			<>
 				<div className="score-holder">
-					<button
-						className="score-back-button"
-						onClick={this.props.history.goBack}
-					>
-						<MdArrowBack className="button-link" />
-					</button>
-					<h1 className="game-type">Game {this.state.gameDetails.gameType}</h1>
-					<button className={"new-button"} onClick={this.handleConfirm}>
-						New Game
-					</button>
-					<h2 className="best-of">
-						Game {this.state.currentGame}/{this.state.numericalBestOf}
-					</h2>
-					<button className={`next-button`} onClick={this.startNextGame}>
-						Next Game
-					</button>
-					<Score
-						gameType={this.state.gameDetails.gameType}
-						player={this.state.gameDetails.player1}
-						updateScore={this.updateScore}
-						id={0}
-						className="score1"
-						deuce={this.state.gameDetails.deuce}
-						deuceScore={this.state.deuceScore}
-						ref={this.firstScore}
-					/>
-					<h2 className="status">{this.state.status}</h2>{" "}
-					<h1 className="separator">-</h1>
-					<Score
-						gameType={this.state.gameDetails.gameType}
-						player={this.state.gameDetails.player2}
-						updateScore={this.updateScore}
-						id={1}
-						className="score2"
-						deuce={this.state.gameDetails.deuce}
-						deuceScore={this.state.deuceScore}
-						ref={this.secondScore}
-					/>
+					<div className="flex">
+						<button
+							className="score-back-button"
+							onClick={this.props.history.goBack}
+						>
+							<MdArrowBack className="button-link" />
+						</button>
+						<h1 className="game-type">
+							Game {this.state.gameDetails.gameType}
+						</h1>
+					</div>
+					<div className="flex2">
+						<button className={"new-button"} onClick={this.handleConfirm}>
+							New Game
+						</button>
+						<h2 className="best-of">
+							Game {this.state.currentGame}/{this.state.numericalBestOf}
+						</h2>
+						<button className={`next-button`} onClick={this.startNextGame}>
+							Next Game
+						</button>
+					</div>
+
+					<div className="flex4">
+						<Score
+							gameType={this.state.gameDetails.gameType}
+							player={this.state.gameDetails.player1}
+							updateScore={this.updateScore}
+							id={0}
+							className="score1"
+							deuce={this.state.gameDetails.deuce}
+							deuceScore={this.state.deuceScore}
+							ref={this.firstScore}
+						/>
+						<div className="flex3">
+							<h2 className="status">{this.state.status}</h2>{" "}
+							<h1 className="separator">-</h1>
+						</div>
+
+						<Score
+							gameType={this.state.gameDetails.gameType}
+							player={this.state.gameDetails.player2}
+							updateScore={this.updateScore}
+							id={1}
+							className="score2"
+							deuce={this.state.gameDetails.deuce}
+							deuceScore={this.state.deuceScore}
+							ref={this.secondScore}
+						/>
+					</div>
 				</div>
 			</>
 		);

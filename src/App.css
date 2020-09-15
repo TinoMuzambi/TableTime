@@ -786,11 +786,6 @@
   position: absolute;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "back   game   game" "new   best   next" "status status status" "score1 mid    score2";
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background-color: #fdfdfd;
   top: 50%;
   left: 50%;
@@ -799,8 +794,7 @@
   border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 32rem;
-  width: 60rem;
+  width: 70%;
   padding-bottom: 5rem;
   overflow: hidden;
 }
@@ -825,10 +819,16 @@
   opacity: 1 !important;
 }
 
+.score-holder .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .score-holder .score-back-button {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: back;
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -837,10 +837,10 @@
   font-size: 2rem;
   height: 3rem;
   width: 3rem;
+  margin: 0 -1rem 0 1rem;
   outline: none;
   cursor: pointer;
   justify-self: start;
-  margin-left: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -860,11 +860,16 @@
 }
 
 .score-holder .game-type {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-area: game;
-  margin-left: -20rem;
+  margin: 0 auto;
+}
+
+.score-holder .flex2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .score-holder .new-button {
@@ -876,10 +881,7 @@
   font-size: 1.5rem;
   outline: none;
   cursor: pointer;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: new;
-  margin-top: -3.5rem;
   padding: 1rem;
 }
 
@@ -888,10 +890,6 @@
 }
 
 .score-holder .best-of {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: best;
-  margin-top: -2.5rem;
   text-align: center;
 }
 
@@ -904,10 +902,6 @@
   font-size: 1.5rem;
   outline: none;
   cursor: pointer;
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  grid-area: next;
-  margin-top: -3.5rem;
   padding: 1rem;
   pointer-events: none;
   opacity: 0;
@@ -917,30 +911,28 @@
   color: gray;
 }
 
-.score-holder .score1 {
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  grid-area: score1;
+.score-holder .flex4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.score-holder .status {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: status;
+.score-holder .flex3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
 }
 
 .score-holder .separator {
   text-align: center;
-  -ms-grid-row: 4;
-  -ms-grid-column: 2;
-  grid-area: mid;
-}
-
-.score-holder .score2 {
-  -ms-grid-row: 4;
-  -ms-grid-column: 3;
-  grid-area: score2;
 }
 
 .score-holder h1 {
