@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SplashScreen extends Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
 		return (
 			<>
 				<Link to="/auth">
-					<button className="auth-link">Login</button>
+					<button className="auth-link">
+						{this.props.loggedIn ? "Log Out" : "Log In"}
+					</button>
 				</Link>
 				<div className="splash-holder">
 					<img src="/logo512.png" alt="logo" className="logo inverted" />

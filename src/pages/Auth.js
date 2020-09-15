@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import { AiOutlineReload } from "react-icons/ai";
 
 class Auth extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			curr: "Login",
@@ -45,6 +45,7 @@ class Auth extends Component {
 			});
 			if (response.status === 200) {
 				success.classList.add("shown"); // If succesfully logged in go back to home.
+				this.props.setLoggedIn(true);
 				this.props.history.goBack();
 			} else if (response.status === 201) {
 				// If succesfully registered allow login.
