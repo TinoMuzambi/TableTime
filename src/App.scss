@@ -203,29 +203,11 @@
 			background: rgb(228, 228, 228);
 		}
 	}
-
-	.icon {
-		font-size: 5rem;
-		color: gray;
-		position: absolute;
-		top: 50%;
-		left: 45%;
-		transform: translate(-50%, -50%);
-		animation: spinLogo 2s infinite ease-out;
-	}
-
-	@keyframes spinLogo {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(359deg);
-		}
-	}
 }
+
 .notice {
 	width: 100vw;
-	height: 100vh;
+	height: 95vh;
 	display: grid;
 	background: rgba(255, 255, 255, 0.9);
 	position: relative;
@@ -262,6 +244,33 @@
 	}
 }
 
+.notice2 {
+	width: 100vw;
+	height: 95vh;
+	display: grid;
+	background: rgba(255, 255, 255, 0.9);
+	position: relative;
+	z-index: 10;
+
+	.icon {
+		font-size: 5rem;
+		color: gray;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation: spinLogo 2s infinite ease-out;
+	}
+}
+
+@keyframes spinLogo {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
 .shown {
 	opacity: 1 !important;
 	z-index: 3;

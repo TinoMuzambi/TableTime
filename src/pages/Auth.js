@@ -21,6 +21,8 @@ class Auth extends Component {
 
 	async auth(e) {
 		e.preventDefault();
+		await this.setState({ isFetching: true });
+		console.log(this.state.isFetching);
 		const userDetails = {
 			username: this.state.username,
 			password: this.state.password,
@@ -33,10 +35,12 @@ class Auth extends Component {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(userDetails),
-		}).then((response) => {
+		}).then(async (response) => {
 			const success = document.querySelector(".status-block-success");
 			const failure = document.querySelector(".status-block-failure");
 			const notice = document.querySelector(".notice");
+			await this.setState({ isFetching: false });
+			console.log(this.state.isFetching);
 			notice.classList.add("shown");
 			response.text().then((res) => {
 				failure.firstChild.innerText = res;
@@ -50,19 +54,19 @@ class Auth extends Component {
 			} else if (response.status === 201) {
 				success.classList.add("shown");
 			} else {
-				console.log("failure");
 				failure.classList.add("shown");
 			}
 			response.status === 200 || response.status === 201
 				? setTimeout(() => {
-						success.classList.remove("shown");
 						notice.classList.remove("shown");
+						success.classList.remove("shown");
+
 						this.setState({ username: "" });
 						this.setState({ password: "" });
 				  }, 3000)
 				: setTimeout(() => {
-						failure.classList.remove("shown");
 						notice.classList.remove("shown");
+						failure.classList.remove("shown");
 				  }, 3000);
 		});
 	}
@@ -70,6 +74,14 @@ class Auth extends Component {
 	render() {
 		return (
 			<>
+				{this.state.isFetching ? (
+					<div className="notice2">
+						<AiOutlineReload className="icon" />
+					</div>
+				) : (
+					""
+				)}
+
 				<div className="notice">
 					<div className="status-block-success">
 						<p className="text">Success</p>
@@ -78,6 +90,7 @@ class Auth extends Component {
 						<p className="text">Logged In</p>
 					</div>
 				</div>
+
 				<div className="auth-holder">
 					<div className="flex">
 						<button

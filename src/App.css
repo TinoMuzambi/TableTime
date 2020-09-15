@@ -236,43 +236,9 @@
   background: #e4e4e4;
 }
 
-.auth-holder .icon {
-  font-size: 5rem;
-  color: gray;
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-animation: spinLogo 2s infinite ease-out;
-          animation: spinLogo 2s infinite ease-out;
-}
-
-@-webkit-keyframes spinLogo {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
-@keyframes spinLogo {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
 .notice {
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   display: -ms-grid;
   display: grid;
   background: rgba(255, 255, 255, 0.9);
@@ -310,6 +276,50 @@
   border: solid 2px red;
   background: #ffa3a3;
   color: #ff4747;
+}
+
+.notice2 {
+  width: 100vw;
+  height: 95vh;
+  display: -ms-grid;
+  display: grid;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 10;
+}
+
+.notice2 .icon {
+  font-size: 5rem;
+  color: gray;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation: spinLogo 2s infinite ease-out;
+          animation: spinLogo 2s infinite ease-out;
+}
+
+@-webkit-keyframes spinLogo {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes spinLogo {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }
 
 .shown {
