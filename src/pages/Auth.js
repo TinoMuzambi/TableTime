@@ -51,14 +51,17 @@ class Auth extends Component {
 			let text = "";
 			response.text().then(async (res) => {
 				text = await res;
-				if (response.status === 200) localStorage.setItem("table-user", text);
-				else failure.firstChild.innerText = text; // Set failure message.
+				if (response.status === 200) {
+					localStorage.setItem("table-user", text);
+					this.props.setUsername(this.state.username);
+					localStorage.setItem("username", this.state.username);
+				} else failure.firstChild.innerText = text; // Set failure message.
 			});
 			if (response.status === 200) {
 				success.classList.add("shown"); // If succesfully logged in go back to home.
 
 				this.props.setLoggedIn(true);
-				this.props.setUsername(this.state.username);
+
 				this.props.history.goBack();
 			} else if (response.status === 201) {
 				// If succesfully registered allow login.
@@ -128,6 +131,7 @@ class Auth extends Component {
 						<form onSubmit={this.auth} className="form">
 							<input
 								type="text"
+								autocapitalize="none"
 								placeholder="username"
 								className="input user"
 								value={this.state.username}

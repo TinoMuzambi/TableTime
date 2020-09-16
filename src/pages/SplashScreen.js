@@ -21,8 +21,9 @@ class SplashScreen extends Component {
 						className="auth-link"
 						onClick={() => {
 							this.props.setLoggedIn(false);
-							this.props.setUsername("");
 							localStorage.removeItem("table-user");
+							localStorage.removeItem("username");
+							this.props.setUsername("");
 							const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 							const notice = document.querySelector(".notice");
 							notice.classList.add("shown");

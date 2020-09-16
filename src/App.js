@@ -15,6 +15,11 @@ function App() {
 	const [username, setUsername] = useState("");
 
 	useEffect(() => {
+		setUsername(
+			localStorage.getItem("username") === null
+				? ""
+				: localStorage.getItem("username")
+		);
 		const lastDark = localStorage.getItem("dark");
 		const btn = document.querySelector(".toggle");
 		if (lastDark === null) {
@@ -28,7 +33,7 @@ function App() {
 			document.documentElement.classList.remove("dark-mode");
 			btn.innerHTML = "Dark";
 		}
-	}, [dark]);
+	}, [dark, username]);
 
 	const toggleDark = () => {
 		const lastDark = localStorage.getItem("dark");
