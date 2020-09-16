@@ -806,6 +806,7 @@
 		display: flex;
 		padding-top: 2rem;
 		justify-content: space-around;
+		text-align: center;
 	}
 
 	.flex3 {
@@ -836,7 +837,7 @@
 	height: 16rem;
 	justify-items: center;
 	align-items: center;
-	margin: 0 1rem;
+	margin: 0 0.5rem;
 
 	.done {
 		pointer-events: none;
@@ -964,7 +965,7 @@
 	}
 
 	.score {
-		width: 6.5rem;
+		width: 6.9rem;
 		height: 15rem;
 
 		.plus {
