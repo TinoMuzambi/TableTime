@@ -30,29 +30,8 @@ class History extends Component {
 		this.handleDelete = this.handleDelete.bind(this);
 	}
 
-	async UNSAFE_componentWillMount() {
+	async componentDidMount() {
 		// Fetch game data from database on component load.
-		const fetchData = async () => {
-			await this.setState({ isFetching: true });
-			const result = await fetch(
-				`https://table-time.herokuapp.com/api/matches`,
-				{
-					headers: {
-						"auth-token":
-							localStorage.getItem("table-user") !== null
-								? localStorage.getItem("table-user")
-								: "",
-					},
-				}
-			);
-			const body = await result.json();
-			await this.setState({ games: body });
-			await this.setState({ isFetching: false });
-		};
-		fetchData();
-	}
-
-	componentDidMount() {
 		const fetchData = async () => {
 			await this.setState({ isFetching: true });
 			const result = await fetch(
@@ -72,6 +51,7 @@ class History extends Component {
 			await this.setState({ games: body });
 			await this.setState({ isFetching: false });
 		};
+		fetchData();
 
 		const pusher = new Pusher("e541d4f20f806b61b5d7", {
 			cluster: "ap2",

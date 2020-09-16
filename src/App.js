@@ -7,7 +7,6 @@ import StartGame from "./pages/StartGame";
 import History from "./pages/History";
 import About from "./pages/About";
 import Auth from "./pages/Auth";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -44,93 +43,89 @@ function App() {
 			<Router>
 				<Route
 					render={({ location }) => (
-						<TransitionGroup>
-							<CSSTransition key={location.key} timeout={450} classNames="fade">
-								<Switch location={location}>
-									<>
-										<button onClick={toggleDark} className="toggle">
-											Dark
-										</button>
+						<Switch location={location}>
+							<>
+								<button onClick={toggleDark} className="toggle">
+									Dark
+								</button>
 
-										<Route
-											path="/"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>Table Time</title>
-													</Helmet>
-													<SplashScreen
-														loggedIn={loggedIn}
-														setLoggedIn={setLoggedIn}
-													/>
-												</>
-											)}
-										/>
-										<Route
-											path="/start"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>Start | Table Time</title>
-													</Helmet>
-													<StartGame />
-												</>
-											)}
-										/>
-										<Route
-											path="/game"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>Game | Table Time</title>
-													</Helmet>
-													<ScoreHolder loggedIn={loggedIn} />
-												</>
-											)}
-										/>
-										<Route
-											path="/history"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>History | Table Time</title>
-													</Helmet>
-													<History loggedIn={loggedIn} />
-												</>
-											)}
-										/>
-										<Route
-											path="/about"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>About | Table Time</title>
-													</Helmet>
-													<About />
-												</>
-											)}
-										/>
-										<Route
-											path="/auth"
-											exact
-											render={() => (
-												<>
-													<Helmet>
-														<title>Authorise | Table Time</title>
-													</Helmet>
-													<Auth setLoggedIn={setLoggedIn} />
-												</>
-											)}
-										/>
-									</>
-								</Switch>
-							</CSSTransition>
-						</TransitionGroup>
+								<Route
+									path="/"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>Table Time</title>
+											</Helmet>
+											<SplashScreen
+												loggedIn={loggedIn}
+												setLoggedIn={setLoggedIn}
+											/>
+										</>
+									)}
+								/>
+								<Route
+									path="/start"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>Start | Table Time</title>
+											</Helmet>
+											<StartGame />
+										</>
+									)}
+								/>
+								<Route
+									path="/game"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>Game | Table Time</title>
+											</Helmet>
+											<ScoreHolder loggedIn={loggedIn} />
+										</>
+									)}
+								/>
+								<Route
+									path="/history"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>History | Table Time</title>
+											</Helmet>
+											<History loggedIn={loggedIn} />
+										</>
+									)}
+								/>
+								<Route
+									path="/about"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>About | Table Time</title>
+											</Helmet>
+											<About />
+										</>
+									)}
+								/>
+								<Route
+									path="/auth"
+									exact
+									render={() => (
+										<>
+											<Helmet>
+												<title>Authorise | Table Time</title>
+											</Helmet>
+											<Auth setLoggedIn={setLoggedIn} />
+										</>
+									)}
+								/>
+							</>
+						</Switch>
 					)}
 				/>
 			</Router>
