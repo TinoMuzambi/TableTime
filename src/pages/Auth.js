@@ -25,6 +25,11 @@ class Auth extends Component {
 			username: this.state.username,
 			password: this.state.password,
 		};
+		const userDetailsReg = {
+			username: this.state.username,
+			password: this.state.password,
+			userType: "standard",
+		};
 		const url =
 			this.state.curr === "Login"
 				? `https://table-time.herokuapp.com/api/user/login`
@@ -33,7 +38,10 @@ class Auth extends Component {
 			// Make call to backend to process request.
 			method: "post",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(userDetails),
+			body:
+				this.state.curr === "Login"
+					? JSON.stringify(userDetails)
+					: JSON.stringify(userDetailsReg),
 		}).then(async (response) => {
 			const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 			const failure = document.querySelector(".status-block-failure");
