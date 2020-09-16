@@ -18,6 +18,10 @@ class Auth extends Component {
 		this.auth = this.auth.bind(this);
 	}
 
+	componentDidMount() {
+		document.getElementById("user").focus();
+	}
+
 	async auth(e) {
 		e.preventDefault();
 		await this.setState({ isFetching: true }); // Set isFetching true to display loading icon.
@@ -134,6 +138,7 @@ class Auth extends Component {
 								autocapitalize="none"
 								placeholder="username"
 								className="input user"
+								id="user"
 								value={this.state.username}
 								onChange={(e) => this.setState({ username: e.target.value })}
 							/>
