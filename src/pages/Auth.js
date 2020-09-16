@@ -11,6 +11,7 @@ class Auth extends Component {
 			curr: "Login",
 			username: "",
 			password: "",
+			passwordConfirm: "",
 			loggedIn: false,
 			isFetching: false,
 		};
@@ -32,6 +33,7 @@ class Auth extends Component {
 		const userDetailsReg = {
 			username: this.state.username,
 			password: this.state.password,
+			passwordConfirm: this.state.passwordConfirm,
 			userType: "standard",
 		};
 		const url =
@@ -55,6 +57,9 @@ class Auth extends Component {
 			let text = "";
 			response.text().then(async (res) => {
 				text = await res;
+				text = text.includes("[ref:password]")
+					? "password fields must match"
+					: text;
 				if (response.status === 200) {
 					localStorage.setItem("table-user", text);
 					this.props.setUsername(this.state.username);
@@ -149,6 +154,19 @@ class Auth extends Component {
 								value={this.state.password}
 								onChange={(e) => this.setState({ password: e.target.value })}
 							/>
+							{this.state.curr === "Login" ? (
+								""
+							) : (
+								<input
+									type="password"
+									placeholder="confirm password"
+									className="input password"
+									value={this.state.passwordConfirm}
+									onChange={(e) =>
+										this.setState({ passwordConfirm: e.target.value })
+									}
+								/>
+							)}
 							<input type="submit" value={this.state.curr} className="submit" />
 						</form>
 					</div>
