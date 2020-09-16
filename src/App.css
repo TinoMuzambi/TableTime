@@ -18,7 +18,9 @@
 }
 
 .toggle:hover {
-  border: solid 1px black;
+  background: gray;
+  color: white;
+  border: solid 2px #9c9c9c;
 }
 
 .user-holder .user {
@@ -40,7 +42,9 @@
 }
 
 .auth-link:hover {
-  border: solid 1px black;
+  background: gray;
+  color: white;
+  border: solid 2px #9c9c9c;
 }
 
 .confirm-new {
