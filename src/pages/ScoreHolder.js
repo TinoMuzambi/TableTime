@@ -248,7 +248,10 @@ class ScoreHolder extends Component {
 			document.querySelector(".next-button").classList.remove("clickable");
 			const gameData = {
 				// gameData object for updating state.
-				id: Object.keys(this.state.games).length.toString(),
+				userID:
+					localStorage.getItem("table-user") !== null
+						? localStorage.getItem("table-user")
+						: "",
 				date:
 					new Date().getFullYear() +
 					"-" +

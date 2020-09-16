@@ -87,7 +87,7 @@ function App() {
 													<Helmet>
 														<title>Game | Table Time</title>
 													</Helmet>
-													<ScoreHolder />
+													<ScoreHolder loggedIn={loggedIn} />
 												</>
 											)}
 										/>
@@ -99,7 +99,7 @@ function App() {
 													<Helmet>
 														<title>History | Table Time</title>
 													</Helmet>
-													<History />
+													<History loggedIn={loggedIn} />
 												</>
 											)}
 										/>

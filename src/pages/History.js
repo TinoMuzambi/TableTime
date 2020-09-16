@@ -48,8 +48,20 @@ class History extends Component {
 		const fetchData = async () => {
 			await this.setState({ isFetching: true });
 			const result = await fetch(
-				`https://table-time.herokuapp.com/api/matches`
+				`https://table-time.herokuapp.com/api/matches`,
+				{
+					method: "get",
+					headers: {
+						"Content-Type": "application/json",
+						"auth-token":
+							localStorage.getItem("table-user") !== null
+								? localStorage.getItem("table-user")
+								: "",
+					},
+					credentials: "same-origin",
+				}
 			);
+
 			const body = await result.json();
 			await this.setState({ games: body });
 			await this.setState({ isFetching: false });
