@@ -21,6 +21,12 @@
   border: solid 1px black;
 }
 
+.user-holder .user {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+}
+
 .auth-link {
   position: absolute;
   background: white;

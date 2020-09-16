@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet";
 function App() {
 	const [dark, setDark] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [username, setUsername] = useState("");
 
 	useEffect(() => {
 		const lastDark = localStorage.getItem("dark");
@@ -48,6 +49,9 @@ function App() {
 								<button onClick={toggleDark} className="toggle">
 									Dark
 								</button>
+								<div className="user-holder">
+									<p className="user">{username}</p>
+								</div>
 
 								<Route
 									path="/"
@@ -60,6 +64,7 @@ function App() {
 											<SplashScreen
 												loggedIn={loggedIn}
 												setLoggedIn={setLoggedIn}
+												setUsername={setUsername}
 											/>
 										</>
 									)}
@@ -120,7 +125,10 @@ function App() {
 											<Helmet>
 												<title>Authorise | Table Time</title>
 											</Helmet>
-											<Auth setLoggedIn={setLoggedIn} />
+											<Auth
+												setLoggedIn={setLoggedIn}
+												setUsername={setUsername}
+											/>
 										</>
 									)}
 								/>

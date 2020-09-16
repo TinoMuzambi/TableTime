@@ -58,6 +58,7 @@ class Auth extends Component {
 				success.classList.add("shown"); // If succesfully logged in go back to home.
 
 				this.props.setLoggedIn(true);
+				this.props.setUsername(this.state.username);
 				this.props.history.goBack();
 			} else if (response.status === 201) {
 				// If succesfully registered allow login.
