@@ -835,8 +835,7 @@
 	border-radius: 50px;
 	width: 10rem;
 	height: 16rem;
-	justify-items: center;
-	align-items: center;
+	place-items: center;
 	margin: 0 0.5rem;
 
 	.done {
@@ -1111,26 +1110,16 @@
 
 	.score {
 		width: 5rem;
-		grid-template-areas:
-			"score"
-			"plus"
-			"minus";
+		flex-direction: column;
 
 		.curr-score {
-			grid-area: score;
-			margin-top: 0.5rem;
+			margin-top: 1rem;
 			font-size: 3.5rem;
 		}
 
-		.plus {
-			grid-area: plus;
-			margin-left: 1rem;
-		}
-
 		.minus {
-			grid-area: minus;
-			margin-top: 0.5rem;
-			margin-left: 1rem;
+			margin-top: 1rem;
+			margin-left: 0.1rem;
 		}
 	}
 }
