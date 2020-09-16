@@ -8,7 +8,7 @@ class Auth extends Component {
 		super(props);
 
 		this.state = {
-			curr: "Login",
+			curr: "Log In",
 			username: "",
 			password: "",
 			passwordConfirm: "",
@@ -37,7 +37,7 @@ class Auth extends Component {
 			userType: "standard",
 		};
 		const url =
-			this.state.curr === "Login"
+			this.state.curr === "Log In"
 				? `https://table-time.herokuapp.com/api/user/login`
 				: `https://table-time.herokuapp.com/api/user/register`;
 		await fetch(url, {
@@ -45,7 +45,7 @@ class Auth extends Component {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body:
-				this.state.curr === "Login"
+				this.state.curr === "Log In"
 					? JSON.stringify(userDetails)
 					: JSON.stringify(userDetailsReg),
 		}).then(async (response) => {
@@ -75,7 +75,7 @@ class Auth extends Component {
 			} else if (response.status === 201) {
 				// If succesfully registered allow login.
 				success.classList.add("shown");
-				this.setState({ curr: "Login" });
+				this.setState({ curr: "Log In" });
 			} else {
 				// Else display error to user.
 				failure.classList.add("shown");
@@ -128,11 +128,11 @@ class Auth extends Component {
 							className="toggler"
 							onClick={() => {
 								this.setState({
-									curr: this.state.curr === "Login" ? "Register" : "Login",
+									curr: this.state.curr === "Log In" ? "Register" : "Log In",
 								});
 							}}
 						>
-							Register
+							{this.state.curr === "Log In" ? "Register" : "Log In"}
 						</button>
 					</div>
 
@@ -154,7 +154,7 @@ class Auth extends Component {
 								value={this.state.password}
 								onChange={(e) => this.setState({ password: e.target.value })}
 							/>
-							{this.state.curr === "Login" ? (
+							{this.state.curr === "Log In" ? (
 								""
 							) : (
 								<input
