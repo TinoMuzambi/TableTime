@@ -26,6 +26,7 @@
 		position: absolute;
 		left: 1rem;
 		top: 3rem;
+		font-size: 1rem;
 	}
 }
 
@@ -919,6 +920,12 @@
 /*              Viewport less then or equal to 520px            */
 
 @media only screen and (max-width: 520px) {
+	.user-holder {
+		.user {
+			font-size: 0.7rem;
+		}
+	}
+
 	.about-holder {
 		.about-logo {
 			height: 15rem;
@@ -1005,6 +1012,12 @@
 /*              Viewport less then or equal to 320px            */
 
 @media only screen and (max-width: 320px) {
+	.user-holder {
+		.user {
+			font-size: 0.5rem;
+		}
+	}
+
 	.splash-holder {
 		.logo {
 			height: 12rem;
