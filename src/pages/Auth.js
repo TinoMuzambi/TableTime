@@ -80,6 +80,7 @@ function Auth({ setLoggedIn, setOuterUsername }) {
 
 						setUsername("");
 						setPassword("");
+						setPasswordConfirm("");
 				  }, 3000)
 				: setTimeout(() => {
 						notice.classList.remove("shown");
