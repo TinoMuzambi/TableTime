@@ -1,43 +1,36 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { MdArrowBack } from "react-icons/md";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AiOutlineReload } from "react-icons/ai";
 
-class Auth extends Component {
-	constructor(props) {
-		super(props);
+function Auth({ setLoggedIn, setOuterUsername }) {
+	const [curr, setCurr] = useState("Log In");
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [passwordConfirm, setPasswordConfirm] = useState("");
+	// const [loggedIn, setLoggedIn] = useState(false);
+	const [isFetching, setIsFetching] = useState(false);
+	const history = useHistory();
 
-		this.state = {
-			curr: "Log In",
-			username: "",
-			password: "",
-			passwordConfirm: "",
-			loggedIn: false,
-			isFetching: false,
-		};
-
-		this.auth = this.auth.bind(this);
-	}
-
-	componentDidMount() {
+	useEffect(() => {
 		document.getElementById("user").focus();
-	}
+	}, []);
 
-	async auth(e) {
+	const auth = async (e) => {
 		e.preventDefault();
-		await this.setState({ isFetching: true }); // Set isFetching true to display loading icon.
+		await setIsFetching(true); // Set isFetching true to display loading icon.
 		const userDetails = {
-			username: this.state.username,
-			password: this.state.password,
+			username: username,
+			password: password,
 		};
 		const userDetailsReg = {
-			username: this.state.username,
-			password: this.state.password,
-			passwordConfirm: this.state.passwordConfirm,
+			username: username,
+			password: password,
+			passwordConfirm: passwordConfirm,
 			userType: "standard",
 		};
 		const url =
-			this.state.curr === "Log In"
+			curr === "Log In"
 				? `https://table-time.herokuapp.com/api/user/login`
 				: `https://table-time.herokuapp.com/api/user/register`;
 		await fetch(url, {
@@ -45,14 +38,14 @@ class Auth extends Component {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body:
-				this.state.curr === "Log In"
+				curr === "Log In"
 					? JSON.stringify(userDetails)
 					: JSON.stringify(userDetailsReg),
 		}).then(async (response) => {
 			const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 			const failure = document.querySelector(".status-block-failure");
 			const notice = document.querySelector(".notice");
-			await this.setState({ isFetching: false }); // Set isFetching false to hide loading icon once done fetching from DB.
+			await setIsFetching(false); // Set isFetching false to hide loading icon once done fetching from DB.
 			notice.classList.add("shown");
 			let text = "";
 			response.text().then(async (res) => {
@@ -62,20 +55,20 @@ class Auth extends Component {
 					: text;
 				if (response.status === 200) {
 					localStorage.setItem("table-user", text);
-					this.props.setUsername(this.state.username);
-					localStorage.setItem("username", this.state.username);
+					setOuterUsername(username);
+					localStorage.setItem("username", username);
 				} else failure.firstChild.innerText = text; // Set failure message.
 			});
 			if (response.status === 200) {
 				success.classList.add("shown"); // If succesfully logged in go back to home.
 
-				this.props.setLoggedIn(true);
+				setLoggedIn(true);
 
-				this.props.history.goBack();
+				history.goBack();
 			} else if (response.status === 201) {
 				// If succesfully registered allow login.
 				success.classList.add("shown");
-				this.setState({ curr: "Log In" });
+				setCurr("Log In");
 			} else {
 				// Else display error to user.
 				failure.classList.add("shown");
@@ -85,95 +78,86 @@ class Auth extends Component {
 						notice.classList.remove("shown");
 						success.classList.remove("shown");
 
-						this.setState({ username: "" });
-						this.setState({ password: "" });
+						setUsername("");
+						setPassword("");
 				  }, 3000)
 				: setTimeout(() => {
 						notice.classList.remove("shown");
 						failure.classList.remove("shown");
 				  }, 3000);
 		});
-	}
+	};
 
-	render() {
-		return (
-			<>
-				{this.state.isFetching ? (
-					<div className="notice2">
-						<AiOutlineReload className="icon" />
-					</div>
-				) : (
-					""
-				)}
+	return (
+		<>
+			{isFetching ? (
+				<div className="notice2">
+					<AiOutlineReload className="icon" />
+				</div>
+			) : (
+				""
+			)}
 
-				<div className="notice">
-					<div className="status-block-success">
-						<p className="text">Success</p>
-					</div>
-					<div className="status-block-failure">
-						<p className="text">Logged In</p>
-					</div>
+			<div className="notice">
+				<div className="status-block-success">
+					<p className="text">Success</p>
+				</div>
+				<div className="status-block-failure">
+					<p className="text">Logged In</p>
+				</div>
+			</div>
+
+			<div className="auth-holder">
+				<div className="flex">
+					<button className="auth-back-button" onClick={history.goBack}>
+						<MdArrowBack className="button-link" />
+					</button>
+					<h1 className="title">{curr}</h1>
+					<button
+						className="toggler"
+						onClick={() => {
+							setCurr(curr === "Log In" ? "Register" : "Log In");
+						}}
+					>
+						{curr === "Log In" ? "Register" : "Log In"}
+					</button>
 				</div>
 
-				<div className="auth-holder">
-					<div className="flex">
-						<button
-							className="auth-back-button"
-							onClick={this.props.history.goBack}
-						>
-							<MdArrowBack className="button-link" />
-						</button>
-						<h1 className="title">{this.state.curr}</h1>
-						<button
-							className="toggler"
-							onClick={() => {
-								this.setState({
-									curr: this.state.curr === "Log In" ? "Register" : "Log In",
-								});
-							}}
-						>
-							{this.state.curr === "Log In" ? "Register" : "Log In"}
-						</button>
-					</div>
-
-					<div className="col">
-						<form onSubmit={this.auth} className="form">
-							<input
-								type="text"
-								autocapitalize="none"
-								placeholder="username"
-								className="input user"
-								id="user"
-								value={this.state.username}
-								onChange={(e) => this.setState({ username: e.target.value })}
-							/>
+				<div className="col">
+					<form onSubmit={auth} className="form">
+						<input
+							type="text"
+							autocapitalize="none"
+							placeholder="username"
+							className="input user"
+							id="user"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+						<input
+							type="password"
+							placeholder="password"
+							className="input password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						{curr === "Log In" ? (
+							""
+						) : (
 							<input
 								type="password"
-								placeholder="password"
+								placeholder="confirm password"
 								className="input password"
-								value={this.state.password}
-								onChange={(e) => this.setState({ password: e.target.value })}
+								value={passwordConfirm}
+								onChange={(e) => setPasswordConfirm(e.target.value)}
 							/>
-							{this.state.curr === "Log In" ? (
-								""
-							) : (
-								<input
-									type="password"
-									placeholder="confirm password"
-									className="input password"
-									value={this.state.passwordConfirm}
-									onChange={(e) =>
-										this.setState({ passwordConfirm: e.target.value })
-									}
-								/>
-							)}
-							<input type="submit" value={this.state.curr} className="submit" />
-						</form>
-					</div>
+						)}
+						<input type="submit" value={curr} className="submit" />
+					</form>
 				</div>
-			</>
-		);
-	}
+			</div>
+		</>
+	);
 }
 
-export default withRouter(Auth);
+export default Auth;
