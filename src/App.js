@@ -132,7 +132,7 @@ function App() {
 											</Helmet>
 											<Auth
 												setLoggedIn={setLoggedIn}
-												setUsername={setUsername}
+												setOuterUsername={setUsername}
 											/>
 										</>
 									)}
