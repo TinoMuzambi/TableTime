@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function SplashScreen({ loggedIn, setLoggedIn }) {
+function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 	useEffect(() => {
 		if (localStorage.getItem("table-user") !== null) {
 			setLoggedIn(true);
 		}
-	}, []);
+	}, [setLoggedIn]);
 
 	return (
 		<>
@@ -19,10 +19,10 @@ function SplashScreen({ loggedIn, setLoggedIn }) {
 				<button
 					className="auth-link"
 					onClick={() => {
-						this.props.setLoggedIn(false);
+						setLoggedIn(false);
 						localStorage.removeItem("table-user");
 						localStorage.removeItem("username");
-						this.props.setUsername("");
+						setUsername("");
 						const success = document.querySelector(".status-block-success"); // Get elements to interact with.
 						const notice = document.querySelector(".notice");
 						notice.classList.add("shown");
