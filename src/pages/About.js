@@ -1,16 +1,14 @@
 import React from "react";
 import { MdArrowBack } from "react-icons/md";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function About() {
+	const history = useHistory();
 	return (
 		<>
 			<div className="about-holder">
 				<div className="flex">
-					<button
-						className="about-back-button"
-						onClick={this.props.history.goBack}
-					>
+					<button className="about-back-button" onClick={history.goBack}>
 						<MdArrowBack className="button-link" />
 					</button>
 					<h1 className="about-title">About</h1>
@@ -38,4 +36,4 @@ function About() {
 	);
 }
 
-export default withRouter(About);
+export default About;
