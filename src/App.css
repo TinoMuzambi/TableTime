@@ -543,11 +543,7 @@
   position: relative;
 }
 
-.history-holder .scores-container .flip {
-  width: 100%;
-}
-
-.history-holder .scores-container .flip .score-list {
+.history-holder .scores-container .score-list {
   display: -ms-grid;
   display: grid;
   justify-items: center;
@@ -567,25 +563,25 @@
   overflow-x: auto;
 }
 
-.history-holder .scores-container .flip .score-list .flex {
+.history-holder .scores-container .score-list .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.history-holder .scores-container .flip .score-list .flex .history-winner {
+.history-holder .scores-container .score-list .flex .history-winner {
   color: #b0ffa9;
 }
 
-.history-holder .scores-container .flip .score-list .flex .separator {
+.history-holder .scores-container .score-list .flex .separator {
   padding: 0 0.3rem;
 }
 
-.history-holder .scores-container .flip .score-list .flex .history-loser {
+.history-holder .scores-container .score-list .flex .history-loser {
   color: #ffa9a9;
 }
 
-.history-holder .scores-container .flip .score-list .delete-button {
+.history-holder .scores-container .score-list .delete-button {
   background: white;
   border: none;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -611,11 +607,11 @@
           justify-content: center;
 }
 
-.history-holder .scores-container .flip .score-list .delete-button .button-delete {
+.history-holder .scores-container .score-list .delete-button .button-delete {
   color: grey;
 }
 
-.history-holder .scores-container .flip .score-list .delete-button .button-delete:hover {
+.history-holder .scores-container .score-list .delete-button .button-delete:hover {
   -webkit-transition: 0.00001s ease;
   transition: 0.00001s ease;
   color: gray;
