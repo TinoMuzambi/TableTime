@@ -1,12 +1,28 @@
 import React from "react";
 import { MdArrowBack } from "react-icons/md";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function About() {
 	const history = useHistory();
+
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
+
 	return (
 		<>
-			<div className="about-holder">
+			<motion.div
+				className="about-holder"
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
+			>
 				<div className="flex">
 					<button className="about-back-button" onClick={history.goBack}>
 						<MdArrowBack className="button-link" />
@@ -31,7 +47,7 @@ function About() {
 						</>
 					}
 				</p>
-			</div>
+			</motion.div>
 		</>
 	);
 }
