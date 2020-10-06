@@ -9,6 +9,15 @@ function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 		}
 	}, [setLoggedIn]);
 
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
+
 	return (
 		<>
 			<div className="notice">
@@ -43,8 +52,9 @@ function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 			)}
 			<motion.div
 				className="splash-holder"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
 			>
 				<img src="/logo512.png" alt="logo" className="logo inverted" />
 				<ul className="links">
