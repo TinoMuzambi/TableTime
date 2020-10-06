@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { AiOutlineReload } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 function Auth({ setLoggedIn, setOuterUsername }) {
 	const [curr, setCurr] = useState("Log In");
@@ -15,6 +16,15 @@ function Auth({ setLoggedIn, setOuterUsername }) {
 	useEffect(() => {
 		document.getElementById("user").focus();
 	}, []);
+
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
 
 	const auth = async (e) => {
 		e.preventDefault();
@@ -108,7 +118,12 @@ function Auth({ setLoggedIn, setOuterUsername }) {
 				</div>
 			</div>
 
-			<div className="auth-holder">
+			<motion.div
+				className="auth-holder"
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
+			>
 				<div className="flex">
 					<button className="auth-back-button" onClick={history.goBack}>
 						<MdArrowBack className="button-link" />
@@ -156,7 +171,7 @@ function Auth({ setLoggedIn, setOuterUsername }) {
 						<input type="submit" value={curr} className="submit" />
 					</form>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 }

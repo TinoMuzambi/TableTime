@@ -8,6 +8,7 @@ import _ from "lodash";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Pusher from "pusher-js";
+import { motion } from "framer-motion";
 
 function History() {
 	const [isFetching, setIsFetching] = useState(true);
@@ -21,6 +22,15 @@ function History() {
 		player2Score: [], // Array of player 2's game's scores.
 	});
 	const history = useHistory();
+
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
 
 	useEffect(() => {
 		// Fetch game data from database on component load.
@@ -110,7 +120,12 @@ function History() {
 	for (let i in games) arrayGames.push([i, games[i]]); // Get games from JSON to array format.
 	return (
 		<>
-			<div className="history-holder">
+			<motion.div
+				className="history-holder"
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
+			>
 				{isFetching ? (
 					<AiOutlineReload className="icon" />
 				) : (
@@ -183,7 +198,7 @@ function History() {
 						</div>
 					</>
 				)}
-			</div>
+			</motion.div>
 		</>
 	);
 }

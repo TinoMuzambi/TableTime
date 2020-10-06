@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 	useEffect(() => {
@@ -7,6 +8,15 @@ function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 			setLoggedIn(true);
 		}
 	}, [setLoggedIn]);
+
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
 
 	return (
 		<>
@@ -40,7 +50,12 @@ function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 					<button className="auth-link">Log In</button>
 				</Link>
 			)}
-			<div className="splash-holder">
+			<motion.div
+				className="splash-holder"
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
+			>
 				<img src="/logo512.png" alt="logo" className="logo inverted" />
 				<ul className="links">
 					<li className="link">
@@ -60,7 +75,7 @@ function SplashScreen({ loggedIn, setLoggedIn, setUsername }) {
 						</Link>
 					</li>
 				</ul>
-			</div>
+			</motion.div>
 		</>
 	);
 }
