@@ -1,8 +1,4 @@
-/*  font-family: Lexend  */
-@font-face {
-	font-family: Lexend;
-	src: url("./fonts/Lexend_Deca/LexendDeca-Regular.ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
 
 html,
 body {
@@ -15,7 +11,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	/*      theme font-family   */
-	--Lexend: "Lexend", sans-serif;
+	--Lexend: "Lexend Deca", sans-serif;
 
 	font-family: var(--Lexend);
 }
