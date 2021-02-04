@@ -2,6 +2,7 @@ import React from "react";
 import { MdArrowBack } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import pkg from "../../package.json";
 
 function About() {
 	const history = useHistory();
@@ -43,7 +44,7 @@ function About() {
 								{` Tino Muzambi`}
 							</a>
 							<br />
-							<p className="version">Table Time © v 1.1</p>
+							<p className="version">Table Time © v {pkg.version}</p>
 						</>
 					}
 				</p>
