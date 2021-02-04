@@ -4,6 +4,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { MdArrowBack } from "react-icons/md";
 import { withRouter } from "react-router-dom";
+import { motion } from "framer-motion";
 
 class ScoreHolder extends Component {
 	constructor() {
@@ -351,9 +352,23 @@ class ScoreHolder extends Component {
 	}
 
 	render() {
+		const divVariants = {
+			hidden: {
+				opacity: 0,
+			},
+			visible: {
+				opacity: 1,
+			},
+		};
+
 		return (
 			<>
-				<div className="score-holder">
+				<motion.div
+					className="score-holder"
+					variants={divVariants}
+					initial="hidden"
+					animate="visible"
+				>
 					<div className="flex">
 						<button
 							className="score-back-button"
@@ -404,7 +419,7 @@ class ScoreHolder extends Component {
 							ref={this.secondScore}
 						/>
 					</div>
-				</div>
+				</motion.div>
 			</>
 		);
 	}

@@ -5,6 +5,7 @@ import {
 	MdArrowForward,
 	MdArrowBack,
 } from "react-icons/md";
+import { motion } from "framer-motion";
 
 function StartGame() {
 	const [player1, setPlayer1] = useState(""); // Player 1 name.
@@ -30,9 +31,23 @@ function StartGame() {
 		await setPlayer2(player2);
 	};
 
+	const divVariants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	};
+
 	return (
 		<>
-			<div className="start-holder">
+			<motion.div
+				className="start-holder"
+				variants={divVariants}
+				initial="hidden"
+				animate="visible"
+			>
 				<div className="flex">
 					<button className="start-back-button" onClick={history.goBack}>
 						<MdArrowBack className="button-link" />
@@ -104,7 +119,7 @@ function StartGame() {
 						<MdArrowForward />
 					</Link>
 				</button>
-			</div>
+			</motion.div>
 		</>
 	);
 }
