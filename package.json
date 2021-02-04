@@ -1,6 +1,6 @@
 {
 	"name": "ttsite",
-	"version": "1.2",
+	"version": "1.2.0",
 	"author": "Tino Muzambi",
 	"private": true,
 	"dependencies": {
