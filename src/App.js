@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import "./css/App.min.css";
 import SplashScreen from "./pages/SplashScreen";
 import ScoreHolder from "./pages/ScoreHolder";
 import StartGame from "./pages/StartGame";
