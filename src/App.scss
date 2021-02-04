@@ -1,3 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background: rgb(255, 255, 255);
+	overflow: auto;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/*      theme font-family   */
+	--Lexend: "Lexend Deca", sans-serif;
+
+	font-family: var(--Lexend);
+}
+
+* {
+	transition: all 1s ease;
+}
+
 .dark-mode {
 	filter: invert(0.85) hue-rotate(160deg);
 	transition: all 3s ease-in forwards;
