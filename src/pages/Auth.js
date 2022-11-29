@@ -41,8 +41,8 @@ function Auth({ setLoggedIn, setOuterUsername }) {
 		};
 		const url =
 			curr === "Log In"
-				? `https://table-time.herokuapp.com/api/user/login`
-				: `https://table-time.herokuapp.com/api/user/register`;
+				? `https://tabletimefull-production.up.railway.app/api/user/login`
+				: `https://tabletimefull-production.up.railway.app/api/user/register`;
 		await fetch(url, {
 			// Make call to backend to process request.
 			method: "post",

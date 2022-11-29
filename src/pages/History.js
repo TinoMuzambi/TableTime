@@ -37,7 +37,7 @@ function History() {
 		const fetchData = async () => {
 			await setIsFetching(true);
 			const result = await fetch(
-				`https://table-time.herokuapp.com/api/matches`,
+				`https://tabletimefull-production.up.railway.app/api/matches`,
 				{
 					method: "get",
 					headers: {
@@ -74,13 +74,13 @@ function History() {
 			const match = {
 				_id: id,
 			};
-			await fetch(`https://table-time.herokuapp.com/api/match/delete`, {
+			await fetch(`https://tabletimefull-production.up.railway.app/api/match/delete`, {
 				method: "post",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(match),
 			});
 			const result = await fetch(
-				`https://table-time.herokuapp.com/api/matches`
+				`https://tabletimefull-production.up.railway.app/api/matches`
 			);
 			const body = await result.json();
 			await setGames(body);

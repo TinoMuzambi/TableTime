@@ -74,7 +74,7 @@ class ScoreHolder extends Component {
 
 		const fetchData = async () => {
 			const result = await fetch(
-				`https://table-time.herokuapp.com/api/matches`
+				`https://tabletimefull-production.up.railway.app/api/matches`
 			);
 			const body = await result.json();
 			await this.setState({ games: body });
@@ -281,7 +281,7 @@ class ScoreHolder extends Component {
 				this.state.games[
 					Object.keys(this.state.games).length
 				] = this.state.gameData;
-				await fetch(`https://table-time.herokuapp.com/api/match/insert`, {
+				await fetch(`https://tabletimefull-production.up.railway.app/api/match/insert`, {
 					method: "post",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(gameData),
