@@ -73,9 +73,7 @@ class ScoreHolder extends Component {
 		// Get data from database on component load.
 
 		const fetchData = async () => {
-			const result = await fetch(
-				`https://tabletimefull-production.up.railway.app/api/matches`
-			);
+			const result = await fetch(`https://table-time.onrender.com/api/matches`);
 			const body = await result.json();
 			await this.setState({ games: body });
 		};
@@ -278,10 +276,9 @@ class ScoreHolder extends Component {
 			if (this.isMatchOver()) {
 				// If game is over, show dialog and write game to database.
 				this.handleWinner();
-				this.state.games[
-					Object.keys(this.state.games).length
-				] = this.state.gameData;
-				await fetch(`https://tabletimefull-production.up.railway.app/api/match/insert`, {
+				this.state.games[Object.keys(this.state.games).length] =
+					this.state.gameData;
+				await fetch(`https://table-time.onrender.com/api/match/insert`, {
 					method: "post",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(gameData),

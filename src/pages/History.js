@@ -37,7 +37,7 @@ function History() {
 		const fetchData = async () => {
 			await setIsFetching(true);
 			const result = await fetch(
-				`https://tabletimefull-production.up.railway.app/api/matches`,
+				`https://table-time.onrender.com/api/matches`,
 				{
 					method: "get",
 					headers: {
@@ -74,14 +74,12 @@ function History() {
 			const match = {
 				_id: id,
 			};
-			await fetch(`https://tabletimefull-production.up.railway.app/api/match/delete`, {
+			await fetch(`https://table-time.onrender.com/api/match/delete`, {
 				method: "post",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(match),
 			});
-			const result = await fetch(
-				`https://tabletimefull-production.up.railway.app/api/matches`
-			);
+			const result = await fetch(`https://table-time.onrender.com/api/matches`);
 			const body = await result.json();
 			await setGames(body);
 		};
